@@ -26,11 +26,17 @@ The internal submission target is **22 October 2026**. Official deadline: 23 Oct
 - [ ] Independently recheck video playback while logged out before submitting.
 - [ ] Provide the real repository and video URLs in Devpost. The private Sites preview is supplemental; judges can use the repository locally.
 - [ ] Fill in accurate entrant/team identity, residence, age and any eligibility disclosures; the software cannot certify personal eligibility.
-- [ ] Select Alexa+ as the primary track. State the simulated route clearly in both description and video. Do not claim native Alexa+, AWS usage, or additional mini-challenge eligibility.
+- [ ] Select Alexa+ as the primary track. State the simulated route clearly in both description and video. Do not claim native Alexa+ or AWS usage.
+- [x] Create and publicly publish the additional MIT contribution MCP Scenario Lab: https://github.com/ErickAmestegui/mcp-scenario-lab . Fifteen tests and real inventory/B7 scenarios passed; Ubuntu CI passed at `a6cbf15`.
+- [ ] If entering Open Source, paste the contribution URL, separate repository URL, username and prepared description from that repository's `docs/OPEN_SOURCE_SUBMISSION.md`. Organizer determines eligibility. Do not select AWS Builder on current evidence.
+- [x] Prepare improved English-captioned 2:14.24 recording showing real MCP responses, both assemblies and tool recovery. Keep public backup unchanged.
+- [ ] Review the improved recording; if choosing it for the form, publish it on YouTube/Vimeo, verify public playback, then replace the form's video URL. The existing public backup remains usable.
 - [ ] Paste actual product feedback and any genuine friction entries; remove unmeasured performance claims.
 - [ ] Check links, reviewer permissions and free access through the judging period.
 - [ ] Read and accept the entrant declarations personally, submit, then retain Devpost's actual confirmation and timestamp.
 
 ## Rehearsal order
+
+Final judge instructions: `JUDGE_QUICKSTART.md`. Eligibility audit: `ELIGIBILITY_FINAL.md`. Current evidence: `EVIDENCE_FINAL.md`. Full component feedback and authentic incident fields: `FRICTION_LOG.md`.
 
 Start clean → confirm 1, 2 → report missing B7 → show blocked 4/5/7/8 → complete 3 and/or 6 → recover B7 → confirm 4, 5, remaining 6, 7, 8 → show final model and action log. Keep the camera in a readable orientation. Animation playback is a visual preview and never a physical completion check.

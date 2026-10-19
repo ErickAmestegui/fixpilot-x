@@ -2,7 +2,7 @@
 
 **The manual that adapts to you.**
 
-Submission draft; final project links and personal declarations remain to be completed. V2 software verification is recorded in `EVIDENCE_V2.md`; V1 evidence remains preserved.
+Prepared submission text for entrant review. Personal declarations and final submission remain with the entrant. V2 software verification is recorded in `EVIDENCE_V2.md`; final verification in `EVIDENCE_FINAL.md`; V1 evidence remains preserved.
 
 ## Inspiration
 
@@ -45,9 +45,12 @@ Extend the library with additional validated original assemblies, improve multil
 - Primary track: Alexa+.
 - Repository URL: https://github.com/ErickAmestegui/fixpilot-x
 - Demo video URL: https://youtu.be/cmGh1VtHgUk — published publicly, 78.8 seconds, English subtitles, silent recording.
-- Product feedback: adapt `FRICTION_LOG.md` to the form using only verified experiences.
-- Additional mini-challenges: none claimed by this delivery. An MIT license alone does not establish an additional Open Source contribution; no AWS/Kiro usage is claimed.
+- Improved video: new verified 2:14.24 captioned recording; see `DEMO_FINAL.md`. Retain the existing public URL until the entrant reviews and publishes the new file on YouTube/Vimeo. A downloadable GitHub asset is supplemental, not the required video-host field.
+- Product feedback: the component-specific table in `FRICTION_LOG.md` is prepared for the form. Its seven incidents distinguish our defects and environment failures from Amazon products.
+- Additional mini-challenge prepared: **Open Source**, through the separate MIT project MCP Scenario Lab, not through FixPilot X alone. Contribution URL: https://github.com/ErickAmestegui/mcp-scenario-lab/tree/v0.1.0 . Repository: https://github.com/ErickAmestegui/mcp-scenario-lab . GitHub username: ErickAmestegui. Detailed English answer: https://github.com/ErickAmestegui/mcp-scenario-lab/blob/main/docs/OPEN_SOURCE_SUBMISSION.md . Fifteen automated tests passed; real independent inventory and optional FixPilot scenarios passed. Organizer eligibility remains subject to review.
+- AWS Builder: do not select on current evidence. No actual Kiro Crew task or AWS integration is verified.
 - Team identity and eligibility: the entrant must supply accurate personal information.
 - Submission confirmation: not yet obtained.
 - Final evidence: V2 passed 164 unit/integration tests and nine browser scenarios; see `EVIDENCE_V2.md` for limits. A captioned screen recording does not imply narrated audio.
 - Comparative positioning: `COMPETITION_POSITION.md` is a narrow public-source review, without competitor rankings or inferred win odds.
+- Judge testing instructions: `JUDGE_QUICKSTART.md`. The public repository and video are the primary route. Sites is owner-private and should not be advertised as an unrestricted public test target.

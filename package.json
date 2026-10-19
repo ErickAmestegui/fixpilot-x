@@ -10,7 +10,8 @@
     "test": "vitest run",
     "mcp": "tsx server/mcp.ts",
     "test:e2e": "playwright test",
-    "demo:record": "playwright test -c demo.config.ts"
+    "demo:record": "playwright test -c demo.config.ts",
+    "demo:final": "playwright test -c demo.final.config.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

@@ -1,0 +1,309 @@
+{
+  "recordedAt": "2026-10-19T19:18:59.330Z",
+  "source": "Observed browser HTTP responses during the unmodified application workflow",
+  "exchanges": [
+    {
+      "method": "initialize",
+      "status": 200,
+      "protocol": "2025-11-25",
+      "sessionIssued": true
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "toolCount": 18
+    },
+    {
+      "method": "tools/call",
+      "tool": "load_assembly",
+      "status": 200,
+      "completed": [],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "restore_progress",
+      "status": 200,
+      "completed": [],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "inspect_part",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "inspect_part",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "mark_part_missing",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "get_available_steps",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "missing": [
+        "B7"
+      ],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "restore_part",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "select_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "missing": [],
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "missing": [],
+      "isError": false
+    }
+  ]
+}
