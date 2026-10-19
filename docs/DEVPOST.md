@@ -43,11 +43,11 @@ Extend the library with additional validated original assemblies, improve multil
 ## Submission fields to complete before sending
 
 - Primary track: Alexa+.
-- Repository URL: https://github.com/ErickAmestegui/fixpilot-x — V1 is public; publish the locally verified V2 revision before submitting this draft.
-- Demo video URL: add the actual public YouTube/Vimeo URL after recording.
+- Repository URL: https://github.com/ErickAmestegui/fixpilot-x
+- Demo video URL: https://youtu.be/cmGh1VtHgUk — published publicly, 78.8 seconds, English subtitles, silent recording.
 - Product feedback: adapt `FRICTION_LOG.md` to the form using only verified experiences.
 - Additional mini-challenges: none claimed by this delivery. An MIT license alone does not establish an additional Open Source contribution; no AWS/Kiro usage is claimed.
 - Team identity and eligibility: the entrant must supply accurate personal information.
 - Submission confirmation: not yet obtained.
-- Final evidence: V2 passed 164 unit/integration tests and eight browser scenarios; see `EVIDENCE_V2.md` for limits. A captioned screen recording does not imply narrated audio.
+- Final evidence: V2 passed 164 unit/integration tests and nine browser scenarios; see `EVIDENCE_V2.md` for limits. A captioned screen recording does not imply narrated audio.
 - Comparative positioning: `COMPETITION_POSITION.md` is a narrow public-source review, without competitor rankings or inferred win odds.

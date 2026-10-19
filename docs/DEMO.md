@@ -38,3 +38,7 @@ Show a supported contextual instruction and previous-step undo with the real con
 A real UI recording is available as `fixpilot-x-v2-demo.webm` in the delivery outputs. Duration: **78.8 seconds**, 1600 × 1000, 25 fps. It has explanatory English subtitles burned into the frames, with no narrated audio or copied music. It shows real commands, confirmations, missing B7, the Inspector, independent work, missing/recovered Allen key, table completion, a second assembly and retained table progress. A decoded frame was visually checked. The recording scenario passed its assertions.
 
 Reproduce it with the web app running and `npm run demo:record`. Playwright needs its official FFmpeg component (`npx playwright install ffmpeg` if absent). The script adds only an English subtitle layer; it never injects completed assembly state. Recording code is under `demo/`.
+
+## Published video
+
+[Watch the public demo](https://youtu.be/cmGh1VtHgUk). YouTube Studio confirmed publication on 19 October 2026 after its copyright and Community Guidelines checks completed without reported problems. Watch-page playback was tested in the signed-in browser. An independent signed-out playback check remains recommended; the direct no-cookie embed test required a Referer and was not treated as a privacy failure or a successful playback test.

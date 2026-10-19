@@ -71,13 +71,13 @@ Read [architecture](docs/ARCHITECTURE.md), [MCP tools](docs/MCP.md), [verified s
 
 ## Submission status and scope
 
-V1 source is public at [ErickAmestegui/fixpilot-x](https://github.com/ErickAmestegui/fixpilot-x), commit `df0cb7c` on `main`, tagged `v1-stable`. V2 is verified locally; final publication is pending. A private Sites publication is supplemental to the locally reproducible application. A public video, Devpost submission, prize eligibility and native Alexa certification are not yet confirmed. The entrant must finish the external submission and verify the links. The official FAQ permits a locally reproducible repository plus a demo; no paid hosting is required. See [submission checklist](docs/SUBMISSION_CHECKLIST.md) for current requirements.
+V2 source is public at [ErickAmestegui/fixpilot-x](https://github.com/ErickAmestegui/fixpilot-x). The functional V2 checkpoint is `789b9c2`; V1 remains recoverable through `v1-stable`. The [public demonstration](https://youtu.be/cmGh1VtHgUk) is 78.8 seconds with English subtitles. Sites version 2 is published privately at [FixPilot X](https://fixpilot-x-assembly.lorgiogc.chatgpt.site); the judge route is the public repository and video. A public clean clone installed and compiled successfully. Devpost entry and personal eligibility declarations are not yet completed. See the [submission checklist](docs/SUBMISSION_CHECKLIST.md) for remaining tasks.
 
 V2 supports two original assemblies through the same schema-based planner, as verified below. There is no PDF-to-3D conversion, camera validation, open-ended repair advice, cloud account synchronization, or automatic Shopping integration. Dependencies retain their own licenses; this project's original source is [MIT-licensed](LICENSE). Geometry is constructed in code, icons use Lucide, and tones are synthesized rather than copied from Amazon or other apps.
 
 ## Verified V2 features
 
-The verified V1 record remains in [EVIDENCE.md](docs/EVIDENCE.md). V2 on `v2-competition` passed 164 unit/integration tests and eight browser scenarios. Results and limits are recorded in [EVIDENCE_V2.md](docs/EVIDENCE_V2.md).
+The verified V1 record remains in [EVIDENCE.md](docs/EVIDENCE.md). V2 on `main` and `v2-competition` passed 164 unit/integration tests and nine browser scenarios. Results and limits are recorded in [EVIDENCE_V2.md](docs/EVIDENCE_V2.md).
 
 | Verified V2 feature | Behavior |
 | --- | --- |
