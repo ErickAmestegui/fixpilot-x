@@ -1,0 +1,74 @@
+# FixPilot X
+
+**The manual that adapts to you.** A functional assembly copilot with an original interactive 3D table, a dependency planner, deterministic conversational commands, and an optional genuine MCP server.
+
+Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience is simulated.** The planner, inventory, 3D interactions, persistence, and MCP tools run real code. There is no connection to an Alexa device, private Amazon SDK, paid AI API, or Amazon Shopping.
+
+## Run locally
+
+Use Node.js 22 LTS or newer with npm, a modern desktop browser, and WebGL. Installation needs internet; the app has no paid-service dependency or runtime API key. No Echo or AWS account is required.
+
+```sh
+npm install
+npm run dev
+```
+
+Open the localhost URL printed by Vite (normally `http://127.0.0.1:5173`). For reproducible installation after the lockfile is present, use `npm ci`. Keep the terminal running. The UI is in Spanish; English instructions and an English submission draft are included here.
+
+To exercise genuine MCP, open a second terminal in the same directory:
+
+```sh
+npm run mcp
+```
+
+In the app, open **Configuración → Integración MCP opcional → Conectar servidor local**. The client initializes the protocol, discovers the tools, and transfers validated current progress to a separate server session. Future assembly actions then call real MCP tools at `http://127.0.0.1:3101/mcp`. Disconnect to continue with the in-browser engine. Closing the server loses its in-memory sessions; the UI retains its last successful local snapshot.
+
+## Try the adaptive workflow
+
+1. Start a new project or reset from **Mi proyecto**. Select step 1, press **Ya completé este paso**, read its safety note, and confirm. Repeat for step 2.
+2. Enter **Me falta B7**. B7 becomes missing; step 4 and dependent steps are blocked.
+3. Ask **¿Qué puedo hacer mientras tanto?** Steps 3 and 6 remain available. Complete either through the confirmation dialog. Step 6 prepares feet separately, so it does not require turning an incomplete frame over.
+4. Enter **Encontré B7**. Step 4 becomes available; step 5 still requires steps 3 and 4.
+5. Open **Registro de operaciones** to inspect tool names, revisions, and actual plan state.
+
+Other examples: **Mostrame la pieza B7**, **Mostrame el paso 3**, **Acercá la cámara**, **Mostrame la parte de atrás**, **Guardá el progreso**. Direct buttons remain available for every core operation. This is bounded intent recognition, not free-form LLM reasoning.
+
+Rotate by dragging, zoom with the wheel or buttons, and click parts to inspect them. **Despiece** shows the exploded model, **Mi montaje** shows recorded progress, and **Vista final** is a reference view. Animation previews never confirm physical work. The inventory and step panels also provide keyboard-operable alternatives to picking a 3D object.
+
+## Sound, voice, and persistence
+
+Sound starts disabled and never plays on page load. Enable original Web Audio tones and set volume in **Configuración**. Speech recognition is optional, browser-dependent, and only activated by the microphone button; some browsers use an external vendor service. Text input works without it. Optional speech synthesis uses browser voices, not Alexa's voice. Reduced-motion preferences respect both the OS and app setting.
+
+Progress and preferences use local browser storage. **Mi proyecto** exports/imports validated JSON backups. Failed storage writes are surfaced. The app does not verify physical assembly, structural strength, or load capacity. The furniture is an original educational prototype; do not use its model as manufacturer-approved construction guidance.
+
+## Verify and build
+
+```sh
+npm test
+npm run build
+npm run preview
+```
+
+`tests/mcp.test.ts` starts a real temporary loopback server and uses the official SDK client. It covers protocol negotiation, discovery, missing-B7 replanning/recovery, session isolation, validation, state import, and browser-origin restrictions. The engine tests exercise domain invariants. Browser checks are maintained separately; see the evidence notes for checks actually run in this delivery.
+
+## Project map
+
+| Path | Purpose |
+| --- | --- |
+| `src/engine.ts` | Parts, steps, graph planner, safe state transitions and snapshots |
+| `src/intent.ts` | Deterministic Spanish/English command routing |
+| `src/AssemblyViewer.tsx` | Original Three.js geometry and state-driven presentation |
+| `src/App.tsx` | Shared UI orchestration, confirmations, storage and browser speech |
+| `src/audio.ts` | Original optional Web Audio feedback |
+| `src/mcp-client.ts` | Official SDK browser transport and result validation |
+| `server/mcp.ts` | Session-isolated, loopback-only Streamable HTTP server |
+| `tests/` | Automated domain and integration checks |
+| `docs/` | Architecture, sources, demo script, submission draft and feedback |
+
+Read [architecture](docs/ARCHITECTURE.md), [MCP tools](docs/MCP.md), [verified sources](docs/SOURCES.md), [demo script](docs/DEMO.md), [Devpost draft](docs/DEVPOST.md), and [feedback](docs/FRICTION_LOG.md).
+
+## Submission status and scope
+
+This is a local source delivery. No GitHub publication, public video, Devpost submission, prize eligibility, or native Alexa certification is implied. The entrant must complete the external submission and verify the links. The official FAQ permits a locally reproducible repository plus a demo; no paid hosting is required. See source notes for the current deadline and requirements.
+
+Only one original assembly is supported. There is no PDF-to-3D conversion, camera validation, open-ended repair advice, cloud account synchronization, or automatic Shopping integration. Dependencies retain their own licenses; this project's original source is [MIT-licensed](LICENSE). Geometry is constructed in code, icons use Lucide, and tones are synthesized rather than copied from Amazon or other apps.
