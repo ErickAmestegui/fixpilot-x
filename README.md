@@ -49,6 +49,8 @@ npm run build
 npm run preview
 ```
 
+To run the browser checks, leave `npm run dev` running and run `npm run test:e2e` in a second terminal. On Windows, the configuration uses installed Microsoft Edge. On other systems, first install the test browser with `npx playwright install chromium`. The tests include an actual browser MCP connection; keep port 3101 free for its temporary server. CI installs from the lockfile and checks the engine, MCP, audio, TypeScript and production build; a successful local run is not a claim that remote CI has run.
+
 `tests/mcp.test.ts` starts a real temporary loopback server and uses the official SDK client. It covers protocol negotiation, discovery, missing-B7 replanning/recovery, session isolation, validation, state import, and browser-origin restrictions. The engine tests exercise domain invariants. Browser checks are maintained separately; see the evidence notes for checks actually run in this delivery.
 
 ## Project map
@@ -69,6 +71,6 @@ Read [architecture](docs/ARCHITECTURE.md), [MCP tools](docs/MCP.md), [verified s
 
 ## Submission status and scope
 
-This is a local source delivery. No GitHub publication, public video, Devpost submission, prize eligibility, or native Alexa certification is implied. The entrant must complete the external submission and verify the links. The official FAQ permits a locally reproducible repository plus a demo; no paid hosting is required. See source notes for the current deadline and requirements.
+The stable source is checkpointed in Git. A private Sites publication is supplemental to the locally reproducible application. No GitHub publication, public video, Devpost submission, prize eligibility, or native Alexa certification is implied. The entrant must complete the external submission and verify the links. The official FAQ permits a locally reproducible repository plus a demo; no paid hosting is required. See [submission checklist](docs/SUBMISSION_CHECKLIST.md) and source notes for the current deadline and requirements.
 
 Only one original assembly is supported. There is no PDF-to-3D conversion, camera validation, open-ended repair advice, cloud account synchronization, or automatic Shopping integration. Dependencies retain their own licenses; this project's original source is [MIT-licensed](LICENSE). Geometry is constructed in code, icons use Lucide, and tones are synthesized rather than copied from Amazon or other apps.

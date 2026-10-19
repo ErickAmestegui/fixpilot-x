@@ -18,6 +18,10 @@ Prepared October 19, 2026. Only observed incidents belong here. Documentation re
 
 ## Product feedback by component
 
+Observed Windows setup issue: the Sites installation helper resolved npm's entrypoint beneath the project and failed with `MODULE_NOT_FOUND`. Running the installed Node executable against the official absolute npm CLI path, with a workspace cache, installed the dependencies successfully. Local preview first ran inside a restricted network environment and could not be reached by the browser; rerunning the same Vite server with approved network access returned HTTP 200 and rendered the app. These are development-environment incidents, not Amazon SDK defects.
+
+The real MCP tests passed protocol negotiation and session isolation; the browser also initialized, discovered 17 tools, invoked them and disconnected. See `EVIDENCE.md` for actual checks and limits. Audio testing found a non-finite volume boundary, now corrected. No private Amazon onboarding was attempted.
+
 - **Official MCP TypeScript SDK:** Used at runtime by the local server and browser client for Streamable HTTP, discovery, and tool calls. Its transport/session abstractions support the required separation between session state and application logic. Actual test results belong in the final evidence record. No performance benchmark or production hosting claim is made.
 - **Three.js:** Used to construct and render the original table geometry, manipulate the camera, and reflect part/progress state. No purchased model or copied furniture asset is needed.
 - **React / Vite / TypeScript:** Used for the local application and production build. Setup is described in the README; report only installation and build outcomes actually observed.

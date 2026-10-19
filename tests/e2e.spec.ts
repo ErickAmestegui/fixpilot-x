@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
+import { startMcpServer } from '../server/mcp';
 
 const STORE = 'fixpilot-x:assembly:v1';
 const PREFS = 'fixpilot-x:preferences:v1';
@@ -81,6 +82,11 @@ test('a missing B7 replans real work, independent steps remain possible, recover
   expect(beforeReload.missing).toEqual([]);
   expect(beforeReload.history.some(entry => entry.tool === 'mark_part_missing')).toBe(true);
   expect(beforeReload.history.some(entry => entry.tool === 'restore_part')).toBe(true);
+  await page.screenshot({ path: 'docs/screenshots/completed.png', fullPage: true });
+  await send(page, 'Me falta B7');
+  await expect(page.getByRole('log')).toContainText('Primero deshacé');
+  expect((await storedState(page)).completed).toEqual(beforeReload.completed);
+  expect((await storedState(page)).missing).toEqual([]);
 
   await page.reload();
   await expect(page.getByText('8 de 8 pasos completados', { exact: true })).toBeVisible();
@@ -91,6 +97,31 @@ test('a missing B7 replans real work, independent steps remain possible, recover
   await page.getByRole('button', { name: 'Ver actividad', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('mark_part_missing');
   await expect(page.getByRole('dialog')).toContainText('restore_part');
+});
+
+test('browser initializes, discovers and invokes real MCP tools without losing local progress', async ({ page }) => {
+  const service = await startMcpServer(3101);
+  try {
+    await page.goto('/');
+    await complete(page, 1);
+    await page.getByRole('button', { name: 'Configuración', exact: true }).click();
+    const dialog = page.getByRole('dialog');
+    await dialog.locator('summary').click();
+    await dialog.getByRole('button', { name: 'Conectar servidor local', exact: true }).click();
+    await expect(dialog.getByRole('status')).toContainText('MCP conectado · 17 herramientas');
+    await page.keyboard.press('Escape');
+    await send(page, 'Me falta B7');
+    expect((await storedState(page)).completed).toEqual([1]);
+    expect((await storedState(page)).missing).toEqual(['B7']);
+    await expect(step(page, 4)).toHaveAccessibleName(/Bloqueado$/);
+    await send(page, 'Encontré B7');
+    expect((await storedState(page)).completed).toEqual([1]);
+    expect((await storedState(page)).missing).toEqual([]);
+    await page.getByRole('button', { name: 'Configuración', exact: true }).click();
+    await dialog.locator('summary').click();
+    await dialog.getByRole('button', { name: 'Volver al motor local', exact: true }).click();
+    await expect(dialog.getByRole('status')).toContainText('Motor local');
+  } finally { await service.close(); }
 });
 
 test('WebGL renders and camera controls change the model without changing completed work', async ({ page }) => {
