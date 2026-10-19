@@ -23,14 +23,15 @@ The internal submission target is **22 October 2026**. Official deadline: 23 Oct
 - [x] Check the public repository includes the MIT license, all original assets and complete instructions. If private, grant the official judges access according to the current rules.
 - [x] Record actual interaction with English narration or captions, under three minutes. Show the B7 interruption, independent work, recovery, and evidence log.
 - [x] Publish the video publicly: https://youtu.be/cmGh1VtHgUk. Studio confirmed publication and signed-in watch-page playback worked.
-- [ ] Independently recheck video playback while logged out before submitting.
+- [x] Verify final public video https://youtu.be/ok_BsZNJxzk : Studio publication/checks complete; unauthenticated oEmbed HTTP 200; privacy-enhanced public embed playback advanced to 40 seconds without requesting sign-in. This does not claim signing the entrant's browser account out.
 - [ ] Provide the real repository and video URLs in Devpost. The private Sites preview is supplemental; judges can use the repository locally.
 - [ ] Fill in accurate entrant/team identity, residence, age and any eligibility disclosures; the software cannot certify personal eligibility.
 - [ ] Select Alexa+ as the primary track. State the simulated route clearly in both description and video. Do not claim native Alexa+ or AWS usage.
 - [x] Create and publicly publish the additional MIT contribution MCP Scenario Lab: https://github.com/ErickAmestegui/mcp-scenario-lab . Fifteen tests and real inventory/B7 scenarios passed; Ubuntu CI passed at `a6cbf15`.
 - [ ] If entering Open Source, paste the contribution URL, separate repository URL, username and prepared description from that repository's `docs/OPEN_SOURCE_SUBMISSION.md`. Organizer determines eligibility. Do not select AWS Builder on current evidence.
 - [x] Prepare improved English-captioned 2:14.24 recording showing real MCP responses, both assemblies and tool recovery. Keep public backup unchanged.
-- [ ] Review the improved recording; if choosing it for the form, publish it on YouTube/Vimeo, verify public playback, then replace the form's video URL. The existing public backup remains usable.
+- [x] Publish the improved recording with entrant authorization and verify public access. The existing public backup remains usable.
+- [ ] Entrant reviews the final public recording, then uses https://youtu.be/ok_BsZNJxzk in the form.
 - [ ] Paste actual product feedback and any genuine friction entries; remove unmeasured performance claims.
 - [ ] Check links, reviewer permissions and free access through the judging period.
 - [ ] Read and accept the entrant declarations personally, submit, then retain Devpost's actual confirmation and timestamp.

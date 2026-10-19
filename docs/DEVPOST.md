@@ -44,8 +44,8 @@ Extend the library with additional validated original assemblies, improve multil
 
 - Primary track: Alexa+.
 - Repository URL: https://github.com/ErickAmestegui/fixpilot-x
-- Demo video URL: https://youtu.be/cmGh1VtHgUk — published publicly, 78.8 seconds, English subtitles, silent recording.
-- Improved video: new verified 2:14.24 captioned recording; see `DEMO_FINAL.md`. Retain the existing public URL until the entrant reviews and publishes the new file on YouTube/Vimeo. A downloadable GitHub asset is supplemental, not the required video-host field.
+- Final demo video URL: https://youtu.be/ok_BsZNJxzk — publicly published with entrant authorization, 2:14.24, English captions, silent recording. Studio publication/checks, unauthenticated metadata and public embed playback verified; see `DEMO_FINAL.md`.
+- Backup video retained unchanged: https://youtu.be/cmGh1VtHgUk . Final consolidated form content is in `DEVPOST_COPY_READY.md`.
 - Product feedback: the component-specific table in `FRICTION_LOG.md` is prepared for the form. Its seven incidents distinguish our defects and environment failures from Amazon products.
 - Additional mini-challenge prepared: **Open Source**, through the separate MIT project MCP Scenario Lab, not through FixPilot X alone. Contribution URL: https://github.com/ErickAmestegui/mcp-scenario-lab/tree/v0.1.0 . Repository: https://github.com/ErickAmestegui/mcp-scenario-lab . GitHub username: ErickAmestegui. Detailed English answer: https://github.com/ErickAmestegui/mcp-scenario-lab/blob/main/docs/OPEN_SOURCE_SUBMISSION.md . Fifteen automated tests passed; real independent inventory and optional FixPilot scenarios passed. Organizer eligibility remains subject to review.
 - AWS Builder: do not select on current evidence. No actual Kiro Crew task or AWS integration is verified.

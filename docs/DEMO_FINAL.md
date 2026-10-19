@@ -1,6 +1,6 @@
 # Final competition recording
 
-The new local recording is **2:14.24**, 1600 × 1000, 25 fps, VP9 WebM, with large English captions and no narrated audio. Its actual UI recording test passed on October 19, 2026. It preserves the existing public 78.8-second backup: https://youtu.be/cmGh1VtHgUk. Do not replace that URL in Devpost until the entrant has reviewed and published the new file on YouTube or Vimeo.
+The final recording is **2:14.24**, 1600 × 1000, 25 fps, VP9 WebM, with large English captions and no narrated audio. Its actual UI recording test passed on October 19, 2026. Final public YouTube URL: https://youtu.be/ok_BsZNJxzk . The entrant explicitly authorized this new upload and publication. YouTube Studio confirmed public publication and completed checks without finding problems. An unauthenticated oEmbed request returned HTTP 200; the public privacy-enhanced embed played to 40 seconds without requesting sign-in. The existing public 78.8-second backup remains unchanged: https://youtu.be/cmGh1VtHgUk .
 
 ## Reproduce
 
@@ -21,4 +21,4 @@ The recorder adds an English subtitle layer and one clearly labeled observer car
 9. **Reuse.** Switch to the original organizer; report missing Allen key in context; complete independent felt preparation, recover the key, finish 6/6.
 10. **Memory and disclosure.** Return to table 8/8. Explain browser persistence versus server RAM; show repository URL and repeat simulation/native integration limits.
 
-The final recording shows actual tools rather than a narration-only MCP claim. The original backup remains publicly available and unchanged. No new YouTube upload or final Devpost submission is claimed by this recording step.
+The final recording shows actual tools rather than a narration-only MCP claim. The original backup remains publicly available and unchanged. YouTube publication does not constitute Devpost submission; the entrant retains the final form review and Submit action.

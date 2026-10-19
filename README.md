@@ -4,7 +4,7 @@
 
 Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience is simulated.** The planner, inventory, 3D interactions, persistence, and MCP tools run real code. There is no connection to an Alexa device, private Amazon SDK, paid AI API, or Amazon Shopping.
 
-For evaluation, start with the [judge quickstart](docs/JUDGE_QUICKSTART.md), [public backup video](https://youtu.be/cmGh1VtHgUk), [final verification](docs/EVIDENCE_FINAL.md) and [improved 2:14 recording notes](docs/DEMO_FINAL.md). The separate additional open source contribution is [MCP Scenario Lab](https://github.com/ErickAmestegui/mcp-scenario-lab), a generic stateful MCP test runner with its own license, fixture and tests.
+For evaluation, start with the [judge quickstart](docs/JUDGE_QUICKSTART.md), [final public 2:14 demo](https://youtu.be/ok_BsZNJxzk), [final verification](docs/EVIDENCE_FINAL.md) and [recording notes](docs/DEMO_FINAL.md). [Final Devpost fields](docs/DEVPOST_COPY_READY.md) are prepared for entrant review. The separate additional open source contribution is [MCP Scenario Lab](https://github.com/ErickAmestegui/mcp-scenario-lab), a generic stateful MCP test runner with its own license, fixture and tests.
 
 ## Run locally
 

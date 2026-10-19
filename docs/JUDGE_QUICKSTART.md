@@ -4,7 +4,7 @@
 
 Public source: https://github.com/ErickAmestegui/fixpilot-x
 
-Public backup video: https://youtu.be/cmGh1VtHgUk
+Final public video: https://youtu.be/ok_BsZNJxzk . Backup retained: https://youtu.be/cmGh1VtHgUk
 
 The Sites URL is an owner-private supplemental preview. Use this public source/video route rather than another person's account. The [official FAQ](https://amazonappdev2026.devpost.com/details/faqs) permits a locally runnable public repository and demonstration video.
 
