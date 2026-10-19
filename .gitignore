@@ -3,6 +3,7 @@ dist/
 .openai/.local/
 playwright-report/
 test-results/
+demo-results/
 *.log
 *.tsbuildinfo
 .env*

@@ -2,6 +2,8 @@
 
 **The manual that adapts to you.**
 
+Submission draft; final project links and personal declarations remain to be completed. V2 software verification is recorded in `EVIDENCE_V2.md`; V1 evidence remains preserved.
+
 ## Inspiration
 
 A paper manual assumes every part is present and every step goes to plan. Real assembly is less predictable. We wanted a companion that understands the procedure well enough to answer a more useful question: “What can I safely do next?”
@@ -14,7 +16,9 @@ The conversation, inventory, procedure, 3D selection, and progress share actual 
 
 ## How we built it
 
-TypeScript and React provide the interface, Three.js renders original geometry, and a renderer-independent engine validates the eight-step dependency graph. A deterministic command router maps supported instructions to real tools. No paid LLM or cloud API is required.
+The same planner powers two original assemblies: an eight-step table and a six-step desk organizer. Switching assemblies preserves each project's progress. Missing tools and parts recalculate the actual plan. Bounded contextual commands support selected references and prior-step undo, while a Plan Inspector exposes the available steps and blockers that changed before and after an operation.
+
+TypeScript and React provide the interface, Three.js renders original geometry, and a renderer-independent engine validates both assembly dependency graphs. A deterministic command router maps supported instructions to real tools. No paid LLM or cloud API is required.
 
 The optional local MCP service uses the official TypeScript SDK and Streamable HTTP. The browser performs protocol initialization, tool discovery, and tool calls. Each session owns an independent assembly state. The same engine runs directly in the browser when MCP is disconnected. Automated integration tests exercise the actual transport, not a mock HTTP wrapper.
 
@@ -39,9 +43,11 @@ Extend the library with additional validated original assemblies, improve multil
 ## Submission fields to complete before sending
 
 - Primary track: Alexa+.
-- Repository URL: add the actual GitHub URL after publication.
+- Repository URL: https://github.com/ErickAmestegui/fixpilot-x — V1 is public; publish the locally verified V2 revision before submitting this draft.
 - Demo video URL: add the actual public YouTube/Vimeo URL after recording.
 - Product feedback: adapt `FRICTION_LOG.md` to the form using only verified experiences.
 - Additional mini-challenges: none claimed by this delivery. An MIT license alone does not establish an additional Open Source contribution; no AWS/Kiro usage is claimed.
 - Team identity and eligibility: the entrant must supply accurate personal information.
 - Submission confirmation: not yet obtained.
+- Final evidence: V2 passed 164 unit/integration tests and eight browser scenarios; see `EVIDENCE_V2.md` for limits. A captioned screen recording does not imply narrated audio.
+- Comparative positioning: `COMPETITION_POSITION.md` is a narrow public-source review, without competitor rankings or inferred win odds.

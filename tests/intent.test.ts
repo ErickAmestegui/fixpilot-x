@@ -52,3 +52,51 @@ describe('bounded Spanish and English intent controller', () => {
   });
   it('rejects excessive input', () => expect(parseIntent('x'.repeat(1001), createInitialState())).toHaveProperty('message'));
 });
+
+describe('contextual deterministic V2 intents', () => {
+  const selected = { ...createInitialState(), selectedPart: 'B7', selectedStep: 4 };
+  it.each(['Por qué la necesito', '¿Por qué la necesito?', 'esa pieza', '¿Dónde va esa pieza?'])('resolves selected piece: %s', text => {
+    expect(parseIntent(text, selected)).toEqual({ tool: 'inspect_part', args: { partId: 'B7' } });
+  });
+  it('treats hypothetical absence as a query', () => {
+    expect(parseIntent('Y si no la tengo', selected)).toEqual({ tool: 'explain_part_impact', args: { partId: 'B7' } });
+    expect(parseIntent('Y si no la tengo', createInitialState())).toHaveProperty('message');
+  });
+  it('recovers only an unambiguous missing piece', () => {
+    const missing = execute(selected, 'mark_part_missing', { partId: 'B7' }).state;
+    expect(parseIntent('ya la encontré', missing)).toEqual({ tool: 'restore_part', args: { partId: 'B7' } });
+    expect(parseIntent('ya la encontré', { ...missing, selectedPart: null })).toEqual({ tool: 'restore_part', args: { partId: 'B7' } });
+    expect(parseIntent('ya la encontré', { ...missing, selectedPart: null, missing: ['B7', 'A1'] })).toHaveProperty('message');
+    expect(parseIntent('ya la encontré', { ...missing, selectedPart: 'A1' })).toHaveProperty('message');
+    expect(parseIntent('¿ya la encontré?', missing)).toHaveProperty('message');
+  });
+  it('resolves current steps and next available work', () => {
+    expect(parseIntent('ese paso', selected)).toEqual({ tool: 'select_step', args: { stepId: 4 } });
+    expect(parseIntent('Terminé ese paso', selected)).toEqual({ tool: 'complete_step', args: { stepId: 4, confirmed: false } });
+    expect(parseIntent('Bueno avancemos con otra cosa', selected)).toEqual({ tool: 'get_available_steps', args: {} });
+    expect(parseIntent('¿Qué puedo adelantar sin deshacer lo que ya terminé?', selected)).toEqual({ tool: 'get_available_steps', args: {} });
+    expect(parseIntent('la anterior', selected)).toEqual({ tool: 'select_step', args: { stepId: 3 } });
+  });
+  it('recognizes specific tool absence while preserving negation guards', () => {
+    expect(parseIntent('no tengo la llave necesaria para este paso', selected)).toEqual({ tool: 'set_tool_available', args: { toolId: 'hex', available: false } });
+    expect(parseIntent('no tengo la llave necesaria para este paso', createInitialState())).toHaveProperty('message');
+    expect(parseIntent('No tengo B7', selected)).toEqual({ tool: 'mark_part_missing', args: { partId: 'B7' } });
+    expect(parseIntent('No tengo la llave Allen', selected)).toEqual({ tool: 'set_tool_available', args: { toolId: 'hex', available: false } });
+    expect(parseIntent('No tengo B7 y A1', selected)).toHaveProperty('message');
+    expect(parseIntent('No tengo B7; encontré A1', selected)).toHaveProperty('message');
+    expect(parseIntent('ya la\nencontré', { ...selected, missing: ['B7'] })).toHaveProperty('message');
+  });
+  it('routes a previous lateral assembly error through undo confirmation', () => {
+    let state = createInitialState();
+    for (const stepId of [1, 2, 3, 4]) state = execute(state, 'complete_step', { stepId, confirmed: true }).state;
+    expect(parseIntent('coloqué mal el panel lateral', state)).toEqual({ tool: 'undo_step', args: { stepId: 2, cascade: false } });
+    expect(parseIntent('coloqué mal el panel lateral', createInitialState())).toHaveProperty('message');
+  });
+  it('resolves only the active project identifiers and step range', () => {
+    const state = { ...createInitialState('organizer'), selectedPart: 'O5', selectedStep: 4 };
+    expect(parseIntent('Mostrame O5', state)).toEqual({ tool: 'inspect_part', args: { partId: 'O5' } });
+    expect(parseIntent('No tengo B7', state)).toHaveProperty('message');
+    expect(parseIntent('Mostrame el paso siete', state)).toHaveProperty('message');
+    expect(parseIntent('no tengo la llave necesaria para este paso', state)).toEqual({ tool: 'set_tool_available', args: { toolId: 'screwdriver', available: false } });
+  });
+});

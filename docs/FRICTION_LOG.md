@@ -31,3 +31,5 @@ The real MCP tests passed protocol negotiation and session isolation; the browse
 Would we build on this stack again? Yes for a local assembly prototype: the domain engine can be tested independently and the official MCP transport lets the same tools serve another client. Public deployment, native Alexa integration, and physically validated assembly instructions need separate access and engineering.
 
 Before submitting, replace general feedback with actual experience from the final tested build. Do not invent errors or exaggerate tool limitations to pursue a bonus.
+
+V2 environment incident: the previous Edge executable was absent. Browser checks could not start, so configuration was extended to detect installed Edge or Chrome; the nine V2 browser scenarios then passed using installed Chrome. This was a browser availability issue. A separate speech-indicator test uses simulated browser events and makes no hardware microphone claim.

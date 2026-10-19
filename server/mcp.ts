@@ -14,10 +14,11 @@ const step = { stepId: z.number().int().min(1).max(8) };
 type Definition = { description: string; inputSchema: z.ZodRawShape; readOnly?: boolean };
 
 export const TOOL_DEFINITIONS: Record<string, Definition> = {
-  load_assembly: { description: 'Start the original modular table assembly. Resets this session.', inputSchema: {} },
+  load_assembly: { description: 'Load a catalog assembly in this isolated session. Resets this session only.', inputSchema: { assemblyId: z.enum(['table','organizer']).optional() } },
   get_assembly_state: { description: 'Read this session’s current assembly and action history.', inputSchema: {}, readOnly: true },
   list_parts: { description: 'List original model parts and their inventory states.', inputSchema: {}, readOnly: true },
   inspect_part: { description: 'Inspect and select a part by its identifier.', inputSchema: part },
+  explain_part_impact: { description: 'Compute the dependency impact of a hypothetical missing part without changing inventory.', inputSchema: part, readOnly: true },
   mark_part_missing: { description: 'Report a missing part and invalidate dependent assembly steps.', inputSchema: part },
   restore_part: { description: 'Report a recovered part and recompute valid next steps.', inputSchema: part },
   get_available_steps: { description: 'Find safe, currently available steps from the dependency graph.', inputSchema: {}, readOnly: true },

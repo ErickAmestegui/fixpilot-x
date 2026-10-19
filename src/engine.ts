@@ -3,7 +3,7 @@ export interface Part { id: string; name: string; description: string }
 export interface Step { id: number; title: string; description: string; parts: string[]; tools: string[]; dependencies: number[]; safety: string }
 export type ResultKind = 'success' | 'warning' | 'info';
 export interface LogEntry { id: string; at: string; tool: string; message: string; kind: ResultKind; revision: number }
-export interface AssemblyState { version: 1; completed: number[]; missing: string[]; missingTools: string[]; selectedPart: string | null; selectedStep: number; revision: number; history: LogEntry[] }
+export interface AssemblyState { version: 1; assemblyId?: string; completed: number[]; missing: string[]; missingTools: string[]; selectedPart: string | null; selectedStep: number; revision: number; history: LogEntry[] }
 export interface PlanEntry extends Step { status: 'complete' | 'available' | 'blocked' | 'pending'; reasons: string[] }
 export interface ToolResult { state: AssemblyState; message: string; kind: ResultKind; data?: unknown }
 
@@ -29,8 +29,35 @@ export const STEPS: Step[] = [
   { id: 8, title: 'Revisión final', description: 'Colocá el mueble en suelo plano. Revisá manualmente todas las uniones, que los cuatro pies apoyen y que no haya movimiento inesperado.', parts: [], tools: [], dependencies: [7], safety: 'La app registra tu confirmación; no verifica la resistencia física. No te subas, no lo uses como asiento ni lo cargues sin una capacidad validada.' },
 ];
 
-export function createInitialState(): AssemblyState {
-  return { version: 1, completed: [], missing: [], missingTools: [], selectedPart: null, selectedStep: 1, revision: 0, history: [] };
+export interface AssemblyDefinition { id: string; title: string; subtitle: string; estimatedMinutes: number; parts: Part[]; steps: Step[]; tools: { id: string; name: string }[]; problemPartId: string }
+export const ASSEMBLIES: AssemblyDefinition[] = [
+  { id: 'table', title: 'Mesa auxiliar modular', subtitle: 'Mesa con repisa y cuatro pies', estimatedMinutes: 30, parts: PARTS, steps: STEPS, tools: TOOLS, problemPartId: 'B7' },
+  { id: 'organizer', title: 'Organizador de escritorio', subtitle: 'Dos niveles con barra posterior y protectores de fieltro', estimatedMinutes: 20, problemPartId: 'O5', tools: TOOLS, parts: [
+    { id: 'O1', name: 'Base del organizador', description: 'Panel inferior de 38 × 20 cm. Recibe los dos marcos y los protectores de fieltro.' },
+    { id: 'O2', name: 'Marco lateral izquierdo', description: 'Marco vertical izquierdo con uniones preperforadas para la base y la repisa.' },
+    { id: 'O3', name: 'Marco lateral derecho', description: 'Marco vertical derecho que sostiene el otro extremo de la repisa.' },
+    { id: 'O4', name: 'Repisa superior', description: 'Puente horizontal de 34 × 16 cm entre los dos marcos. Alineá sus orificios antes de ajustar.' },
+    { id: 'O5', name: 'Barra de retención posterior', description: 'Barra posterior bajo la repisa que ayuda a retener objetos y completa el conjunto original. No se debe omitir ni improvisar un sustituto.' },
+    { id: 'O6', name: 'Juego de protectores de fieltro', description: 'Cuatro almohadillas adhesivas para la cara inferior de la base. Se preparan por separado antes de su instalación final.' },
+    { id: 'H1', name: 'Kit de uniones del organizador', description: 'Conectores Allen de marcos y repisa, y tornillos de la barra posterior. Separá cada tipo y usá solo la fijación correspondiente.' },
+  ], steps: [
+    { id: 1, title: 'Preparar la base', description: 'Apoyá O1 sobre una superficie protegida e identificá los orificios de los marcos.', parts: ['O1'], tools: [], dependencies: [], safety: 'Trabajá sobre una mesa plana y despejada. Es un diseño demostrativo original.' },
+    { id: 2, title: 'Fijar los marcos laterales', description: 'Alineá O2 y O3 con O1 y fijalos con los conectores H1 y la llave Allen.', parts: ['O1', 'O2', 'O3', 'H1'], tools: ['hex'], dependencies: [1], safety: 'Sostené cada marco durante la unión. Mantené el conjunto apoyado y sin carga.' },
+    { id: 3, title: 'Instalar la repisa superior', description: 'Alineá O4 entre los marcos y fijala con sus conectores H1 y la llave Allen.', parts: ['O4', 'H1'], tools: ['hex'], dependencies: [2], safety: 'Sujetá la repisa mientras ajustás. No aprietes en exceso ni coloques objetos todavía.' },
+    { id: 4, title: 'Fijar la barra posterior', description: 'Ubicá O5 detrás del conjunto, bajo la repisa, y fijala con los tornillos H1 y el destornillador.', parts: ['O5', 'H1'], tools: ['screwdriver'], dependencies: [3], safety: 'La barra pertenece al diseño completo. No la omitas ni uses fijaciones improvisadas.' },
+    { id: 5, title: 'Preparar los protectores', description: 'Separá las cuatro almohadillas O6 y revisá sus adhesivos. Dejalas listas sin mover el conjunto incompleto.', parts: ['O6'], tools: [], dependencies: [1], safety: 'Prepará los protectores por separado y conservá sus películas adhesivas hasta instalarlos.' },
+    { id: 6, title: 'Colocar fieltros y revisar', description: 'Con el conjunto completo apoyado de forma segura, colocá O6 bajo O1. Ponelo sobre el escritorio y revisá sus uniones y apoyo.', parts: ['O1', 'O6'], tools: [], dependencies: [4, 5], safety: 'La app registra tu revisión, no verifica resistencia física. No te subas ni lo uses como asiento; no cargues sin capacidad validada.' },
+  ] },
+];
+export function getAssembly(stateOrId: AssemblyState | string = 'table'): AssemblyDefinition {
+  const id = typeof stateOrId === 'string' ? stateOrId : stateOrId.assemblyId ?? 'table';
+  const assembly = ASSEMBLIES.find(item => item.id === id);
+  if (!assembly) throw new Error('Montaje desconocido. Elegí un proyecto del catálogo.');
+  return assembly;
+}
+export function createInitialState(assemblyId = 'table'): AssemblyState {
+  getAssembly(assemblyId);
+  return { version: 1, assemblyId, completed: [], missing: [], missingTools: [], selectedPart: null, selectedStep: 1, revision: 0, history: [] };
 }
 
 /** True for a directed cycle. Unknown dependencies and duplicate IDs are invalid graphs and throw. */
@@ -50,6 +77,7 @@ export function detectCycles(steps: Pick<Step, 'id' | 'dependencies'>[]): boolea
 }
 
 export function plan(state: AssemblyState): PlanEntry[] {
+  const { steps: STEPS, tools: TOOLS } = getAssembly(state);
   if (detectCycles(STEPS)) throw new Error('Dependencias circulares: montaje detenido.');
   const entries = new Map<number, PlanEntry>();
   const calculate = (step: Step): PlanEntry => {
@@ -74,12 +102,18 @@ export function plan(state: AssemblyState): PlanEntry[] {
 
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const uniqueList = <T>(value: unknown, valid: (item: unknown) => item is T): value is T[] => Array.isArray(value) && value.length <= 100 && value.every(valid) && new Set(value).size === value.length;
-const partId = (value: unknown): value is string => typeof value === 'string' && PARTS.some(part => part.id === value);
-const stepId = (value: unknown): value is number => typeof value === 'number' && STEPS.some(step => step.id === value);
-const toolId = (value: unknown): value is string => typeof value === 'string' && TOOLS.some(tool => tool.id === value);
+const validators = (assembly: AssemblyDefinition) => ({
+  partId: (value: unknown): value is string => typeof value === 'string' && assembly.parts.some(part => part.id === value),
+  stepId: (value: unknown): value is number => typeof value === 'number' && assembly.steps.some(step => step.id === value),
+  toolId: (value: unknown): value is string => typeof value === 'string' && assembly.tools.some(tool => tool.id === value),
+});
 const safeInteger = (value: unknown): value is number => Number.isSafeInteger(value) && (value as number) >= 0;
 
 export function validateState(value: unknown): value is AssemblyState {
+  if (!record(value) || (value.assemblyId !== undefined && (typeof value.assemblyId !== 'string' || !ASSEMBLIES.some(item => item.id === value.assemblyId)))) return false;
+  const assembly = getAssembly(value.assemblyId as string | undefined);
+  const { partId, stepId, toolId } = validators(assembly);
+  const STEPS = assembly.steps;
   if (!record(value) || value.version !== 1 || !uniqueList(value.completed, stepId) || !uniqueList(value.missing, partId) || !uniqueList(value.missingTools, toolId) || !(value.selectedPart === null || partId(value.selectedPart)) || !stepId(value.selectedStep) || !safeInteger(value.revision) || value.revision >= Number.MAX_SAFE_INTEGER) return false;
   if (!Array.isArray(value.history) || value.history.length > 100) return false;
   let previousRevision = -1;
@@ -107,11 +141,14 @@ export function restoreState(serialized: string): AssemblyState {
   try { value = JSON.parse(serialized); } catch { throw new Error('El progreso no contiene JSON válido.'); }
   if (!validateState(value)) throw new Error('Progreso inconsistente: revisá piezas, pasos y dependencias. No se importó.');
   // Construct a known-key value; extra fields and prototype-like keys never cross the boundary.
-  return { version: 1, completed: [...value.completed], missing: [...value.missing], missingTools: [...value.missingTools], selectedPart: value.selectedPart, selectedStep: value.selectedStep, revision: value.revision, history: value.history.map(({ id, at, tool, message, kind, revision }) => ({ id, at, tool, message, kind, revision })) };
+  return { version: 1, ...(value.assemblyId === undefined ? {} : { assemblyId: value.assemblyId }), completed: [...value.completed], missing: [...value.missing], missingTools: [...value.missingTools], selectedPart: value.selectedPart, selectedStep: value.selectedStep, revision: value.revision, history: value.history.map(({ id, at, tool, message, kind, revision }) => ({ id, at, tool, message, kind, revision })) };
 }
 
 export function execute(state: AssemblyState, tool: string, args: Record<string, unknown> = {}): ToolResult {
   if (!validateState(state)) return { state, message: 'Estado inválido: recuperá una copia válida antes de continuar.', kind: 'warning' };
+  const assembly = getAssembly(state);
+  const { parts: PARTS, steps: STEPS, tools: TOOLS } = assembly;
+  const { partId, stepId, toolId } = validators(assembly);
   if (state.revision >= Number.MAX_SAFE_INTEGER - 1) return { state, message: 'El contador de acciones del archivo importado excede el límite. No se modificó el montaje.', kind: 'warning' };
   const finish = (message: string, kind: ResultKind = 'info', next: AssemblyState = state, data?: unknown): ToolResult => {
     const revision = state.revision + 1;
@@ -123,18 +160,31 @@ export function execute(state: AssemblyState, tool: string, args: Record<string,
   };
   if (!record(args)) return finish('Argumentos inválidos.', 'warning');
   const normalizedPart = typeof args.partId === 'string' ? args.partId.toUpperCase().trim() : args.partId;
-  const requiresPart = ['inspect_part', 'mark_part_missing', 'restore_part', 'focus_3d_part'].includes(tool);
-  if (requiresPart && !partId(normalizedPart)) return finish('Pieza desconocida. Usá D1, B1, B2, C1, B7, A1, F1 o S1.', 'warning');
+  const requiresPart = ['inspect_part', 'mark_part_missing', 'restore_part', 'focus_3d_part', 'explain_part_impact'].includes(tool);
+  if (requiresPart && !partId(normalizedPart)) return finish(`Pieza desconocida. Usá ${PARTS.map(part => part.id).join(', ')}.`, 'warning');
   const requiresStep = ['complete_step', 'undo_step', 'select_step'].includes(tool);
-  if (requiresStep && !stepId(args.stepId)) return finish('Paso inválido. Elegí un número del 1 al 8.', 'warning');
+  if (requiresStep && !stepId(args.stepId)) return finish(`Paso inválido. Elegí un número del 1 al ${STEPS.length}.`, 'warning');
   switch (tool) {
-    case 'load_assembly': return finish('Montaje reiniciado. Prepará la base D1 para comenzar.', 'success', createInitialState());
-    case 'get_assembly_state': return finish(`${state.completed.length} de 8 pasos confirmados por vos. ${state.missing.length ? `Piezas faltantes: ${state.missing.join(', ')}.` : 'No hay piezas declaradas faltantes.'}`, 'info', state, { completed: state.completed, missing: state.missing, missingTools: state.missingTools, plan: plan(state) });
-    case 'list_parts': return finish('Estas son las 8 referencias del montaje. F1 y S1 representan juegos de componentes.', 'info', state, PARTS.map(part => ({ ...part, available: !state.missing.includes(part.id) })));
+    case 'load_assembly': {
+      const id = args.assemblyId ?? assembly.id;
+      if (typeof id !== 'string' || !ASSEMBLIES.some(item => item.id === id)) return finish('Montaje desconocido. Elegí un proyecto del catálogo.', 'warning');
+      return finish('Montaje reiniciado: ' + getAssembly(id).title + '. Prepará la base para comenzar.', 'success', createInitialState(id));
+    }
+    case 'get_assembly_state': return finish(`${state.completed.length} de ${STEPS.length} pasos confirmados por vos. ${state.missing.length ? `Piezas faltantes: ${state.missing.join(', ')}.` : 'No hay piezas declaradas faltantes.'}`, 'info', state, { completed: state.completed, missing: state.missing, missingTools: state.missingTools, plan: plan(state) });
+    case 'list_parts': return finish(`Estas son las ${PARTS.length} referencias de ${assembly.title}. Algunas referencias representan juegos de componentes.`, 'info', state, PARTS.map(part => ({ ...part, available: !state.missing.includes(part.id) })));
     case 'inspect_part':
     case 'focus_3d_part': {
       const part = PARTS.find(item => item.id === normalizedPart)!;
       return finish(`${part.id} · ${part.name}. ${part.description}${state.missing.includes(part.id) ? ' Está declarada faltante.' : ''}`, 'info', { ...state, selectedPart: part.id }, part);
+    }
+    case 'explain_part_impact': {
+      const id = normalizedPart as string;
+      const direct = STEPS.filter(step => step.parts.includes(id)).map(step => step.id);
+      const affected = new Set(direct);
+      let changed = true;
+      while (changed) { changed = false; for (const step of STEPS) if (!affected.has(step.id) && step.dependencies.some(dependency => affected.has(dependency))) { affected.add(step.id); changed = true; } }
+      const affectedSteps = STEPS.filter(step => affected.has(step.id)).map(step => step.id);
+      return finish('Si faltara ' + id + ', afectaría los pasos ' + affectedSteps.join(', ') + '. ' + PARTS.find(part => part.id === id)!.description + ' Es una consulta hipotética: el inventario y las confirmaciones se mantienen.', 'info', state, { partId: id, directSteps: direct, affectedSteps, hypothetical: true });
     }
     case 'mark_part_missing': {
       const id = normalizedPart as string;
@@ -160,7 +210,7 @@ export function execute(state: AssemblyState, tool: string, args: Record<string,
     case 'get_available_steps':
     case 'recalculate_plan': {
       const entries = plan(state); const available = entries.filter(step => step.status === 'available');
-      return finish(available.length ? `Podés hacer: ${available.map(step => `paso ${step.id} · ${step.title}`).join('; ')}. No omitas las condiciones de seguridad.` : state.completed.length === 8 ? 'Los 8 pasos están confirmados por vos. La resistencia física no ha sido verificada por la app.' : 'No hay pasos disponibles. Revisá las piezas y herramientas faltantes.', 'info', state, entries);
+      return finish(available.length ? `Podés hacer: ${available.map(step => `paso ${step.id} · ${step.title}`).join('; ')}. No omitas las condiciones de seguridad.` : state.completed.length === STEPS.length ? `Los ${STEPS.length} pasos están confirmados por vos. La resistencia física no ha sido verificada por la app.` : 'No hay pasos disponibles. Revisá las piezas y herramientas faltantes.', 'info', state, entries);
     }
     case 'select_step': {
       const step = STEPS.find(item => item.id === args.stepId)!;
@@ -186,12 +236,12 @@ export function execute(state: AssemblyState, tool: string, args: Record<string,
       return finish(`Se retiró la confirmación de ${completedAffected.length === 1 ? 'el paso' : 'los pasos'} ${completedAffected.join(', ')}. Esto cambia el registro; no indica que debas desmontar físicamente el mueble.`, 'success', next, { affectedSteps: completedAffected });
     }
     case 'explain_blockage': {
-      if (args.stepId !== undefined && !stepId(args.stepId)) return finish('Paso inválido. Elegí un número del 1 al 8.', 'warning');
+      if (args.stepId !== undefined && !stepId(args.stepId)) return finish(`Paso inválido. Elegí un número del 1 al ${STEPS.length}.`, 'warning');
       const entries = plan(state).filter(step => args.stepId === undefined ? step.status === 'blocked' : step.id === args.stepId);
       return finish(entries.length ? entries.map(step => `Paso ${step.id}: ${step.reasons.join(' ') || (step.status === 'complete' ? 'ya está completado.' : 'disponible.')}`).join('\n') : 'No hay pasos bloqueados por piezas o herramientas faltantes.', 'info', state, entries);
     }
     case 'get_safety_requirements': {
-      if (args.stepId !== undefined && !stepId(args.stepId)) return finish('Paso inválido. Elegí un número del 1 al 8.', 'warning');
+      if (args.stepId !== undefined && !stepId(args.stepId)) return finish(`Paso inválido. Elegí un número del 1 al ${STEPS.length}.`, 'warning');
       const steps = STEPS.filter(step => args.stepId === undefined || step.id === args.stepId);
       return finish(steps.map(step => `Paso ${step.id}: ${step.safety}`).join('\n'), 'info', state, steps.map(({ id, safety }) => ({ id, safety })));
     }
@@ -199,6 +249,7 @@ export function execute(state: AssemblyState, tool: string, args: Record<string,
     case 'restore_progress': {
       try {
         const restored = restoreState(args.serialized as string);
+        if (getAssembly(restored).id !== assembly.id) return finish('El progreso pertenece a otro montaje. Cambiá de proyecto antes de importarlo.', 'warning');
         // Keep the local audit trail chronological; imported history remains in the source file.
         return finish('Progreso validado e importado. Plan recalculado.', 'success', { ...restored, revision: state.revision, history: state.history }, { plan: plan(restored) });
       } catch (error) { return finish(error instanceof Error ? error.message : 'No se pudo importar el progreso.', 'warning'); }

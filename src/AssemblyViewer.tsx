@@ -14,7 +14,7 @@ interface Props {
 }
 type Point = [number, number, number];
 type Part = { id: string; name: string; step: number; size: Point; home: Point; apart: Point; label: Point };
-const PARTS: Part[] = [
+const TABLE_PARTS: Part[] = [
   { id: 'D1', name: 'Base inferior', step: 1, size: [1.94, .13, 1.34], home: [0, .28, 0], apart: [0, .2, .12], label: [.4, -.04, .68] },
   { id: 'B1', name: 'Panel izquierdo', step: 2, size: [.13, 1.69, 1.24], home: [-.9, 1.19, 0], apart: [-1.37, 1.2, .03], label: [-.19, .03, .43] },
   { id: 'B2', name: 'Panel derecho', step: 2, size: [.13, 1.69, 1.24], home: [.9, 1.19, 0], apart: [1.37, 1.2, .03], label: [.19, .04, -.05] },
@@ -24,8 +24,18 @@ const PARTS: Part[] = [
   { id: 'F1', name: 'Patas protectoras', step: 7, size: [.13, .13, .13], home: [0, 0, 0], apart: [0, -.32, 0], label: [-.69, .1, .52] },
   { id: 'S1', name: 'Tornillos de montaje', step: 6, size: [.1, .1, .1], home: [0, 0, 0], apart: [0, 0, 0], label: [1.43, 2.35, .46] },
 ];
+// Original desktop organizer: open side frames, a bridge shelf and a retaining bar.
+const ORGANIZER_PARTS: Part[] = [
+  { id: 'O1', name: 'Base del organizador', step: 1, size: [2.65, .12, 1.2], home: [0, .24, 0], apart: [0, .2, .12], label: [.1, .03, .64] },
+  { id: 'O2', name: 'Marco izquierdo', step: 2, size: [.1, .66, .86], home: [-1.14, .63, 0], apart: [-1.72, .7, 0], label: [-.1, .16, .42] },
+  { id: 'O3', name: 'Marco derecho', step: 2, size: [.1, .66, .86], home: [1.14, .63, 0], apart: [1.72, .7, 0], label: [.1, .16, .42] },
+  { id: 'O4', name: 'Repisa puente', step: 3, size: [2.4, .09, .9], home: [0, 1.005, 0], apart: [0, 1.8, 0], label: [-.12, .13, .1] },
+  { id: 'O5', name: 'Barra posterior', step: 4, size: [2.22, .16, .07], home: [0, 1.13, -.4], apart: [.1, 1.45, -.96], label: [.72, .12, .01] },
+  { id: 'O6', name: 'Almohadillas de fieltro', step: 6, size: [.15, .06, .15], home: [0, 0, 0], apart: [0, -.35, .1], label: [-.85, .08, .49] },
+  { id: 'H1', name: 'Herrajes del organizador', step: 2, size: [.1, .1, .1], home: [0, 0, 0], apart: [.38, .45, .3], label: [1.32, .35, .4] },
+];
 type VisualPart = { spec: Part; group: THREE.Group; materials: THREE.MeshStandardMaterial[]; edges: THREE.LineSegments[] };
-type Runtime = { camera: THREE.PerspectiveCamera; controls: OrbitControls; parts: VisualPart[]; replayUntil: number; focus: (id: string | null) => void; reset: () => void };
+type Runtime = { camera: THREE.PerspectiveCamera; controls: OrbitControls; parts: VisualPart[]; replayUntil: number; replayFrom: number; focus: (id: string | null) => void; reset: () => void };
 
 // A deterministic, locally generated oak surface: the viewer never needs a remote model or texture.
 function oakTexture(seed: number) {
@@ -88,6 +98,9 @@ function makeBolt(material: THREE.MeshStandardMaterial, length = .12) {
 }
 
 export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, command }: Props) {
+  const assemblyId = (state as AssemblyState & { assemblyId?: string }).assemblyId ?? 'table';
+  const organizer = assemblyId === 'organizer';
+  const partSpecs = organizer ? ORGANIZER_PARTS : TABLE_PARTS;
   const mount = useRef<HTMLDivElement>(null);
   const labels = useRef<Record<string, HTMLButtonElement | null>>({});
   const runtime = useRef<Runtime | null>(null);
@@ -98,6 +111,7 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
   useEffect(() => {
     const host = mount.current;
     if (!host) return;
+    setUnavailable(false);
     let renderer: THREE.WebGLRenderer;
     try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' }); }
     catch { setUnavailable(true); return; }
@@ -107,7 +121,7 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
     renderer.toneMappingExposure = 1.25;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.domElement.setAttribute('aria-label', 'Modelo 3D interactivo de la mesa. Arrastrá para rotar; usá los botones para seleccionar las piezas.');
+    renderer.domElement.setAttribute('aria-label', `Modelo 3D interactivo ${organizer ? 'del organizador' : 'de la mesa'}. Arrastrá para rotar; usá los botones para seleccionar las piezas.`);
     renderer.domElement.setAttribute('role', 'img');
     host.prepend(renderer.domElement);
     const scene = new THREE.Scene();
@@ -118,7 +132,8 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
     controls.maxPolarAngle = Math.PI * .49;
     controls.minPolarAngle = .2;
     controls.enablePan = false;
-    controls.target.set(0, 1.25, 0);
+    const centerY = organizer ? .8 : 1.25;
+    controls.target.set(0, centerY, 0);
     camera.position.set(4.3, 3.3, 5.3);
     controls.update();
     scene.add(new THREE.HemisphereLight('#eaf7ff', '#a8917c', 2.5));
@@ -147,10 +162,15 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
     const texture = oakTexture(72);
     const parts: VisualPart[] = [];
     const pickable: THREE.Object3D[] = [];
-    PARTS.forEach((spec, index) => {
+    partSpecs.forEach((spec, index) => {
       const group = new THREE.Group(); group.userData.partId = spec.id;
       const metal = new THREE.MeshStandardMaterial({ color: '#b7c3cd', metalness: .82, roughness: .27 });
       const wood = new THREE.MeshStandardMaterial({ map: texture, color: index % 2 ? '#fff3df' : '#ffead3', roughness: .52, metalness: 0 });
+      if (organizer) {
+        wood.color.set(spec.id === 'O2' || spec.id === 'O3' ? '#dce6df' : spec.id === 'O6' ? '#535d62' : '#fff4d7');
+        if (spec.id === 'O2' || spec.id === 'O3' || spec.id === 'O6') wood.map = null;
+        wood.roughness = spec.id === 'O6' ? 1 : .62;
+      }
       const materials: THREE.MeshStandardMaterial[] = [wood];
       const edges: THREE.LineSegments[] = [];
       const addWood = (size: Point, position: Point) => {
@@ -162,7 +182,18 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
         outlineBox.dispose();
         edge.position.copy(mesh.position); group.add(mesh, edge); edges.push(edge); pickable.push(mesh);
       };
-      if (spec.id === 'F1') {
+      if (spec.id === 'O2' || spec.id === 'O3') {
+        for (const z of [-.38, .38]) addWood([.1, .66, .1], [0, 0, z]);
+        for (const y of [-.28, .28]) addWood([.1, .1, .76], [0, y, 0]);
+      } else if (spec.id === 'O6') {
+        for (const x of [-1.12, 1.12]) for (const z of [-.43, .43]) addWood([.16, .06, .16], [x, .15, z]);
+      } else if (spec.id === 'H1') {
+        for (const x of [-1.14, 1.14]) for (const z of [-.38, .38]) {
+          const bolt = makeBolt(metal, .08); bolt.position.set(x, .32, z);
+          bolt.traverse(obj => { if (obj instanceof THREE.Mesh) { obj.userData.partId = spec.id; pickable.push(obj); } });
+          group.add(bolt);
+        }
+      } else if (spec.id === 'F1') {
         for (const x of [-.76, .76]) for (const z of [-.48, .48]) addWood([.16, .22, .16], [x, .105, z]);
       } else if (spec.id === 'S1') {
         for (const x of [-.9, .9]) for (const z of [-.42, .42]) {
@@ -193,31 +224,30 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
         }
       }
       const current = latest.current;
-      group.position.set(...(current.mode === 'assembled' || (current.mode === 'progress' && current.state.completed.includes(spec.step)) ? spec.home : spec.apart));
+      group.position.set(...(!current.state.missing.includes(spec.id) && (current.mode === 'assembled' || (current.mode === 'progress' && current.state.completed.includes(spec.step))) ? spec.home : spec.apart));
       group.traverse(obj => { if (obj instanceof THREE.Mesh && obj.material instanceof THREE.MeshStandardMaterial && !materials.includes(obj.material)) materials.push(obj.material); });
       if (!materials.includes(metal)) metal.dispose();
-      if (spec.id === 'S1') wood.dispose();
+      if (spec.id === 'S1' || spec.id === 'H1') wood.dispose();
       scene.add(group); parts.push({ spec, group, materials, edges });
     });
     const guides = new THREE.Group();
     const guideMaterial = new THREE.LineDashedMaterial({ color: '#65afd0', transparent: true, opacity: .27, dashSize: .045, gapSize: .05 });
-    for (const x of [-.77, .77]) for (const z of [-.42, .42]) {
-      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x, .35, z), new THREE.Vector3(x, 2.73, z)]), guideMaterial);
+    partSpecs.filter(spec => !['S1', 'H1', 'F1', 'O6'].includes(spec.id)).forEach(spec => {
+      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...spec.apart), new THREE.Vector3(...spec.home)]), guideMaterial);
       line.computeLineDistances(); guides.add(line);
-    }
+    });
     scene.add(guides);
     let fitScale = 1;
     const defaultOffset = new THREE.Vector3(4.3, 2.05, 5.3);
-    const reset = () => { controls.target.set(0, 1.25, 0); camera.position.copy(controls.target).addScaledVector(defaultOffset, fitScale); controls.update(); };
+    const reset = () => { controls.target.set(0, centerY, 0); camera.position.copy(controls.target).addScaledVector(defaultOffset, fitScale); controls.update(); };
     const focus = (id: string | null) => {
       const part = parts.find(p => p.spec.id === id);
       if (!part) { reset(); return; }
       const direction = camera.position.clone().sub(controls.target).normalize();
-      controls.target.copy(part.group.position);
-      if (id === 'F1' || id === 'S1') controls.target.y = id === 'F1' ? .25 : 1.7;
+      controls.target.copy(new THREE.Box3().setFromObject(part.group).getCenter(new THREE.Vector3()));
       camera.position.copy(controls.target).addScaledVector(direction, 4.1 * fitScale); controls.update();
     };
-    runtime.current = { camera, controls, parts, replayUntil: 0, focus, reset };
+    runtime.current = { camera, controls, parts, replayUntil: 0, replayFrom: 0, focus, reset };
     const resize = () => {
       const { width, height } = host.getBoundingClientRect();
       if (!width || !height) return;
@@ -260,10 +290,11 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
         const { spec, group } = part;
         const missing = current.state.missing.includes(spec.id);
         const selected = current.state.selectedPart === spec.id;
-        const assembled = replaying || current.mode === 'assembled' || (current.mode === 'progress' && current.state.completed.includes(spec.step));
+        const replayReady = replaying && (current.reducedMotion || now - (runtime.current?.replayFrom ?? now) >= (spec.step - 1) * 210);
+        const assembled = !missing && (replaying ? replayReady : current.mode === 'assembled' || (current.mode === 'progress' && current.state.completed.includes(spec.step)));
         target.set(...(assembled ? spec.home : spec.apart));
         group.position.lerp(target, t);
-        if (spec.id === 'S1') group.position.y = THREE.MathUtils.lerp(group.position.y, assembled ? 0 : .25, t);
+        if (spec.id === 'S1' && !missing) group.position.y = THREE.MathUtils.lerp(group.position.y, assembled ? 0 : .25, t);
         if (appearanceChanged) {
           group.traverse(object => { if (object instanceof THREE.Mesh) object.castShadow = !missing; });
           part.materials.forEach(mat => {
@@ -310,7 +341,7 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
       key.shadow.map?.dispose();
       renderer.dispose(); renderer.domElement.remove(); runtime.current = null;
     };
-  }, []);
+  }, [assemblyId]);
 
   useEffect(() => {
     const view = runtime.current;
@@ -325,14 +356,15 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
     } else if (command.type === 'focus') view.focus(latest.current.state.selectedPart);
     else if (command.type === 'replay') {
       view.parts.forEach(part => part.group.position.set(...part.spec.apart));
-      view.replayUntil = performance.now() + (latest.current.reducedMotion ? 100 : 3100);
+      view.replayFrom = performance.now();
+      view.replayUntil = view.replayFrom + (latest.current.reducedMotion ? 100 : 3100);
     } else if (command.type === 'reset') { view.replayUntil = 0; view.reset(); }
     view.controls.update();
   }, [command]);
 
   return <div className="assembly-viewer" ref={mount}>
-    {unavailable ? <div className="viewer-fallback" role="status"><span className="fallback-cube">◇</span><strong>Vista 3D no disponible</strong><p>Este navegador no pudo iniciar WebGL. Podés seguir con la lista de piezas y el manual.</p><div className="fallback-parts">{PARTS.map(part => <button key={part.id} onClick={() => onSelect(part.id)}>{part.id} · {part.name}</button>)}</div></div> : <div className="viewer-labels" aria-label="Piezas del modelo 3D">
-      {PARTS.map(part => <button key={part.id} ref={el => { labels.current[part.id] = el; }} className={`part-label ${state.selectedPart === part.id ? 'is-selected' : ''} ${state.missing.includes(part.id) ? 'is-missing' : ''} ${part.id === 'F1' || part.id === 'S1' ? 'is-small' : ''}`} onClick={() => onSelect(part.id)} aria-label={`${part.id}: ${part.name}${state.missing.includes(part.id) ? ', pieza faltante' : ''}`} aria-pressed={state.selectedPart === part.id} title={`${part.id} · ${part.name}`}>{part.id}{state.missing.includes(part.id) && <span aria-hidden="true"> !</span>}</button>)}
+    {unavailable ? <div className="viewer-fallback" role="status"><span className="fallback-cube">◇</span><strong>Vista 3D no disponible</strong><p>Este navegador no pudo iniciar WebGL. Podés seguir con la lista de piezas y el manual.</p><div className="fallback-parts">{partSpecs.map(part => <button key={part.id} onClick={() => onSelect(part.id)}>{part.id} · {part.name}</button>)}</div></div> : <div className="viewer-labels" aria-label="Piezas del modelo 3D">
+      {partSpecs.map(part => <button key={part.id} ref={el => { labels.current[part.id] = el; }} className={`part-label ${state.selectedPart === part.id ? 'is-selected' : ''} ${state.missing.includes(part.id) ? 'is-missing' : ''} ${['F1', 'S1', 'O6', 'H1'].includes(part.id) ? 'is-small' : ''}`} onClick={() => onSelect(part.id)} aria-label={`${part.id}: ${part.name}${state.missing.includes(part.id) ? ', pieza faltante' : ''}`} aria-pressed={state.selectedPart === part.id} title={`${part.id} · ${part.name}`}>{part.id}{state.missing.includes(part.id) && <span aria-hidden="true"> · ausente</span>}</button>)}
     </div>}
     {!unavailable && <div className="viewer-gesture" aria-hidden="true"><span>↔</span> Arrastrá para explorar <i /> Scroll para acercar</div>}
   </div>;

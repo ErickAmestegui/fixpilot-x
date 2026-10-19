@@ -1,24 +1,40 @@
-# Ninety-second authentic demo
+# Actual-interaction demo — 100-second target
 
-Record actual app interaction in English narration. Do not cut together a false success or imply an Amazon device connection. Reset before recording; keep the MCP terminal running and connect through settings if demonstrating the protocol path. Use a quiet UI with sound disabled unless intentionally capturing the original tones.
+English narration script with readable English captions for Spanish controls. A captioned-only recording is acceptable; do not claim recorded narration unless audio is actually present. Record the running release. The table is the primary 90-second story; the final 10 seconds provide a compact second-object/tool proof. Timing is a rehearsal target, not a measured result. Keep the uploaded video under three minutes.
 
-| Time | Real action | English narration |
+V2 recording gate passed: organizer, Plan Inspector, contextual commands and undo were verified in `EVIDENCE_V2.md`. Rehearse the exact recording flow; do not substitute staged success or hide a failed action.
+
+## Preparation
+
+Start the app and genuine local MCP server, connect in settings, and show the actual connected indicator. Reset the table and organizer in their separate projects. Sound may stay disabled. Hide personal tabs and credentials. Pause on plan changes. Do not imply an Amazon device, native Alexa voice, cloud AI, camera verification or manufacturer-approved instructions.
+
+| Time | Actual on-screen action | English narration |
 | --- | --- | --- |
-| 00:00–00:15 | Show the exploded model; rotate and select B7. | “FixPilot X is the manual that adapts to you. This is our original modular table, with a real dependency model behind every step.” |
-| 00:15–00:30 | Confirm steps 1 and 2, including safety checkboxes. | “The software records my confirmation. It does not claim to inspect my physical work. The model and procedure update together.” |
-| 00:30–00:45 | Enter `Me falta B7`. Show red B7 and blocked steps. | “A missing structural brace changes the procedure. The engine blocks its installation and all dependent work.” |
-| 00:45–01:00 | Enter `¿Qué puedo hacer mientras tanto?`. Show available steps 3 and 6. | “It calculates what is still valid. I can install the supported shelf or prepare the feet separately while the frame stays supported.” |
-| 01:00–01:15 | Select and confirm step 3 or step 6; show progress mode. | “This alternative is an actual operation in the same state, not a canned chat answer.” |
-| 01:15–01:25 | Enter `Encontré B7`. Show step 4 available and step 5 still pending its prerequisites. | “Recovering B7 recalculates the graph. Requirements still apply; it never blindly unlocks everything.” |
-| 01:25–01:30 | Open the action log and briefly show MCP connected status. | “Real tools, real state. A simulated Alexa+ experience, with an optional real MCP connection.” |
+| 00:00–00:10 | Show original exploded table and rotate it. | “FixPilot X is the manual that adapts to you. This is a simulated Alexa+ experience in our own client, using real assembly tools.” |
+| 00:10–00:25 | Confirm table steps 1 and 2 through safety dialogs. | “The model and dependency planner share state. Completion records my confirmation; it does not inspect my physical work.” |
+| 00:25–00:40 | Enter `Me falta B7`; show missing brace and actual Plan Inspector changes. | “When I lose brace B7, its operation and dependent work become blocked. The inspector shows what changed in the plan.” |
+| 00:40–00:55 | Enter `¿Qué puedo hacer mientras tanto?`; show available steps 3 and 6. | “The planner finds work whose prerequisites still hold: install the supported shelf or prepare the feet separately.” |
+| 00:55–01:10 | Confirm one independent available step and show progress. | “This is an actual completed operation in the same state. Every physical action still needs my confirmation.” |
+| 01:10–01:22 | Enter `Encontré B7`; show step 4 available while step 5 remains constrained. | “Recovering the brace recalculates the plan. Later work still waits for its prerequisites.” |
+| 01:22–01:30 | Show operation log and actual MCP status. | “Real local MCP calls and inspectable state; bounded language commands, with no runtime LLM required.” |
+| 01:30–01:40 | Switch to organizer; mark an actually required tool missing, show blockers, restore it. | “A second, six-step organizer uses the same planner. Losing and recovering its required tool changes its real available work.” |
 
-The target timing is a script, not a measured performance claim. Rehearse with the actual dialogs. Keep the public video under three minutes, with readable UI and English captions/translations of Spanish commands. Do not display tokens, personal browser tabs, or invented logs.
+Rehearse the final segment with the organizer's actual required tool and UI labels. If ten seconds is unreadable, allow another 10–20 seconds; keep under three minutes. Cuts may remove waiting, but must not hide a failed operation or manufacture a state transition.
 
-## Before uploading
+## Optional proof within the remaining time
 
-- Run the final tests and production build; record their actual results separately.
-- Show both blocked and recovered states, plus at least one independent completed operation.
-- Include the source repository and local run instructions in the submission.
-- Describe simulation explicitly in the video and submission text.
-- Upload to YouTube or Vimeo, confirm public playback while logged out, and paste the real URL into Devpost.
-- Submit by the internal target, October 22, 2026; retain the platform's confirmation. A saved draft is not a submitted entry.
+Show a supported contextual instruction and previous-step undo with the real confirmation boundary. Switch back to the table and reload to demonstrate separate persistence. Narrate only what appears. Keep the interruption story readable.
+
+## Upload and submit
+
+- Record after final tests/build and retain actual evidence separately.
+- Include explicit simulation disclosure in the video and project description.
+- Upload to YouTube or Vimeo, verify public playback while logged out and copy the actual URL into Devpost.
+- Check captions, repository link and legibility on a normal laptop screen.
+- Submit by the internal target of October 22, 2026 and retain the actual Devpost confirmation; a draft is not a submitted entry.
+
+## Finished recording
+
+A real UI recording is available as `fixpilot-x-v2-demo.webm` in the delivery outputs. Duration: **78.8 seconds**, 1600 × 1000, 25 fps. It has explanatory English subtitles burned into the frames, with no narrated audio or copied music. It shows real commands, confirmations, missing B7, the Inspector, independent work, missing/recovered Allen key, table completion, a second assembly and retained table progress. A decoded frame was visually checked. The recording scenario passed its assertions.
+
+Reproduce it with the web app running and `npm run demo:record`. Playwright needs its official FFmpeg component (`npx playwright install ffmpeg` if absent). The script adds only an English subtitle layer; it never injects completed assembly state. Recording code is under `demo/`.

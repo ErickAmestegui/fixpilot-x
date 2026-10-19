@@ -1,7 +1,12 @@
 import { defineConfig } from '@playwright/test';
 import { existsSync } from 'node:fs';
 
-const edgePath = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+const browserPath = [
+  process.env.PLAYWRIGHT_EXECUTABLE_PATH,
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+].find((path):path is string=>!!path&&existsSync(path));
 
 export default defineConfig({
   testDir: './tests',
@@ -23,7 +28,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     launchOptions: {
-      ...(existsSync(edgePath) ? { executablePath: edgePath } : {}),
+      ...(browserPath ? { executablePath: browserPath } : {}),
       args: ['--enable-webgl', '--ignore-gpu-blocklist', '--enable-unsafe-swiftshader'],
     },
   },

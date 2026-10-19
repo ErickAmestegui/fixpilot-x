@@ -45,6 +45,20 @@ describe('real MCP Streamable HTTP integration', () => {
     const result = await client.listTools();
     expect(result.tools.map(tool => tool.name)).toEqual(expect.arrayContaining(['mark_part_missing', 'restore_part', 'complete_step', 'restore_progress']));
     expect(result.tools.find(tool => tool.name === 'complete_step')?.inputSchema.properties).toHaveProperty('confirmed');
+    expect(result.tools).toHaveLength(18);
+  });
+
+  it('runs the second catalog and missing-tool recovery through the same MCP engine',async()=>{
+    const client=await connect();await call(client,'load_assembly',{assemblyId:'organizer'});await call(client,'complete_step',{stepId:1,confirmed:true});
+    let result=await call(client,'set_tool_available',{toolId:'hex',available:false});expect(plan(result.state).filter(s=>s.status==='available').map(s=>s.id)).toEqual([5]);
+    await call(client,'complete_step',{stepId:5,confirmed:true});await call(client,'set_tool_available',{toolId:'hex',available:true});
+    for(const stepId of [2,3,4,6])result=await call(client,'complete_step',{stepId,confirmed:true});expect(result.state.assemblyId).toBe('organizer');expect(result.state.completed).toEqual([1,2,3,4,5,6]);
+    const other=await connect(),saved=await call(other,'save_progress');const rejected=await call(client,'restore_progress',saved.data as Record<string,unknown>);expect(rejected.kind).toBe('warning');expect(rejected.state.completed).toEqual([1,2,3,4,5,6]);
+  });
+
+  it('explains hypothetical part loss without mutating the inventory',async()=>{
+    const client=await connect();await call(client,'complete_step',{stepId:1,confirmed:true});await call(client,'complete_step',{stepId:2,confirmed:true});
+    const result=await call(client,'explain_part_impact',{partId:'B7'});expect(result.state.missing).toEqual([]);expect(result.state.completed).toEqual([1,2]);expect(result.message).toContain('4');
   });
 
   it('executes the missing-B7 alternative and recovery through actual tool calls', async () => {

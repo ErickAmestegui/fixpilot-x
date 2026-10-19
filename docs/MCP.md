@@ -15,18 +15,19 @@ await transport.terminateSession();
 await client.close();
 ```
 
-Each initialized session starts with a fresh assembly. To transfer a local snapshot, invoke `restore_progress` with `{ serialized: JSON.stringify(validAssemblyState) }`. The engine validates the complete dependency state before applying it. This local service does not write snapshots to disk.
+The verified V2 catalog has 18 tools. Each initialized session starts with a fresh table; `load_assembly` can select the six-step organizer. To transfer a local snapshot, invoke `restore_progress` with `{ serialized: JSON.stringify(validAssemblyState) }`. The engine validates the complete dependency state before applying it. This local service does not write snapshots to disk.
 
 | Tool | Arguments | Effect |
 | --- | --- | --- |
-| `load_assembly` | none | Reset this assembly session |
+| `load_assembly` | optional `assemblyId: "table"\|"organizer"` | Load/reset the selected catalog assembly in this session; omitted ID retains the current assembly |
 | `get_assembly_state` | none | State and current plan |
-| `list_parts` | none | Eight part references, including hardware sets |
+| `list_parts` | none | Part references from the active assembly schema |
 | `inspect_part`, `focus_3d_part` | `partId` | Select and describe an existing part |
+| `explain_part_impact` | `partId` | Explain a hypothetical missing-part dependency impact without changing inventory or completed work |
 | `mark_part_missing`, `restore_part` | `partId` | Update inventory; recalculate dependencies |
 | `set_tool_available` | `toolId: "hex"\|"screwdriver"`, `available` | Recalculate tool constraints |
 | `get_available_steps`, `recalculate_plan` | none | Current graph-derived plan |
-| `select_step` | `stepId: 1..8` | Select step and instructions |
+| `select_step` | `stepId` | Select a valid step: table 1..8, organizer 1..6 |
 | `complete_step` | `stepId`, optional `confirmed` | Only `confirmed: true` can record available work |
 | `undo_step` | `stepId`, optional `cascade` | Requires `cascade: true` for completed descendants |
 | `explain_blockage` | optional `stepId` | Reasons and dependency blockers |

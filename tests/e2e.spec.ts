@@ -108,7 +108,7 @@ test('browser initializes, discovers and invokes real MCP tools without losing l
     const dialog = page.getByRole('dialog');
     await dialog.locator('summary').click();
     await dialog.getByRole('button', { name: 'Conectar servidor local', exact: true }).click();
-    await expect(dialog.getByRole('status')).toContainText('MCP conectado · 17 herramientas');
+    await expect(dialog.getByRole('status')).toContainText('MCP conectado · 18 herramientas');
     await page.keyboard.press('Escape');
     await send(page, 'Me falta B7');
     expect((await storedState(page)).completed).toEqual([1]);
@@ -122,6 +122,57 @@ test('browser initializes, discovers and invokes real MCP tools without losing l
     await dialog.getByRole('button', { name: 'Volver al motor local', exact: true }).click();
     await expect(dialog.getByRole('status')).toContainText('Motor local');
   } finally { await service.close(); }
+});
+
+test('V2 contextual conversation explains hypotheticals, replans missing tools and safely reviews prior work',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');await complete(page,1);await complete(page,2);
+  await send(page,'Mostrame B7');await send(page,'¿Por qué la necesito?');await expect(page.getByRole('log')).toContainText('Travesaño estructural');
+  await send(page,'¿Y si no la tengo?');expect((await storedState(page)).missing).toEqual([]);
+  await send(page,'Me falta esa pieza');expect((await storedState(page)).missing).toEqual(['B7']);
+  await send(page,'Bueno, avancemos con otra cosa');await expect(step(page,3)).toHaveAccessibleName(/Disponible$/);
+  await send(page,'Ya la encontré');expect((await storedState(page)).missing).toEqual([]);expect((await storedState(page)).completed).toEqual([1,2]);
+  await step(page,3).click();await send(page,'No tengo la llave necesaria para este paso');await expect(step(page,3)).toHaveAccessibleName(/Bloqueado$/);await expect(step(page,6)).toHaveAccessibleName(/Disponible$/);
+  await complete(page,6);await send(page,'Encontré la llave Allen');await expect(step(page,3)).toHaveAccessibleName(/Disponible$/);
+  await page.getByRole('button',{name:'How FixPilot Thinks',exact:true}).click();let dialog=page.getByRole('dialog');await expect(dialog).toContainText('Antes');await expect(dialog).toContainText('Después');await expect(dialog).toContainText('set_tool_available');await expect(dialog).toContainText('No tengo la llave necesaria para este paso');await page.keyboard.press('Escape');
+  await complete(page,3);await send(page,'Coloqué mal el panel lateral');dialog=page.getByRole('dialog');await expect(dialog).toContainText('registro digital');expect((await storedState(page)).completed).toEqual([1,2,3,6]);await dialog.getByRole('button',{name:'Cancelar',exact:true}).click();expect((await storedState(page)).completed).toEqual([1,2,3,6]);
+  await send(page,'Coloqué mal el panel lateral');await dialog.getByRole('checkbox').check();await dialog.getByRole('button',{name:'Confirmar',exact:true}).click();expect((await storedState(page)).completed).toEqual([1,6]);await expect(step(page,2)).toHaveAccessibleName(/Disponible$/);
+});
+
+test('V2 organizer completes with independent work, retains separate progress and displays absent parts honestly',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');await complete(page,1);
+  const choose=async(title:string)=>{await page.getByRole('button',{name:'Mi proyecto',exact:true}).click();await page.getByRole('button',{name:`Abrir ${title}`,exact:true}).click();await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();};
+  await choose('Organizador de escritorio');await complete(page,1);await step(page,2).click();await send(page,'No tengo la llave necesaria para este paso');await expect(step(page,2)).toHaveAccessibleName(/Bloqueado$/);await expect(step(page,5)).toHaveAccessibleName(/Disponible$/);await complete(page,5);
+  await send(page,'Encontré la llave Allen');await complete(page,2);await complete(page,3);await send(page,'Me falta O5');await expect(step(page,4)).toHaveAccessibleName(/Bloqueado$/);
+  await page.getByRole('button',{name:'Vista final',exact:true}).click();const absent=page.getByRole('button',{name:'O5: Barra posterior, pieza faltante',exact:true});await expect(absent).toContainText('ausente');await expect(absent).toHaveClass(/is-missing/);
+  await page.getByRole('button',{name:'Despiece',exact:true}).click();await settleCanvas(page);await mkdir('docs/screenshots/v2',{recursive:true});await page.screenshot({path:'docs/screenshots/v2/organizer-blocked.png',fullPage:true});
+  await send(page,'Encontré O5');await complete(page,4);await complete(page,6);await expect(page.getByText('6 de 6 pasos completados',{exact:true})).toBeVisible();await page.screenshot({path:'docs/screenshots/v2/organizer-completed.png',fullPage:true});
+  await choose('Mesa auxiliar modular');expect((await storedState(page)).completed).toEqual([1]);expect((await storedState(page)).missing).toEqual([]);await choose('Organizador de escritorio');await page.reload();await expect(page.getByText('6 de 6 pasos completados',{exact:true})).toBeVisible();
+  await page.setViewportSize({width:390,height:844});await expect(page.locator('.assembly-viewer canvas')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);await page.screenshot({path:'docs/screenshots/v2/organizer-mobile.png',fullPage:true});
+});
+
+test('simulated speech API events control the real listening indicator and execute final transcripts only',async({page})=>{
+  await page.addInitScript(()=>{
+    class Recognition {
+      onstart?:()=>void;onend?:()=>void;onerror?:(event:unknown)=>void;onresult?:(event:unknown)=>void;
+      constructor(){(window as any).__testRecognition=this;}
+      start(){}stop(){this.onend?.();}abort(){this.onend?.();}
+    }
+    (window as any).SpeechRecognition=Recognition;
+  });
+  await page.goto('/');await page.getByRole('button',{name:'Activar micrófono',exact:true}).click();
+  await expect(page.getByText('Micrófono activo',{exact:true})).not.toBeVisible();
+  await page.evaluate(()=>(window as any).__testRecognition.onstart());
+  await expect(page.getByText('Micrófono activo',{exact:true})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Detener micrófono',exact:true})).toBeVisible();
+  await page.evaluate(()=>(window as any).__testRecognition.onresult({resultIndex:0,results:[{0:{transcript:'Me falta B7'},isFinal:false}]}));
+  await expect(page.locator('.composer-bottom')).toContainText('Me falta B7');expect((await storedState(page)).missing||[]).toEqual([]);
+  await page.evaluate(()=>(window as any).__testRecognition.onresult({resultIndex:0,results:[{0:{transcript:'Me falta B7'},isFinal:true}]}));
+  await expect.poll(async()=>(await storedState(page)).missing).toEqual(['B7']);
+  await page.getByRole('button',{name:'Activar micrófono',exact:true}).click();
+  await page.evaluate(()=>(window as any).__testRecognition.onerror({error:'not-allowed'}));
+  await expect(page.getByRole('log')).toContainText('El micrófono no tiene permiso');
+  await expect(page.getByRole('textbox',{name:'Escribí un comando'})).toBeEnabled();
+  await expect(page.getByText('Micrófono activo',{exact:true})).not.toBeVisible();
 });
 
 test('WebGL renders and camera controls change the model without changing completed work', async ({ page }) => {

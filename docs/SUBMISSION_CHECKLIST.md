@@ -9,15 +9,19 @@ The internal submission target is **22 October 2026**. Official deadline: 23 Oct
 - [x] Optional genuine MCP SDK server, Streamable HTTP, protocol 2025-11-25 negotiation and real client tool calls.
 - [x] English README, MIT license, dependency lockfile, execution and test instructions.
 - [x] English project description: `DEVPOST.md`.
-- [x] Ninety-second narration and interaction script: `DEMO.md`.
+- [x] Ninety-second primary story plus ten-second second-object/tool proof script: `DEMO.md`.
 - [x] Architecture, tool documentation, official sources and genuine feedback.
 - [x] Real screenshots, including B7 absent and final 8/8 progress.
 
 ## Finish before October 22 submission
 
-- [ ] Publish the source on the entrant's actual GitHub account; verify a fresh clone works with `npm ci` and the documented commands.
+- [x] Verify the V2 two-assembly schema, per-assembly persistence, missing-tool recovery, contextual bounded commands, prior-step undo and real Plan Inspector: 164 unit/integration tests and eight Chrome browser scenarios passed; see `EVIDENCE_V2.md`.
+- [x] Discover the real V2 MCP catalog: 18 tools; genuine browser initialization, calls and disconnect passed. V1's 17-tool result is historical evidence.
+- [ ] Review `JUDGE_AUDIT.md` and rehearse the exact `DEMO.md` recording flow.
+- [x] Create the actual public GitHub repository and publish V1 `df0cb7c` on `main` plus `v1-stable`: https://github.com/ErickAmestegui/fixpilot-x.
+- [ ] Publish validated V2 to the same repository, verify the judge-facing default branch and confirm a fresh clone works with `npm ci` and the documented commands. See `GITHUB_DELIVERY.md`.
 - [ ] Check the public repository includes the MIT license, all original assets and complete instructions. If private, grant the official judges access according to the current rules.
-- [ ] Record actual interaction with English narration/captions, under three minutes. Show the B7 interruption, independent work, recovery, and evidence log.
+- [ ] Record actual interaction with English narration or captions, under three minutes. Show the B7 interruption, independent work, recovery, and evidence log.
 - [ ] Upload to YouTube or Vimeo and verify public playback while logged out.
 - [ ] Provide the real repository and video URLs in Devpost. The private Sites preview is supplemental; judges can use the repository locally.
 - [ ] Fill in accurate entrant/team identity, residence, age and any eligibility disclosures; the software cannot certify personal eligibility.
