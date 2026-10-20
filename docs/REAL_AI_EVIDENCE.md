@@ -1,5 +1,7 @@
 # Real AI evidence — October 20, 2026
 
+This report describes the earlier `afc848f` checkpoint. The subsequent reliability work keeps its failed evidence intact; see [reliability method and acceptance rule](REAL_AI_RELIABILITY.md) and the separate timestamped repeated runs. Do not mix results from different source hashes.
+
 **Decision: EXPERIMENTAL LOCAL PROTOTYPE. NOT APPROVED to replace the stable competition demo.** Real generation, tools and state boundaries work, but the final natural-language quality gate failed. Rescue Intelligence and its public video remain the stable delivery. Do not describe the public static preview as an LLM service.
 
 ## Actual selected runtime

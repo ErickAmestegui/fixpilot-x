@@ -16,7 +16,8 @@
     "ai": "tsx server/copilot.ts",
     "test:ai:live": "tsx scripts/evaluate-ai.ts",
     "dev:copilot": "node scripts/start-copilot.mjs",
-    "demo:ai": "playwright test -c demo.ai.config.ts"
+    "demo:ai": "playwright test -c demo.ai.config.ts",
+    "test:ai:reliability": "tsx scripts/evaluate-ai-reliability.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

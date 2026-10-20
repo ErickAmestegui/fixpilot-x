@@ -1,0 +1,1116 @@
+{
+  "runId": "2026-10-20T16-35-44-841Z",
+  "iteration": 1,
+  "scope": "independent-options",
+  "head": "afc848fa7ee30c93ed3ac15e7bf4b9723b56aa97",
+  "source": {
+    "server/copilot.ts": "b56f2c945fac4a5a76ca4e2ad67f50aaeaa6ee5284076b028b867f73eaa271cd",
+    "server/copilot-semantics.ts": "f39e0e561d61025d658d4de4560d566512d3cf9da38031329dbf7d05a6dfa3d3",
+    "src/copilot.ts": "ad935b53acd865afe61ed4eefea783173e4fc6cb62ce1c3ec3fbdd365cf3b6d7",
+    "src/copilot-providers.ts": "ef2013e69c94eaa8d2c7acf6a450856103a6e999c9f1743e0a549ef4c39fba0f",
+    "scripts/ai-reliability-corpus.ts": "a28c0c88b8de6edc6d9addde8b46f88de6e546542b36b74cfff0f968466f41c0",
+    "scripts/evaluate-ai-reliability.ts": "c9cc5e97ffe649f5cedee076435963e3e6fc26e51d45b7694cafb0ba828553bf"
+  },
+  "corpusHash": "5965636eb0fbc6377fb414a0a2fd8c6eaa6a8f44b813713d39a843eef3d57d4c",
+  "model": {
+    "name": "qwen2.5:7b",
+    "model": "qwen2.5:7b",
+    "modified_at": "2026-10-20T03:10:16.6396366-04:00",
+    "size": 4683087332,
+    "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584,
+      "runner": "ggml"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "runtime": {
+    "version": "0.40.6"
+  },
+  "mocked": false,
+  "transport": "Actual MCP Streamable HTTP",
+  "setup": "Fresh isolated server session per repetition; each group resets its assembly and scripts two synthetic confirmations before model turns. These are fixture reports, not physical verification. Model never has mutation capability.",
+  "intentionTemperature": 0,
+  "dialogueTemperature": 0.2,
+  "protocol": "2025-11-25",
+  "tools": [
+    "preview_scenario",
+    "compare_scenarios",
+    "explain_recovery",
+    "apply_scenario",
+    "load_assembly",
+    "get_assembly_state",
+    "list_parts",
+    "inspect_part",
+    "explain_part_impact",
+    "mark_part_missing",
+    "restore_part",
+    "get_available_steps",
+    "complete_step",
+    "undo_step",
+    "select_step",
+    "set_tool_available",
+    "recalculate_plan",
+    "explain_blockage",
+    "get_safety_requirements",
+    "focus_3d_part",
+    "save_progress",
+    "restore_progress"
+  ],
+  "result": "FAIL",
+  "summary": {
+    "total": 4,
+    "fulfilled": 0,
+    "allActualUnchanged": true,
+    "qualityFlags": 0
+  },
+  "fixtureCalls": [
+    {
+      "group": "independent-options",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "independent-options",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "independent-options",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "id": "new-10",
+      "question": "For a separate thought experiment, imagine the top panel is unavailable.",
+      "language": "en",
+      "expected": {
+        "kind": "preview",
+        "parts": [
+          "A1"
+        ],
+        "tools": []
+      },
+      "group": "independent-options",
+      "latencyMs": 15516,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "For a separate thought experiment, imagine the top panel is unavailable.",
+          "reply": "Which part are you referring to as unavailable—the top panel, or a different part?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 15513,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 14083,
+          "tokens": 76,
+          "promptTokens": 1114,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"SEMANTIC_DISAGREEMENT: The message requests a separate thought experiment where the top panel (A1) is unavailable. However, the alternatives provided include a scenario where the top panel (A1) is recovered (D1 reports recovered). This contradicts the initial condition of the top panel being unavailable.\"}",
+          "routing": {
+            "semantic": {
+              "purpose": "comparison",
+              "language": "en",
+              "evidence": "For a separate thought experiment, imagine the top panel is unavailable.",
+              "uncertain": false
+            },
+            "issue": "SEMANTIC_DISAGREEMENT: The message requests a separate thought experiment where the top panel (A1) is unavailable. However, the alternatives provided include a scenario where the top panel (A1) is recovered (D1 reports recovered). This contradicts the initial condition of the top panel being unavailable.",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "{\n  \"purpose\": \"comparison\",\n  \"language\": \"en\",\n  \"evidence\": \"For a separate thought experiment, imagine the top panel is unavailable.\",\n  \"uncertain\": false\n}",
+                "tokens": 48,
+                "promptTokens": 365,
+                "durationMs": 3756
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "{\"status\":\"ready\",\"alternatives\":[{\"source\":\"A1\",\"reports\":[{\"resourceId\":\"A1\",\"condition\":\"missing\",\"source\":\"A1\"}]},{\"source\":\"D1\",\"reports\":[{\"resourceId\":\"D1\",\"condition\":\"recovered\",\"source\":\"D1\"}]}]}",
+                "tokens": 60,
+                "promptTokens": 704,
+                "durationMs": 4642
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"supported\": false,\n  \"purpose\": \"comparison\",\n  \"issue\": \"The message requests a separate thought experiment where the top panel (A1) is unavailable. However, the alternatives provided include a scenario where the top panel (A1) is recovered (D1 reports recovered). This contradicts the initial condition of the top panel being unavailable.\"\n}",
+                "tokens": 76,
+                "promptTokens": 1114,
+                "durationMs": 5681
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1353,
+          "tokens": 18,
+          "promptTokens": 173,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which part are you referring to as unavailable—the top panel, or a different part?"
+        }
+      ]
+    },
+    {
+      "id": "new-11",
+      "question": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+      "language": "en",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": [
+              "screwdriver"
+            ]
+          },
+          {
+            "parts": [
+              "B7"
+            ],
+            "tools": [
+              "hex"
+            ]
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 11449,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+          "reply": "Which condition would you like to address: a missing screwdriver or a missing B7 and Allen key?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 11449,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 9952,
+          "tokens": 14,
+          "promptTokens": 1125,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"INVALID_ALTERNATIVE_EVIDENCE\"}",
+          "routing": {
+            "semantic": {
+              "purpose": "comparison",
+              "language": "en",
+              "evidence": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+              "uncertain": false
+            },
+            "issue": "INVALID_ALTERNATIVE_EVIDENCE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "{\n  \"purpose\": \"comparison\",\n  \"language\": \"en\",\n  \"evidence\": \"Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.\",\n  \"uncertain\": false\n}",
+                "tokens": 59,
+                "promptTokens": 377,
+                "durationMs": 3952
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "{\"status\":\"ready\",\"alternatives\":[{\"source\":\"A1\",\"reports\":[{\"resourceId\":\"screwdriver\",\"condition\":\"missing\",\"source\":\"A1\"}]},{\"source\":\"B7\",\"reports\":[{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"B7\"}]}]}",
+                "tokens": 59,
+                "promptTokens": 716,
+                "durationMs": 4035
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\"supported\":true,\"purpose\":\"comparison\",\"issue\":\",\"}",
+                "tokens": 14,
+                "promptTokens": 1125,
+                "durationMs": 1965
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1468,
+          "tokens": 22,
+          "promptTokens": 230,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which condition would you like to address: a missing screwdriver or a missing B7 and Allen key?"
+        }
+      ]
+    },
+    {
+      "id": "new-12",
+      "question": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+      "language": "es",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": [
+              "hex"
+            ]
+          },
+          {
+            "parts": [],
+            "tools": [
+              "screwdriver"
+            ]
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 30282,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+          "reply": "¿Cuál de estos dos planes independientes desea que genere, o necesita información sobre ambos?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 30282,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 28672,
+          "tokens": 70,
+          "promptTokens": 1367,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"es\",\"replyIntent\":\"clarify\",\"reason\":\"INVALID_ALTERNATIVE_EVIDENCE\"}",
+          "routing": {
+            "semantic": {
+              "purpose": "comparison",
+              "language": "es",
+              "evidence": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+              "uncertain": false
+            },
+            "issue": "INVALID_ALTERNATIVE_EVIDENCE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "{\n  \"purpose\": \"comparison\",\n  \"language\": \"es\",\n  \"evidence\": \"¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?\",\n  \"uncertain\": false\n}",
+                "tokens": 54,
+                "promptTokens": 374,
+                "durationMs": 3696
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "{\"status\":\"ready\",\"alternatives\":[{\"source\":\"Preparar la base\",\"reports\":[{\"resourceId\":\"D1\",\"condition\":\"missing\",\"source\":\"Preparar la base\"},{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"Instalar paneles laterales\"},{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"Instalar repisa central\"},{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"Fijar travesaño B7\"},{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"Colocar panel superior\"},{\"resourceId\":\"hex\",\"condition\":\"missing\",\"source\":\"Fijar pies a la base\"},{\"resourceId\":\"screwdriver\",\"condition\":\"missing\",\"source\":\"Fijar pies a la base\"}]},{\"source\":\"Preparar la base\",\"reports\":[{\"resourceId\":\"D1\",\"condition\":\"missing\",\"source\":\"Preparar la base\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"Instalar paneles laterales\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"Instalar repisa central\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"Fijar travesaño B7\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"Colocar panel superior\"},{\"resourceId\":\"screwdriver\",\"condition\":\"missing\",\"source\":\"Fijar pies a la base\"},{\"resourceId\":\"screwdriver\",\"condition\":\"missing\",\"source\":\"Fijar pies a la base\"}]}]}",
+                "tokens": 303,
+                "promptTokens": 713,
+                "durationMs": 19087
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"supported\": true,\n  \"purpose\": \"comparison\",\n  \"issue\": \"Two separate scenarios are presented, each missing a different tool (Allen key and screwdriver) at the same step (attaching the feet to the base). The comparison highlights the differences in the tool requirements for the same step in two independent plans.\"\n}",
+                "tokens": 70,
+                "promptTokens": 1367,
+                "durationMs": 5888
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1575,
+          "tokens": 21,
+          "promptTokens": 201,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "¿Cuál de estos dos planes independientes desea que genere, o necesita información sobre ambos?"
+        }
+      ]
+    },
+    {
+      "id": "new-13",
+      "question": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+      "language": "en",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": []
+          },
+          {
+            "parts": [
+              "B7"
+            ],
+            "tools": []
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 34641,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+          "reply": "Which inventory state would you like to set: one with all parts intact, or one missing the Structural rear brace (B7)?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 34641,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 32800,
+          "tokens": 99,
+          "promptTokens": 1407,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"INVALID_ALTERNATIVE_EVIDENCE\"}",
+          "routing": {
+            "semantic": {
+              "purpose": "comparison",
+              "language": "en",
+              "evidence": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+              "uncertain": false
+            },
+            "issue": "INVALID_ALTERNATIVE_EVIDENCE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "{\n  \"purpose\": \"comparison\",\n  \"language\": \"en\",\n  \"evidence\": \"Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.\",\n  \"uncertain\": false\n}",
+                "tokens": 52,
+                "promptTokens": 369,
+                "durationMs": 3864
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "{\"status\":\"ready\",\"alternatives\":[{\"source\":\"Intact inventory\",\"reports\":[{\"resourceId\":\"D1\",\"condition\":\"missing\",\"source\":\"D1\"},{\"resourceId\":\"B1\",\"condition\":\"recovered\",\"source\":\"B1\"},{\"resourceId\":\"B2\",\"condition\":\"recovered\",\"source\":\"B2\"},{\"resourceId\":\"C1\",\"condition\":\"recovered\",\"source\":\"C1\"},{\"resourceId\":\"B7\",\"condition\":\"recovered\",\"source\":\"B7\"},{\"resourceId\":\"A1\",\"condition\":\"recovered\",\"source\":\"A1\"},{\"resourceId\":\"F1\",\"condition\":\"recovered\",\"source\":\"F1\"},{\"resourceId\":\"S1\",\"condition\":\"recovered\",\"source\":\"S1\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"hex\"},{\"resourceId\":\"screwdriver\",\"condition\":\"recovered\",\"source\":\"screwdriver\"}]},{\"source\":\"Inventory missing B7\",\"reports\":[{\"resourceId\":\"D1\",\"condition\":\"missing\",\"source\":\"D1\"},{\"resourceId\":\"B1\",\"condition\":\"recovered\",\"source\":\"B1\"},{\"resourceId\":\"B2\",\"condition\":\"recovered\",\"source\":\"B2\"},{\"resourceId\":\"C1\",\"condition\":\"recovered\",\"source\":\"C1\"},{\"resourceId\":\"B7\",\"condition\":\"missing\",\"source\":\"B7\"},{\"resourceId\":\"A1\",\"condition\":\"recovered\",\"source\":\"A1\"},{\"resourceId\":\"F1\",\"condition\":\"recovered\",\"source\":\"F1\"},{\"resourceId\":\"S1\",\"condition\":\"recovered\",\"source\":\"S1\"},{\"resourceId\":\"hex\",\"condition\":\"recovered\",\"source\":\"hex\"},{\"resourceId\":\"screwdriver\",\"condition\":\"recovered\",\"source\":\"screwdriver\"}]}]}",
+                "tokens": 347,
+                "promptTokens": 708,
+                "durationMs": 21432
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"supported\": true,\n  \"purpose\": \"comparison\",\n  \"issue\": \"The two alternatives are correctly identified and compared. The first alternative has all parts recovered, including B7, while the second alternative has B7 missing. Both scenarios are correctly listed and compared as separate alternatives without any missing or uninstalled parts being incorrectly reported as lost. The context and resources are accurately cataloged, and the step dependencies are not relevant to the comparison of the two inventory states.\"\n}",
+                "tokens": 99,
+                "promptTokens": 1407,
+                "durationMs": 7501
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1814,
+          "tokens": 27,
+          "promptTokens": 179,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which inventory state would you like to set: one with all parts intact, or one missing the Structural rear brace (B7)?"
+        }
+      ]
+    }
+  ]
+}

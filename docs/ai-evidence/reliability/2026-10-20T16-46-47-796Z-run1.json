@@ -1,0 +1,632 @@
+{
+  "runId": "2026-10-20T16-46-47-796Z",
+  "iteration": 1,
+  "scope": "social-en",
+  "head": "afc848fa7ee30c93ed3ac15e7bf4b9723b56aa97",
+  "source": {
+    "server/copilot.ts": "7d7dc75aec9f42c2db0405779bbe593e8edc68c32d8e12d3cbe3eac52a8f0af1",
+    "server/copilot-semantics.ts": "616bc89af26225a2c10531d94fba2685174e02d13e4fd1f883db5526acff883a",
+    "src/copilot.ts": "aac17d275e0411ee8e8d2b63010e097e85790d8309e55c45e3b92f6d521a11cc",
+    "src/copilot-providers.ts": "ef2013e69c94eaa8d2c7acf6a450856103a6e999c9f1743e0a549ef4c39fba0f",
+    "scripts/ai-reliability-corpus.ts": "a28c0c88b8de6edc6d9addde8b46f88de6e546542b36b74cfff0f968466f41c0",
+    "scripts/evaluate-ai-reliability.ts": "c9cc5e97ffe649f5cedee076435963e3e6fc26e51d45b7694cafb0ba828553bf"
+  },
+  "corpusHash": "5965636eb0fbc6377fb414a0a2fd8c6eaa6a8f44b813713d39a843eef3d57d4c",
+  "model": {
+    "name": "qwen2.5:7b",
+    "model": "qwen2.5:7b",
+    "modified_at": "2026-10-20T03:10:16.6396366-04:00",
+    "size": 4683087332,
+    "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584,
+      "runner": "ggml"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "runtime": {
+    "version": "0.40.6"
+  },
+  "mocked": false,
+  "transport": "Actual MCP Streamable HTTP",
+  "setup": "Fresh isolated server session per repetition; each group resets its assembly and scripts two synthetic confirmations before model turns. These are fixture reports, not physical verification. Model never has mutation capability.",
+  "intentionTemperature": 0,
+  "dialogueTemperature": 0.2,
+  "protocol": "2025-11-25",
+  "tools": [
+    "preview_scenario",
+    "compare_scenarios",
+    "explain_recovery",
+    "apply_scenario",
+    "load_assembly",
+    "get_assembly_state",
+    "list_parts",
+    "inspect_part",
+    "explain_part_impact",
+    "mark_part_missing",
+    "restore_part",
+    "get_available_steps",
+    "complete_step",
+    "undo_step",
+    "select_step",
+    "set_tool_available",
+    "recalculate_plan",
+    "explain_blockage",
+    "get_safety_requirements",
+    "focus_3d_part",
+    "save_progress",
+    "restore_progress"
+  ],
+  "result": "PASS",
+  "summary": {
+    "total": 2,
+    "fulfilled": 2,
+    "allActualUnchanged": true,
+    "qualityFlags": 0
+  },
+  "fixtureCalls": [
+    {
+      "group": "social-en",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "social-en",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "social-en",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "id": "new-01",
+      "question": "Hey! Glad I can talk to someone while I work.",
+      "language": "en",
+      "expected": {
+        "kind": "social"
+      },
+      "group": "social-en",
+      "latencyMs": 9299,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "Hey! Glad I can talk to someone while I work.",
+          "reply": "Hey there! I'm glad to chat and keep you company while you work. How's your day going?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 9296,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 7622,
+          "tokens": 54,
+          "promptTokens": 1691,
+          "decisionProtocol": "semantic-json",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"chat\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Hey! Glad I can talk to someone while I work.",
+              "meaning": "The user is expressing gladness about being able to talk while working.",
+              "purpose": "social",
+              "language": "en"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_5nnsv3on",
+                    "function": {
+                      "index": 0,
+                      "name": "social",
+                      "arguments": {
+                        "evidence": "Hey! Glad I can talk to someone while I work.",
+                        "language": "en",
+                        "meaning": "The user is expressing gladness about being able to talk while working."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 55,
+                "promptTokens": 1627,
+                "durationMs": 4130
+              },
+              {
+                "stage": "semantic-intent-audit",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_k8einj4j",
+                    "function": {
+                      "index": 0,
+                      "name": "social",
+                      "arguments": {
+                        "evidence": "Hey! Glad I can talk to someone while I work.",
+                        "meaning": "The user is expressing gladness about being able to talk while working.",
+                        "language": "en"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 54,
+                "promptTokens": 1691,
+                "durationMs": 3487
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1595,
+          "tokens": 23,
+          "promptTokens": 156,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Hey there! I'm glad to chat and keep you company while you work. How's your day going?"
+        }
+      ]
+    },
+    {
+      "id": "new-02",
+      "question": "I'm a little overwhelmed today. Could we take this slowly?",
+      "language": "en",
+      "expected": {
+        "kind": "social"
+      },
+      "group": "social-en",
+      "latencyMs": 8087,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "I'm a little overwhelmed today. Could we take this slowly?",
+          "reply": "Of course, take your time. Let's break it down step by step. What's on your mind right now?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 8087,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 6477,
+          "tokens": 49,
+          "promptTokens": 1689,
+          "decisionProtocol": "semantic-json",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"chat\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "I'm a little overwhelmed today. Could we take this slowly?",
+              "meaning": "express feelings and request a slower pace",
+              "purpose": "social",
+              "language": "en"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_uf26j343",
+                    "function": {
+                      "index": 0,
+                      "name": "social",
+                      "arguments": {
+                        "evidence": "I'm a little overwhelmed today. Could we take this slowly?",
+                        "language": "en",
+                        "meaning": "express feelings and request a slower pace"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 49,
+                "promptTokens": 1628,
+                "durationMs": 3336
+              },
+              {
+                "stage": "semantic-intent-audit",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_lhz36jof",
+                    "function": {
+                      "index": 0,
+                      "name": "social",
+                      "arguments": {
+                        "evidence": "I'm a little overwhelmed today. Could we take this slowly?",
+                        "meaning": "express feelings and request a slower pace",
+                        "language": "en"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 49,
+                "promptTokens": 1689,
+                "durationMs": 3140
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1569,
+          "tokens": 25,
+          "promptTokens": 170,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Of course, take your time. Let's break it down step by step. What's on your mind right now?"
+        }
+      ]
+    }
+  ]
+}

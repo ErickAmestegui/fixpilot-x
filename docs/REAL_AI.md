@@ -22,7 +22,7 @@ Selected weights: **Qwen2.5 7B Instruct, qwen2.5:7b, 7.6B, Q4_K_M**, Apache 2.0.
 
 A real local model interprets the current Spanish/English message, selects an action, extracts structured arguments, and generates conversational replies or clarification. There is no lookup table of conversational answers or natural-language phrase router in this AI path.
 
-**Critical assembly findings are rendered directly from verified engine data, separately labeled, and are not model-authored explanations.** Earlier models invented shortages or misread step readiness when paraphrasing tool results. The final design gives the model intent/dialogue work and gives the engine authority over parts, dependencies, readiness and recorded progress. Model acknowledgements do not restate those facts. This deliberately limits free-form technical explanation; it does not claim arbitrary natural-language reasoning is reliable.
+**Critical assembly findings are rendered directly from verified engine data, separately labeled, and are not model-authored explanations.** Earlier models invented shortages or misread step readiness when paraphrasing tool results. The final design gives the model intent/dialogue work and gives the engine authority over parts, dependencies, readiness and recorded progress. In the reliability follow-up, factual turns contain no model-authored acknowledgement or paraphrase: the interface shows verified findings only. Natural social dialogue, clarification and refusal remain model-generated. This deliberately limits free-form technical explanation; it does not claim arbitrary natural-language reasoning is reliable.
 
 ```mermaid
 flowchart LR
@@ -64,6 +64,8 @@ npm run build
 npm run test:e2e
 # Opt-in: actual Ollama and MCP must already be running
 npm run test:ai:live
+# Fixed corpus: 32 new prompts + 11 regressions, all three runs saved
+npm run test:ai:reliability -- --repeat 3
 npm run demo:ai
 ```
 
@@ -78,3 +80,7 @@ Qwen3 4B/8B configurations and a WebLLM Qwen3-1.7B candidate generated real outp
 Only the two existing educational assemblies are supported. Alexa+ remains simulated: no native Echo connection, private Amazon SDK, physical inspection or arbitrary-manual ingestion is claimed. Runtime/weights retain their own licenses; the app remains MIT.
 
 Primary references: [Qwen2.5 model card](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct), [Ollama model](https://ollama.com/library/qwen2.5:7b), [Ollama API](https://docs.ollama.com/api/chat). Recorded behavior and digests take precedence over assumptions about mutable tags.
+
+## Reliability gate follow-up
+
+The follow-up on the same branch replaces the forced first-route lock with semantic function selection, operation-specific native extraction, separate alternative parsing and semantic review. Raw native model calls and failed protocol diagnostics are retained. No public stable deployment changes. See [method and fixed acceptance rule](REAL_AI_RELIABILITY.md) and the timestamped records in `docs/ai-evidence/reliability/`. Review all repetitions and the manual assessment before updating any capability claim; extra mock tests are not real-model passes.

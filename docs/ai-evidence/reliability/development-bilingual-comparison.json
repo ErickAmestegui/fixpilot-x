@@ -1,0 +1,294 @@
+{
+  "at": "2026-10-20T16:32:26.459Z",
+  "model": "qwen2.5:7b",
+  "provider": "Real Ollama loopback inference",
+  "transport": "Real MCP Streamable HTTP",
+  "mocked": false,
+  "scope": "One comparison with a synthetic B7 draft; not a memory test",
+  "result": "FAIL",
+  "setup": "Two confirmations scripted in an isolated synthetic test fixture before model turns. LLM never receives a mutation capability.",
+  "exchanges": [
+    {
+      "project": "table",
+      "question": "Show what changes between losing the screwdriver and losing B7 plus the Allen key.",
+      "result": {
+        "turn": {
+          "user": "Show what changes between losing the screwdriver and losing B7 plus the Allen key.",
+          "reply": "Which scenario would you like to compare? Losing the screwdriver versus losing both the B7 structural rear brace and the Allen key?",
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {
+                  "missingParts": [
+                    "B7"
+                  ]
+                }
+              },
+              "kind": "info",
+              "data": {
+                "changes": {
+                  "missingParts": [
+                    "B7"
+                  ]
+                },
+                "directAffected": [
+                  4
+                ],
+                "indirectAffected": [
+                  5,
+                  7,
+                  8
+                ],
+                "available": [
+                  3,
+                  6
+                ],
+                "blocked": [
+                  4,
+                  5,
+                  7,
+                  8
+                ],
+                "invalidatedCompleted": [],
+                "diff": [
+                  {
+                    "stepId": 4,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 5,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 7,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 8,
+                    "before": "pending",
+                    "after": "blocked"
+                  }
+                ],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [
+                      "B7"
+                    ],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [
+                    {
+                      "kind": "part",
+                      "id": "B7",
+                      "steps": [
+                        4
+                      ]
+                    }
+                  ],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    6
+                  ],
+                  "blockedSteps": [
+                    4,
+                    5,
+                    7,
+                    8
+                  ],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 10859,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "modelExchanges": [
+        {
+          "stage": "plan",
+          "output": "{\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"ARGUMENTS_AMBIGUOUS\",\"action\":\"respond\",\"catalogRequested\":false}",
+          "durationMs": 9135
+        },
+        {
+          "stage": "answer",
+          "output": "{\"reply\":\"Which scenario would you like to compare? Losing the screwdriver versus losing both the B7 structural rear brace and the Allen key?\",\"partIds\":[],\"stepIds\":[],\"actualChanged\":false}",
+          "durationMs": 1706
+        }
+      ],
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 9116,
+          "tokens": 66,
+          "promptTokens": 796,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"ARGUMENTS_AMBIGUOUS\"}",
+          "routing": {
+            "semantic": {
+              "purpose": "comparison",
+              "language": "en",
+              "evidence": "Show what changes between losing the screwdriver and losing B7 plus the Allen key.",
+              "uncertain": false
+            },
+            "issue": "ARGUMENTS_AMBIGUOUS",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "{\n  \"purpose\": \"comparison\",\n  \"language\": \"en\",\n  \"evidence\": \"Show what changes between losing the screwdriver and losing B7 plus the Allen key.\",\n  \"uncertain\": false\n}",
+                "tokens": 53,
+                "promptTokens": 369,
+                "durationMs": 3865
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "{\n  \"status\": \"clarify\",\n  \"alternatives\": [\n    {\n      \"source\": \"losing screwdriver\",\n      \"reports\": []\n    },\n    {\n      \"source\": \"losing B7 and Allen key\",\n      \"reports\": []\n    }\n  ]\n}",
+                "tokens": 66,
+                "promptTokens": 796,
+                "durationMs": 5248
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1703,
+          "tokens": 27,
+          "promptTokens": 208,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which scenario would you like to compare? Losing the screwdriver versus losing both the B7 structural rear brace and the Allen key?"
+        }
+      ],
+      "actualUnchanged": true,
+      "expectationPassed": false
+    }
+  ]
+}
