@@ -4,7 +4,16 @@ This upgrade preserves the V2 assembly planner and Three.js renderer. It adds co
 
 ## Run
 
-Use Node 22+, then `npm ci`, `npm run dev`. Open `http://127.0.0.1:5173/?rescue`. The workbench starts in English; its language selector also supports Spanish. The existing assembly UI remains available through **Return to assembly**. Both original assemblies retain separate browser snapshots.
+Clone the upgrade branch explicitly; the default `main` remains the stable V2 checkpoint:
+
+```sh
+git clone --branch rescue-intelligence https://github.com/ErickAmestegui/fixpilot-x.git
+cd fixpilot-x
+npm ci
+npm run dev
+```
+
+Use Node 22+. Open `http://127.0.0.1:5173/?rescue`. The workbench starts in English; its language selector also supports Spanish. The existing assembly UI remains available through **Return to assembly**. Both original assemblies retain separate browser snapshots.
 
 For actual MCP transport, run `npm run mcp` in another terminal and choose **Connect local MCP**. This is optional: the static app invokes the identical dispatcher locally when disconnected. An internet-hosted preview is a browser-engine demonstration, not a remotely hosted MCP server. Loopback/origin protections are retained; do not expose the server or disable them to make a public preview connect.
 

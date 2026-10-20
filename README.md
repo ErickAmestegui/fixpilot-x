@@ -8,7 +8,7 @@ For evaluation, start with the [judge quickstart](docs/JUDGE_QUICKSTART.md), [fi
 
 ## Rescue Intelligence upgrade
 
-The separate `rescue-intelligence` branch adds a bilingual judge workbench at `/?rescue`: hypothetical multi-resource changes, graph explanations, scenario comparison, explicit atomic approval and partial recovery. [Run and challenge the upgrade](docs/RESCUE_INTELLIGENCE.md); [current verification](docs/RESCUE_EVIDENCE.md). V2 tags and videos remain preserved. The current catalog has **22 real MCP tools**; the 18-tool and 164-test references below describe historical V2.
+The separate `rescue-intelligence` branch adds a bilingual judge workbench at `/?rescue`: hypothetical multi-resource changes, graph explanations, scenario comparison, explicit atomic approval and partial recovery. [Run and challenge the upgrade](docs/RESCUE_INTELLIGENCE.md); [current verification](docs/RESCUE_EVIDENCE.md). [Open the free public judge preview](https://erickamestegui.github.io/fixpilot-x/?rescue). It uses the browser engine; run locally for genuine MCP transport. V2 tags and videos remain preserved. The current catalog has **22 real MCP tools**; the 18-tool and 164-test references below describe historical V2.
 
 ## Run locally
 
