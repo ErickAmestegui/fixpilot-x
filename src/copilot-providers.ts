@@ -1,0 +1,12 @@
+import {PLAN_FORMAT,REPLY_FORMAT,type CopilotProvider,type ModelMessage} from './copilot';
+export const WEB_MODEL='Qwen3-1.7B-q4f16_1-MLC';
+export async function localModelStatus(signal?:AbortSignal){const r=await fetch('http://127.0.0.1:3103/health',{signal:signal??AbortSignal.timeout(4000)});if(!r.ok)throw Error('MODEL_UNAVAILABLE');return await r.json() as {available:boolean;model:string;provider:string};}
+export function ollamaProvider():CopilotProvider{return {id:'Ollama · local server',model:'qwen3:4b',async generate(stage,messages,signal){const r=await fetch('http://127.0.0.1:3103/chat',{method:'POST',headers:{'Content-Type':'application/json','X-FixPilot-Copilot':'1'},body:JSON.stringify({stage,messages}),signal});if(!r.ok)throw Error(r.status===429?'MODEL_BUSY':'MODEL_UNAVAILABLE');const data=await r.json();if(typeof data.content!=='string'||data.model!=='qwen3:4b')throw Error('INVALID_MODEL_RESPONSE');return data.content;}};}
+export async function webModelProvider(onProgress:(message:string)=>void):Promise<CopilotProvider>{
+ const gpu=(navigator as Navigator&{gpu?:{requestAdapter:(options:unknown)=>Promise<unknown>}}).gpu;if(!gpu||!await gpu.requestAdapter({powerPreference:'high-performance'}))throw Error('WEBGPU_UNAVAILABLE');
+ const {CreateWebWorkerMLCEngine}=await import('@mlc-ai/web-llm');
+ const worker=new Worker(new URL('./copilot.worker.ts',import.meta.url),{type:'module'});
+ let engine:Awaited<ReturnType<typeof CreateWebWorkerMLCEngine>>;
+ try{engine=await CreateWebWorkerMLCEngine(worker,WEB_MODEL,{initProgressCallback:report=>onProgress(report.text),logLevel:'WARN'},{context_window_size:8192});}catch(error){worker.terminate();throw error;}
+ return {id:'WebLLM · this browser',model:WEB_MODEL,async generate(stage,messages,signal){if(signal.aborted)throw new DOMException('Canceled','AbortError');const stop=()=>engine.interruptGenerate();signal.addEventListener('abort',stop,{once:true});try{const response=await engine.chat.completions.create({messages:messages as ModelMessage[],temperature:0,max_tokens:700,stream:false,response_format:{type:'json_object',schema:JSON.stringify(stage==='plan'?PLAN_FORMAT:REPLY_FORMAT)},extra_body:{enable_thinking:false}});if(signal.aborted)throw new DOMException('Canceled','AbortError');const content=response.choices[0]?.message.content;if(!content)throw Error('INVALID_MODEL_RESPONSE');return content;}finally{signal.removeEventListener('abort',stop);}},async dispose(){await engine.unload();worker.terminate();}};
+}

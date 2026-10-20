@@ -28,7 +28,7 @@ function Modal({title,children,onClose}:{title:string,children:ReactNode,onClose
 function PartThumbnail({id,missing=false}:{id:string,missing?:boolean}){return <span aria-hidden="true" className={`part-thumb part-${id} ${missing?'absent':''}`}><span/><span/><span/></span>;}
 
 export default function App(){
-  const [rescueOpen,setRescueOpen]=useState(()=>new URLSearchParams(location.search).has('rescue'));
+  const [rescueOpen,setRescueOpen]=useState(()=>new URLSearchParams(location.search).has('rescue')||new URLSearchParams(location.search).has('ai'));
   const [rescueQuestion,setRescueQuestion]=useState('');
   const [initial]=useState(loadInitial);
   const [state,setState]=useState(initial.state),stateRef=useRef(state);
