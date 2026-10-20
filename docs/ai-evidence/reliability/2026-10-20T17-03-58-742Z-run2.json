@@ -1,0 +1,4169 @@
+{
+  "runId": "2026-10-20T17-03-58-742Z",
+  "iteration": 2,
+  "scope": "32 new questions + 11 original regressions",
+  "head": "4c651d21390c92107d95830ea9ee769d8dc238e4",
+  "source": {
+    "server/copilot.ts": "7d7dc75aec9f42c2db0405779bbe593e8edc68c32d8e12d3cbe3eac52a8f0af1",
+    "server/copilot-semantics.ts": "5c084c489196baf0a6558c4698d11207f15c7364ce54b956f2fc040c09885da5",
+    "src/copilot.ts": "f352f864ceb598b509a982d198c0112c52017cdb6309c37e357b79d96ca892cb",
+    "src/copilot-providers.ts": "001d48fbc25f5676b793135336a6a3ec0185552afa4a79cebc0c33a505e531ae",
+    "scripts/ai-reliability-corpus.ts": "a28c0c88b8de6edc6d9addde8b46f88de6e546542b36b74cfff0f968466f41c0",
+    "scripts/evaluate-ai-reliability.ts": "e1042b3bdc299a77fc1b9f64f0b73a4af00fce4f996e12d876dc38720b351588"
+  },
+  "corpusHash": "5965636eb0fbc6377fb414a0a2fd8c6eaa6a8f44b813713d39a843eef3d57d4c",
+  "model": {
+    "name": "qwen2.5:7b",
+    "model": "qwen2.5:7b",
+    "modified_at": "2026-10-20T03:10:16.6396366-04:00",
+    "size": 4683087332,
+    "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584,
+      "runner": "ggml"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "runtime": {
+    "version": "0.40.6"
+  },
+  "mocked": false,
+  "transport": "Actual MCP Streamable HTTP",
+  "setup": "Fresh isolated server session per repetition; each group resets its assembly and scripts two synthetic confirmations before model turns. These are fixture reports, not physical verification. Model never has mutation capability.",
+  "intentionTemperature": 0,
+  "dialogueTemperature": 0.2,
+  "protocol": "2025-11-25",
+  "tools": [
+    "preview_scenario",
+    "compare_scenarios",
+    "explain_recovery",
+    "apply_scenario",
+    "load_assembly",
+    "get_assembly_state",
+    "list_parts",
+    "inspect_part",
+    "explain_part_impact",
+    "mark_part_missing",
+    "restore_part",
+    "get_available_steps",
+    "complete_step",
+    "undo_step",
+    "select_step",
+    "set_tool_available",
+    "recalculate_plan",
+    "explain_blockage",
+    "get_safety_requirements",
+    "focus_3d_part",
+    "save_progress",
+    "restore_progress"
+  ],
+  "result": "IN_PROGRESS",
+  "summary": {
+    "total": 14,
+    "fulfilled": 4,
+    "allActualUnchanged": true,
+    "qualityFlags": 0
+  },
+  "fixtureCalls": [
+    {
+      "group": "independent-options",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "independent-options",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "independent-options",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    },
+    {
+      "group": "requirements",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "requirements",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "requirements",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    },
+    {
+      "group": "negation",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "negation",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "negation",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    },
+    {
+      "group": "ambiguity",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "ambiguity",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "ambiguity",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    },
+    {
+      "group": "review-boundary",
+      "name": "load_assembly",
+      "args": {
+        "assemblyId": "table"
+      },
+      "completed": []
+    },
+    {
+      "group": "review-boundary",
+      "name": "complete_step",
+      "args": {
+        "stepId": 1,
+        "confirmed": true
+      },
+      "completed": [
+        1
+      ]
+    },
+    {
+      "group": "review-boundary",
+      "name": "complete_step",
+      "args": {
+        "stepId": 2,
+        "confirmed": true
+      },
+      "completed": [
+        1,
+        2
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "id": "new-10",
+      "question": "For a separate thought experiment, imagine the top panel is unavailable.",
+      "language": "en",
+      "expected": {
+        "kind": "preview",
+        "parts": [
+          "A1"
+        ],
+        "tools": []
+      },
+      "group": "independent-options",
+      "latencyMs": 7622,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "For a separate thought experiment, imagine the top panel is unavailable.",
+          "reply": "Which part are you referring to as unavailable—the top panel, or a different part?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 7622,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 6326,
+          "tokens": 38,
+          "promptTokens": 768,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"UNSUPPORTED_CURRENT_REPORT_QUOTE\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "For a separate thought experiment, imagine the top panel is unavailable.",
+              "meaning": "Imagine a scenario where the top panel is unavailable.",
+              "purpose": "resource_change",
+              "language": "en"
+            },
+            "issue": "UNSUPPORTED_CURRENT_REPORT_QUOTE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_alic5h2x",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "For a separate thought experiment, imagine the top panel is unavailable.",
+                        "language": "en",
+                        "meaning": "Imagine a scenario where the top panel is unavailable."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 53,
+                "promptTokens": 1628,
+                "durationMs": 3564
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_gnon06dn",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "resourceId": "A1",
+                        "condition": "missing",
+                        "source": "Top panel is unavailable."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 38,
+                "promptTokens": 768,
+                "durationMs": 2761
+              },
+              {
+                "stage": "protocol-normalization",
+                "kind": "singleton-resource-report"
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1280,
+          "tokens": 18,
+          "promptTokens": 173,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which part are you referring to as unavailable—the top panel, or a different part?"
+        }
+      ]
+    },
+    {
+      "id": "new-11",
+      "question": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+      "language": "en",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": [
+              "screwdriver"
+            ]
+          },
+          {
+            "parts": [
+              "B7"
+            ],
+            "tools": [
+              "hex"
+            ]
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 13191,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+          "reply": "Which condition would you like to address: a missing screwdriver or a missing B7 and Allen key?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 13191,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 11732,
+          "tokens": 114,
+          "promptTokens": 800,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"UNSUPPORTED_CURRENT_REPORT_QUOTE\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+              "meaning": "Compare the scenario of a missing screwdriver with the scenario of a missing B7 and Allen key.",
+              "purpose": "resource_change",
+              "language": "en"
+            },
+            "issue": "UNSUPPORTED_CURRENT_REPORT_QUOTE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_8esqs5cd",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "Contrast a missing screwdriver with a missing B7 and Allen key; don't carry the top-panel idea into either.",
+                        "language": "en",
+                        "meaning": "Compare the scenario of a missing screwdriver with the scenario of a missing B7 and Allen key."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 75,
+                "promptTokens": 1640,
+                "durationMs": 4930
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_4m4c3z0y",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "reports": [
+                          {
+                            "condition": "missing",
+                            "resourceId": "screwdriver",
+                            "source": "For a separate thought experiment, imagine the top panel is unavailable."
+                          },
+                          {
+                            "condition": "missing",
+                            "resourceId": "B7",
+                            "source": "For a separate thought experiment, imagine the top panel is unavailable."
+                          },
+                          {
+                            "condition": "missing",
+                            "resourceId": "hex",
+                            "source": "For a separate thought experiment, imagine the top panel is unavailable."
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 114,
+                "promptTokens": 800,
+                "durationMs": 6801
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1435,
+          "tokens": 22,
+          "promptTokens": 230,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which condition would you like to address: a missing screwdriver or a missing B7 and Allen key?"
+        }
+      ]
+    },
+    {
+      "id": "new-12",
+      "question": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+      "language": "es",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": [
+              "hex"
+            ]
+          },
+          {
+            "parts": [],
+            "tools": [
+              "screwdriver"
+            ]
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 18108,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es",
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+          "reply": "¿Cuál de estos dos planes independientes desea que genere, o necesita información sobre ambos?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 18108,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 16768,
+          "tokens": 139,
+          "promptTokens": 527,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"es\",\"replyIntent\":\"clarify\",\"reason\":\"ALTERNATIVE_RESOURCE_MISMATCH\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+              "meaning": "Compare two separate scenarios: one without a Allen key and another without a screwdriver.",
+              "purpose": "comparison",
+              "language": "es"
+            },
+            "issue": "ALTERNATIVE_RESOURCE_MISMATCH",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_z0u907mn",
+                    "function": {
+                      "index": 0,
+                      "name": "comparison",
+                      "arguments": {
+                        "evidence": "¿Cómo quedan dos planes independientes: uno sin llave Allen y otro sin destornillador?",
+                        "language": "es",
+                        "meaning": "Compare two separate scenarios: one without a Allen key and another without a screwdriver."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 68,
+                "promptTokens": 1637,
+                "durationMs": 4433
+              },
+              {
+                "stage": "comparison-split",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_m07toyol",
+                    "function": {
+                      "index": 0,
+                      "name": "split_alternatives",
+                      "arguments": {
+                        "sources": [
+                          "uno sin llave Allen",
+                          "otro sin destornillador"
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 35,
+                "promptTokens": 219,
+                "durationMs": 2241
+              },
+              {
+                "stage": "comparison-option-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_phlzid3w",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "reports": [
+                          {
+                            "condition": "missing",
+                            "resourceId": "hex"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 32,
+                "promptTokens": 525,
+                "durationMs": 2011
+              },
+              {
+                "stage": "comparison-option-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_a4kmj2bx",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "reports": [
+                          {
+                            "condition": "recovered",
+                            "resourceId": "D1"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "B1"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "B2"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "C1"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "B7"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "A1"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "F1"
+                          },
+                          {
+                            "condition": "recovered",
+                            "resourceId": "S1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 139,
+                "promptTokens": 527,
+                "durationMs": 8083
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1319,
+          "tokens": 21,
+          "promptTokens": 201,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "¿Cuál de estos dos planes independientes desea que genere, o necesita información sobre ambos?"
+        }
+      ]
+    },
+    {
+      "id": "new-13",
+      "question": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+      "language": "en",
+      "expected": {
+        "kind": "compare",
+        "alternatives": [
+          {
+            "parts": [],
+            "tools": []
+          },
+          {
+            "parts": [
+              "B7"
+            ],
+            "tools": []
+          }
+        ]
+      },
+      "group": "independent-options",
+      "latencyMs": 7815,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+          "reply": "Which inventory state would you like to set: one with all parts intact, or one missing the Structural rear brace (B7)?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 7815,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 5997,
+          "tokens": 34,
+          "promptTokens": 214,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"INVALID_ALTERNATIVE_EVIDENCE\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+              "meaning": "Compare an intact inventory with an inventory missing B7.",
+              "purpose": "comparison",
+              "language": "en"
+            },
+            "issue": "INVALID_ALTERNATIVE_EVIDENCE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_b67lyzia",
+                    "function": {
+                      "index": 0,
+                      "name": "comparison",
+                      "arguments": {
+                        "evidence": "Set an intact inventory alongside an inventory missing B7. Treat those as separate alternatives.",
+                        "language": "en",
+                        "meaning": "Compare an intact inventory with an inventory missing B7."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 57,
+                "promptTokens": 1632,
+                "durationMs": 3789
+              },
+              {
+                "stage": "comparison-split",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_c5qen3hd",
+                    "function": {
+                      "index": 0,
+                      "name": "split_alternatives",
+                      "arguments": {
+                        "sources": [
+                          "Set an intact inventory.",
+                          "Set an inventory missing B7."
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 34,
+                "promptTokens": 214,
+                "durationMs": 2208
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1795,
+          "tokens": 27,
+          "promptTokens": 179,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which inventory state would you like to set: one with all parts intact, or one missing the Structural rear brace (B7)?"
+        }
+      ]
+    },
+    {
+      "id": "new-14",
+      "question": "Antes de apoyar la cubierta A1, ¿qué pasos tienen que estar confirmados?",
+      "language": "es",
+      "expected": {
+        "kind": "recovery",
+        "step": 5,
+        "prerequisites": [
+          3,
+          4
+        ]
+      },
+      "group": "requirements",
+      "latencyMs": 9502,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es",
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "recovery": {
+          "stepId": 5,
+          "resources": [],
+          "prerequisiteSteps": [
+            3,
+            4
+          ],
+          "availableSteps": [
+            3,
+            4
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        },
+        "recoveryHypothetical": false,
+        "turn": {
+          "user": "Antes de apoyar la cubierta A1, ¿qué pasos tienen que estar confirmados?",
+          "reply": "",
+          "replyGenerated": false,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            },
+            {
+              "tool": "explain_recovery",
+              "arguments": {
+                "stepId": 5
+              },
+              "kind": "info",
+              "data": {
+                "stepId": 5,
+                "resources": [],
+                "prerequisiteSteps": [
+                  3,
+                  4
+                ],
+                "availableSteps": [
+                  3,
+                  4
+                ],
+                "blockedSteps": [],
+                "requiresHumanVerification": true
+              },
+              "transport": "mcp",
+              "initiator": "model-decision"
+            }
+          ],
+          "durationMs": 9502,
+          "generated": true,
+          "findings": [
+            {
+              "label": "Vista",
+              "value": "Registro real"
+            },
+            {
+              "label": "Piezas ausentes",
+              "value": "Ninguno"
+            },
+            {
+              "label": "Herramientas ausentes",
+              "value": "Ninguno"
+            },
+            {
+              "label": "Disponibles ahora",
+              "value": "3, 4, 6"
+            },
+            {
+              "label": "Bloqueados",
+              "value": "Ninguno"
+            },
+            {
+              "label": "Requisitos de recuperación",
+              "value": "Ninguno"
+            },
+            {
+              "label": "Confirmaciones previas necesarias",
+              "value": "3, 4"
+            },
+            {
+              "label": "Pasos reales confirmados · sin cambios",
+              "value": "1, 2"
+            }
+          ],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 9486,
+          "tokens": 20,
+          "promptTokens": 1092,
+          "decisionProtocol": "semantic-json-audited",
+          "modelText": "{\"action\":\"explain_recovery\",\"language\":\"es\",\"replyIntent\":\"chat\",\"catalogRequested\":false,\"stepId\":5,\"scope\":\"hypothesis\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Antes de apoyar la cubierta A1, ¿qué pasos tienen que estar confirmados?",
+              "meaning": "What steps need to be confirmed before supporting cover A1?",
+              "purpose": "requirements",
+              "language": "es"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_32bawbhk",
+                    "function": {
+                      "index": 0,
+                      "name": "requirements",
+                      "arguments": {
+                        "evidence": "Antes de apoyar la cubierta A1, ¿qué pasos tienen que estar confirmados?",
+                        "language": "es",
+                        "meaning": "What steps need to be confirmed before supporting cover A1?"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 64,
+                "promptTokens": 1638,
+                "durationMs": 4191
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_lonjpavu",
+                    "function": {
+                      "index": 0,
+                      "name": "explain_recovery",
+                      "arguments": {
+                        "stepId": 5,
+                        "partId": "A1",
+                        "scope": "hypothesis"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 37,
+                "promptTokens": 1070,
+                "durationMs": 3127
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\"issue\": \"requirements\", \"purpose\": \"requirements\", \"supported\": true}",
+                "tokens": 20,
+                "promptTokens": 1092,
+                "durationMs": 2167
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "new-15",
+      "question": "Which unfinished prerequisites stand between this project and the final inspection?",
+      "language": "en",
+      "expected": {
+        "kind": "recovery",
+        "step": 8,
+        "prerequisites": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "group": "requirements",
+      "latencyMs": 8352,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "recovery": {
+          "stepId": 7,
+          "resources": [],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "availableSteps": [
+            3,
+            4,
+            6
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        },
+        "recoveryHypothetical": false,
+        "turn": {
+          "user": "Which unfinished prerequisites stand between this project and the final inspection?",
+          "reply": "",
+          "replyGenerated": false,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            },
+            {
+              "tool": "explain_recovery",
+              "arguments": {
+                "stepId": 7
+              },
+              "kind": "info",
+              "data": {
+                "stepId": 7,
+                "resources": [],
+                "prerequisiteSteps": [
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "availableSteps": [
+                  3,
+                  4,
+                  6
+                ],
+                "blockedSteps": [],
+                "requiresHumanVerification": true
+              },
+              "transport": "mcp",
+              "initiator": "model-decision"
+            }
+          ],
+          "durationMs": 8351,
+          "generated": true,
+          "findings": [
+            {
+              "label": "View",
+              "value": "Actual record"
+            },
+            {
+              "label": "Missing parts",
+              "value": "None"
+            },
+            {
+              "label": "Unavailable tools",
+              "value": "None"
+            },
+            {
+              "label": "Ready now",
+              "value": "3, 4, 6"
+            },
+            {
+              "label": "Blocked",
+              "value": "None"
+            },
+            {
+              "label": "Recovery requirements",
+              "value": "None"
+            },
+            {
+              "label": "Prerequisite reports still needed",
+              "value": "3, 4, 5, 6"
+            },
+            {
+              "label": "Actual confirmed steps · unchanged",
+              "value": "1, 2"
+            }
+          ],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 8330,
+          "tokens": 23,
+          "promptTokens": 1114,
+          "decisionProtocol": "semantic-json-audited",
+          "modelText": "{\"action\":\"explain_recovery\",\"language\":\"en\",\"replyIntent\":\"chat\",\"catalogRequested\":false,\"stepId\":7,\"scope\":\"hypothesis\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Which unfinished prerequisites stand between this project and the final inspection?",
+              "meaning": "Identify any remaining prerequisites that prevent the final inspection.",
+              "purpose": "requirements",
+              "language": "en"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_04q5unyc",
+                    "function": {
+                      "index": 0,
+                      "name": "requirements",
+                      "arguments": {
+                        "evidence": "Which unfinished prerequisites stand between this project and the final inspection?",
+                        "language": "en",
+                        "meaning": "Identify any remaining prerequisites that prevent the final inspection."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 52,
+                "promptTokens": 1627,
+                "durationMs": 3466
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_xurhd06u",
+                    "function": {
+                      "index": 0,
+                      "name": "explain_recovery",
+                      "arguments": {
+                        "stepId": 7,
+                        "partId": null,
+                        "scope": "hypothesis"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 35,
+                "promptTokens": 1093,
+                "durationMs": 2411
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"issue\": \"\",\n  \"purpose\": \"requirements\",\n  \"supported\": true\n}",
+                "tokens": 23,
+                "promptTokens": 1114,
+                "durationMs": 2452
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "new-16",
+      "question": "¿Por qué todavía no puedo fijar las patas a la base?",
+      "language": "es",
+      "expected": {
+        "kind": "recovery",
+        "step": 7,
+        "prerequisites": [
+          5,
+          6
+        ]
+      },
+      "group": "requirements",
+      "latencyMs": 4182,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "¿Por qué todavía no puedo fijar las patas a la base?",
+          "reply": "Which part or tool are you having trouble with?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 4182,
+          "generated": true,
+          "findings": [],
+          "validationIssue": "MODEL_PROTOCOL_UNUSABLE",
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "modelText": "requirements: ¿Por qué todavía no puedo fijar las patas a la base?",
+          "decisionProtocol": "rejected-model-protocol",
+          "routing": {
+            "failedSemanticParsing": true,
+            "issues": [
+              "INVALID_JSON"
+            ],
+            "exchanges": [
+              {
+                "modelText": "requirements: ¿Por qué todavía no puedo fijar las patas a la base?",
+                "tokens": 19
+              }
+            ]
+          }
+        },
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "modelText": "requirements: ¿Cuáles son los requisitos o impedimentos para poder fijar las patas a la base?",
+          "decisionProtocol": "rejected-model-protocol",
+          "routing": {
+            "failedSemanticParsing": true,
+            "issues": [
+              "INVALID_JSON"
+            ],
+            "exchanges": [
+              {
+                "modelText": "requirements: ¿Cuáles son los requisitos o impedimentos para poder fijar las patas a la base?",
+                "tokens": 26
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 817,
+          "tokens": 11,
+          "promptTokens": 177,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which part or tool are you having trouble with?"
+        }
+      ]
+    },
+    {
+      "id": "new-17",
+      "question": "Could the shelf be fitted while the rear brace is still waiting to be installed?",
+      "language": "en",
+      "expected": {
+        "kind": "recovery",
+        "step": 3
+      },
+      "group": "requirements",
+      "latencyMs": 9610,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "recovery": {
+          "stepId": 3,
+          "resources": [],
+          "prerequisiteSteps": [],
+          "availableSteps": [
+            3
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        },
+        "recoveryHypothetical": false,
+        "turn": {
+          "user": "Could the shelf be fitted while the rear brace is still waiting to be installed?",
+          "reply": "",
+          "replyGenerated": false,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            },
+            {
+              "tool": "explain_recovery",
+              "arguments": {
+                "stepId": 3
+              },
+              "kind": "info",
+              "data": {
+                "stepId": 3,
+                "resources": [],
+                "prerequisiteSteps": [],
+                "availableSteps": [
+                  3
+                ],
+                "blockedSteps": [],
+                "requiresHumanVerification": true
+              },
+              "transport": "mcp",
+              "initiator": "model-decision"
+            }
+          ],
+          "durationMs": 9610,
+          "generated": true,
+          "findings": [
+            {
+              "label": "View",
+              "value": "Actual record"
+            },
+            {
+              "label": "Missing parts",
+              "value": "None"
+            },
+            {
+              "label": "Unavailable tools",
+              "value": "None"
+            },
+            {
+              "label": "Ready now",
+              "value": "3, 4, 6"
+            },
+            {
+              "label": "Blocked",
+              "value": "None"
+            },
+            {
+              "label": "Recovery requirements",
+              "value": "None"
+            },
+            {
+              "label": "Prerequisite reports still needed",
+              "value": "None"
+            },
+            {
+              "label": "Actual confirmed steps · unchanged",
+              "value": "1, 2"
+            }
+          ],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 9591,
+          "tokens": 25,
+          "promptTokens": 1133,
+          "decisionProtocol": "semantic-json-audited",
+          "modelText": "{\"action\":\"explain_recovery\",\"language\":\"en\",\"replyIntent\":\"chat\",\"catalogRequested\":false,\"stepId\":3,\"scope\":\"hypothesis\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Could the shelf be fitted while the rear brace is still waiting to be installed?",
+              "meaning": "Checking if the shelf can be fitted when the rear brace is not yet installed.",
+              "purpose": "requirements",
+              "language": "en"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_65not371",
+                    "function": {
+                      "index": 0,
+                      "name": "requirements",
+                      "arguments": {
+                        "language": "en",
+                        "meaning": "Checking if the shelf can be fitted when the rear brace is not yet installed.",
+                        "evidence": "Could the shelf be fitted while the rear brace is still waiting to be installed?"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 61,
+                "promptTokens": 1631,
+                "durationMs": 4257
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_bxuolq8k",
+                    "function": {
+                      "index": 0,
+                      "name": "explain_recovery",
+                      "arguments": {
+                        "stepId": 3,
+                        "partId": "C1",
+                        "scope": "hypothesis"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 37,
+                "promptTokens": 1111,
+                "durationMs": 2614
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"issue\": \"requirements\",\n  \"purpose\": \"requirements\",\n  \"supported\": true\n}",
+                "tokens": 25,
+                "promptTokens": 1133,
+                "durationMs": 2720
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "new-18",
+      "question": "No perdí B7. Solo quiero saber en qué paso se usa esa pieza.",
+      "language": "es",
+      "expected": {
+        "kind": "catalog",
+        "step": 4
+      },
+      "group": "negation",
+      "latencyMs": 6838,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es",
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "No perdí B7. Solo quiero saber en qué paso se usa esa pieza.",
+          "reply": "¿En qué etapa específica del ensamblaje se utiliza el travesaño posterior?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 6838,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 5517,
+          "tokens": 22,
+          "promptTokens": 920,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"es\",\"replyIntent\":\"clarify\",\"reason\":\"ARGUMENTS_AMBIGUOUS\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "No perdí B7. Solo quiero saber en qué paso se usa esa pieza.",
+              "meaning": "Determine which step uses part B7.",
+              "purpose": "catalog",
+              "language": "es"
+            },
+            "issue": "ARGUMENTS_AMBIGUOUS",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_naigjvqa",
+                    "function": {
+                      "index": 0,
+                      "name": "catalog",
+                      "arguments": {
+                        "evidence": "No perdí B7. Solo quiero saber en qué paso se usa esa pieza.",
+                        "language": "es",
+                        "meaning": "Determine which step uses part B7."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 56,
+                "promptTokens": 1633,
+                "durationMs": 3856
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "tokens": 22,
+                "promptTokens": 920,
+                "durationMs": 1661
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1309,
+          "tokens": 21,
+          "promptTokens": 182,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "¿En qué etapa específica del ensamblaje se utiliza el travesaño posterior?"
+        }
+      ]
+    },
+    {
+      "id": "new-19",
+      "question": "I haven't done step 3 yet. What parts and tools does it require?",
+      "language": "en",
+      "expected": {
+        "kind": "requirements-or-catalog",
+        "step": 3
+      },
+      "group": "negation",
+      "latencyMs": 6430,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "en",
+        "expectedLanguage": "en"
+      },
+      "result": {
+        "turn": {
+          "user": "I haven't done step 3 yet. What parts and tools does it require?",
+          "reply": "Which part or tool are you unsure about for step 3?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 6430,
+          "generated": true,
+          "findings": [],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 5323,
+          "tokens": 21,
+          "promptTokens": 944,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"ARGUMENTS_AMBIGUOUS\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "I haven't done step 3 yet. What parts and tools does it require?",
+              "meaning": "What parts and tools are needed for step 3?",
+              "purpose": "catalog",
+              "language": "en"
+            },
+            "issue": "ARGUMENTS_AMBIGUOUS",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_tzei9vuo",
+                    "function": {
+                      "index": 0,
+                      "name": "catalog",
+                      "arguments": {
+                        "evidence": "I haven't done step 3 yet. What parts and tools does it require?",
+                        "language": "en",
+                        "meaning": "What parts and tools are needed for step 3?"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 57,
+                "promptTokens": 1632,
+                "durationMs": 3870
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "tokens": 21,
+                "promptTokens": 944,
+                "durationMs": 1453
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1087,
+          "tokens": 14,
+          "promptTokens": 162,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which part or tool are you unsure about for step 3?"
+        }
+      ]
+    },
+    {
+      "id": "new-20",
+      "question": "No aparece esa cosa de antes. ¿Qué puedo hacer?",
+      "language": "es",
+      "expected": {
+        "kind": "clarify"
+      },
+      "group": "ambiguity",
+      "latencyMs": 10590,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es",
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "No aparece esa cosa de antes. ¿Qué puedo hacer?",
+          "reply": "¿Podrías indicar cuál es la parte o herramienta que no aparece?",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 10590,
+          "generated": true,
+          "findings": [],
+          "validationIssue": "UNMENTIONED_RESOURCE_ASK_CLARIFICATION",
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 9115,
+          "tokens": 18,
+          "promptTokens": 1108,
+          "decisionProtocol": "semantic-json-audited",
+          "modelText": "{\"action\":\"preview_scenario\",\"language\":\"es\",\"replyIntent\":\"chat\",\"catalogRequested\":false,\"changes\":{\"missingParts\":[\"S1\"]}}",
+          "routing": {
+            "semantic": {
+              "evidence": "No aparece esa cosa de antes. ¿Qué puedo hacer?",
+              "meaning": "The previous item is missing. What can I do?",
+              "purpose": "resource_change",
+              "language": "es"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_e6t65u04",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "No aparece esa cosa de antes. ¿Qué puedo hacer?",
+                        "language": "es",
+                        "meaning": "The previous item is missing. What can I do?"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 54,
+                "promptTokens": 1628,
+                "durationMs": 3661
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_jyhvow1w",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "reports": [
+                          {
+                            "condition": "missing",
+                            "resourceId": "S1",
+                            "source": "No aparece esa cosa de antes. ¿Qué puedo hacer?"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 50,
+                "promptTokens": 768,
+                "durationMs": 3277
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\"issue\":\"resource_change\",\"purpose\":\"resource_change\",\"supported\":true}",
+                "tokens": 18,
+                "promptTokens": 1108,
+                "durationMs": 2177
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1461,
+          "tokens": 20,
+          "promptTokens": 159,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "¿Podrías indicar cuál es la parte o herramienta que no aparece?"
+        }
+      ]
+    },
+    {
+      "id": "new-21",
+      "question": "The label on my missing piece says X404. Plan around that.",
+      "language": "en",
+      "expected": {
+        "kind": "clarify"
+      },
+      "group": "ambiguity",
+      "latencyMs": 8649,
+      "actualUnchanged": true,
+      "error": "MODEL_INVALID_REFERENCE",
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 6709,
+          "tokens": 50,
+          "promptTokens": 792,
+          "decisionProtocol": "semantic-json-clarification",
+          "modelText": "{\"action\":\"respond\",\"language\":\"en\",\"replyIntent\":\"clarify\",\"reason\":\"UNSUPPORTED_CURRENT_REPORT_QUOTE\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "The label on my missing piece says X404.",
+              "meaning": "Plan around the missing piece labeled X404.",
+              "purpose": "resource_change",
+              "language": "en"
+            },
+            "issue": "UNSUPPORTED_CURRENT_REPORT_QUOTE",
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_b5424vxj",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "The label on my missing piece says X404.",
+                        "language": "en",
+                        "meaning": "Plan around the missing piece labeled X404."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 53,
+                "promptTokens": 1631,
+                "durationMs": 3555
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_497yqnqt",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "reports": [
+                          {
+                            "condition": "missing",
+                            "resourceId": "S1",
+                            "source": "No aparece esa cosa de antes. ¿Qué puedo hacer?"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "tokens": 50,
+                "promptTokens": 792,
+                "durationMs": 3153
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1023,
+          "tokens": 13,
+          "promptTokens": 161,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which part does the label X404 refer to?"
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 897,
+          "tokens": 13,
+          "promptTokens": 252,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which assembly step is related to part X404?"
+        }
+      ]
+    },
+    {
+      "id": "new-22",
+      "question": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+      "language": "es",
+      "expected": {
+        "kind": "clarify"
+      },
+      "group": "ambiguity",
+      "latencyMs": 16732,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": false,
+        "generic": false,
+        "unknownReferences": [],
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "turn": {
+          "user": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+          "reply": "Which condition do you want to use, Tomá? The part B7 being absent or being recovered.",
+          "replyGenerated": true,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 16732,
+          "generated": true,
+          "findings": [],
+          "validationIssue": "MODEL_PROTOCOL_UNUSABLE",
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "nativeToolCalls": [
+            {
+              "id": "call_p5yshjnq",
+              "function": {
+                "index": 0,
+                "name": "preview_scenario",
+                "arguments": {
+                  "condition": [
+                    "missing",
+                    "recovered"
+                  ],
+                  "source": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+                  "resourceId": "B7"
+                }
+              }
+            }
+          ],
+          "modelText": "",
+          "decisionProtocol": "rejected-model-protocol",
+          "routing": {
+            "failedSemanticParsing": true,
+            "issues": [
+              {
+                "code": "invalid_type",
+                "path": [
+                  0,
+                  "condition"
+                ]
+              }
+            ],
+            "exchanges": [
+              {
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_a3h5jkti",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+                        "language": "es",
+                        "meaning": "Reporta la pérdida y recuperación simultánea de B7."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 64
+              },
+              {
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_p5yshjnq",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "condition": [
+                          "missing",
+                          "recovered"
+                        ],
+                        "source": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+                        "resourceId": "B7"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 57
+              }
+            ]
+          }
+        },
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "nativeToolCalls": [
+            {
+              "id": "call_zzldnl9v",
+              "function": {
+                "index": 0,
+                "name": "preview_scenario",
+                "arguments": {
+                  "resourceId": "B7",
+                  "condition": [
+                    "missing",
+                    "recovered"
+                  ],
+                  "source": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una."
+                }
+              }
+            }
+          ],
+          "modelText": "",
+          "decisionProtocol": "rejected-model-protocol",
+          "routing": {
+            "failedSemanticParsing": true,
+            "issues": [
+              {
+                "code": "invalid_type",
+                "path": [
+                  0,
+                  "condition"
+                ]
+              }
+            ],
+            "exchanges": [
+              {
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_pgg7i1ff",
+                    "function": {
+                      "index": 0,
+                      "name": "resource_change",
+                      "arguments": {
+                        "evidence": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una.",
+                        "language": "es",
+                        "meaning": "Reporta la pérdida y recuperación simultánea de B7."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 64
+              },
+              {
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_zzldnl9v",
+                    "function": {
+                      "index": 0,
+                      "name": "preview_scenario",
+                      "arguments": {
+                        "resourceId": "B7",
+                        "condition": [
+                          "missing",
+                          "recovered"
+                        ],
+                        "source": "Tomá B7 como ausente y como recuperada al mismo tiempo, sin elegir una."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 57
+              }
+            ]
+          }
+        },
+        {
+          "stage": "answer",
+          "model": "qwen2.5:7b",
+          "durationMs": 1376,
+          "tokens": 22,
+          "promptTokens": 182,
+          "decisionProtocol": "plain-model-explanation",
+          "modelText": "Which condition do you want to use, Tomá? The part B7 being absent or being recovered."
+        }
+      ]
+    },
+    {
+      "id": "new-23",
+      "question": "Ya terminé de colocar la repisa central. Abrí la revisión, por favor.",
+      "language": "es",
+      "expected": {
+        "kind": "review",
+        "step": 3
+      },
+      "group": "review-boundary",
+      "latencyMs": 8761,
+      "actualUnchanged": true,
+      "checks": {
+        "fulfilled": true,
+        "generic": false,
+        "unknownReferences": [],
+        "language": "es",
+        "expectedLanguage": "es"
+      },
+      "result": {
+        "review": {
+          "stepId": 3,
+          "action": "complete"
+        },
+        "turn": {
+          "user": "Ya terminé de colocar la repisa central. Abrí la revisión, por favor.",
+          "reply": "",
+          "replyGenerated": false,
+          "provider": "Ollama · local server",
+          "model": "qwen2.5:7b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 8761,
+          "generated": true,
+          "findings": [
+            {
+              "label": "Revisión necesaria",
+              "value": "3 · Instalar repisa central"
+            },
+            {
+              "label": "Registro",
+              "value": "Sin cambios. Requiere aprobación humana separada."
+            },
+            {
+              "label": "Pasos reales confirmados · sin cambios",
+              "value": "1, 2"
+            }
+          ],
+          "referenceRepairs": []
+        }
+      },
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen2.5:7b",
+          "durationMs": 8750,
+          "tokens": 24,
+          "promptTokens": 1088,
+          "decisionProtocol": "semantic-json-audited",
+          "modelText": "{\"action\":\"review_step\",\"language\":\"es\",\"replyIntent\":\"chat\",\"catalogRequested\":false,\"stepId\":3,\"reviewAction\":\"complete\"}",
+          "routing": {
+            "semantic": {
+              "evidence": "Ya terminé de colocar la repisa central. Abrí la revisión, por favor.",
+              "meaning": "The user has finished installing the central shelf and requests to start the review process.",
+              "purpose": "physical_report",
+              "language": "es"
+            },
+            "exchanges": [
+              {
+                "stage": "semantic-intent",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_9j3ii0cr",
+                    "function": {
+                      "index": 0,
+                      "name": "physical_report",
+                      "arguments": {
+                        "language": "es",
+                        "meaning": "The user has finished installing the central shelf and requests to start the review process.",
+                        "evidence": "Ya terminé de colocar la repisa central. Abrí la revisión, por favor."
+                      }
+                    }
+                  }
+                ],
+                "tokens": 66,
+                "promptTokens": 1635,
+                "durationMs": 4335
+              },
+              {
+                "stage": "semantic-arguments",
+                "modelText": "",
+                "nativeToolCalls": [
+                  {
+                    "id": "call_zo6sb61q",
+                    "function": {
+                      "index": 0,
+                      "name": "review_step",
+                      "arguments": {
+                        "stepId": 3,
+                        "reviewAction": "complete"
+                      }
+                    }
+                  }
+                ],
+                "tokens": 28,
+                "promptTokens": 923,
+                "durationMs": 2024
+              },
+              {
+                "stage": "semantic-argument-audit",
+                "modelText": "{\n  \"issue\": \"\",\n  \"purpose\": \"physical_report\",\n  \"supported\": true\n}",
+                "tokens": 24,
+                "promptTokens": 1088,
+                "durationMs": 2390
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "interruption": "Candidate rejected after its complete first run fulfilled only 19/43. This partial repeat corroborated over-clarification and remains retained. A smaller direct native-tool candidate will be evaluated separately; no passing run is selected from this configuration."
+}

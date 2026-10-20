@@ -18,7 +18,7 @@ const selected=filter?groups.filter(g=>g.id===filter):groups;if(!selected.length
 const dir='docs/ai-evidence/reliability';await mkdir(dir,{recursive:true});
 const status=await localModelStatus();if(!status.available)throw Error('Real Qwen unavailable; no mock fallback');
 const tags=await(await fetch('http://127.0.0.1:11434/api/tags')).json(),runtime=await(await fetch('http://127.0.0.1:11434/api/version')).json();
-const sourceFiles=['server/copilot.ts','server/copilot-semantics.ts','src/copilot.ts','src/copilot-providers.ts','scripts/ai-reliability-corpus.ts','scripts/evaluate-ai-reliability.ts'];
+const sourceFiles=['server/copilot.ts','server/copilot-semantics.ts','server/copilot-native.ts','server/copilot-agreement.ts','src/copilot.ts','src/copilot-providers.ts','scripts/ai-reliability-corpus.ts','scripts/evaluate-ai-reliability.ts'];
 const source=Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,hash(await readFile(file,'utf8'))])));
 const provenance={head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source,corpusHash:hash(JSON.stringify(groups)),model:tags.models.find((m:any)=>m.name===status.model),runtime,mocked:false,transport:'Actual MCP Streamable HTTP',setup:'Fresh isolated server session per repetition; each group resets its assembly and scripts two synthetic confirmations before model turns. These are fixture reports, not physical verification. Model never has mutation capability.',intentionTemperature:0,dialogueTemperature:0.2};
 const same=(a:unknown[],b:unknown[])=>JSON.stringify([...a].sort())===JSON.stringify([...b].sort());

@@ -4,7 +4,7 @@ import {pathToFileURL} from 'node:url';
 import {z} from 'zod';
 import {formatFor} from '../src/copilot.js';
 import {getAssembly} from '../src/engine.js';
-import {semanticPlan} from './copilot-semantics.js';
+import {nativePlan} from './copilot-native.js';
 const MODEL='qwen2.5:7b';
 const descriptions:Record<string,string>={respond:'General conversation, greetings, emotional support, catalog questions, clarification of an unidentified resource, or refusal of unsafe instructions. No assembly changes.',preview_scenario:'Preview a reported or hypothetical loss/recovery. reports contains ONLY newly mentioned losses/recoveries; earlier shortages merge automatically. The controller classifies parts versus tools. To discard prior hypotheses, use clear_hypotheses first. No actual change.',compare_scenarios:'Compare alternatives from the LATEST question independently against actual state. NEVER carry a previous hypothesis into an alternative unless the user specifies it there. Return each distinct alternative exactly, with source quoting its own non-overlapping phrase from the latest request. Changes may include only resources identified in that quote.',explain_recovery:'Read requirements, blockers and work still possible for a step or the project.',undo_hypothesis:'Cancel only the latest hypothetical edit, preserving previous hypotheses and all actual progress.',clear_hypotheses:'Discard all hypothetical edits without changing actual inventory or work.',review_step:'Prepare human review of reported completed or undone physical work. Does not record or approve anything.'};
 export function controllerTools(projectId:string){
@@ -50,7 +50,7 @@ async function modelRequest(upstream:typeof fetch,payload:Record<string,unknown>
 async function routedModelPlan(upstream:typeof fetch,body:z.infer<typeof bodySchema>,signal:AbortSignal){
  const question=body.question??body.messages.filter(m=>m.role==='user').at(-1)?.content??'';
  let last:any;const exchanges:unknown[]=[];
- try{const parsed=await semanticPlan(async payload=>{last=await modelRequest(upstream,payload,signal);exchanges.push({modelText:last.message?.content,nativeToolCalls:last.message?.tool_calls,tokens:last.eval_count});return last;},question,body.assemblyId,body.messages);
+ try{const parsed=await nativePlan(async payload=>{last=await modelRequest(upstream,payload,signal);exchanges.push({modelText:last.message?.content,nativeToolCalls:last.message?.tool_calls,tokens:last.eval_count});return last;},question,body.assemblyId,body.messages,controllerTools(body.assemblyId));
  return {...last,message:{content:parsed.content},routing:parsed.routing,semanticProtocol:parsed.protocol};
  }catch(error){if(error instanceof z.ZodError||error instanceof SyntaxError){throw Object.assign(Error('INVALID_MODEL_RESPONSE'),{providerDiagnostic:{modelText:last?.message?.content,nativeToolCalls:last?.message?.tool_calls,routing:{failedSemanticParsing:true,issues:error instanceof z.ZodError?error.issues.map(i=>({code:i.code,path:i.path})):['INVALID_JSON'],exchanges}}});}throw error;}
 }

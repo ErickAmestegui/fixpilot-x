@@ -1,12 +1,12 @@
 # Devpost update — real local AI prototype
 
-**Final gate failed. Keep the stable Rescue entry; describe the AI as an experimental local prototype if mentioning it.** Copy only statements consistent with the evidence report into the entrant's existing submission. Keep the stable Rescue demo scoped to Rescue. Review every field personally; no form has been submitted.
+**Reliability gate not approved. Keep the stable Rescue entry; describe the AI as an experimental local prototype if mentioning it.** Copy only statements consistent with the evidence reports into the entrant's existing submission. Keep the stable Rescue demo scoped to Rescue. Review every field personally; no form has been submitted. The earlier 9/11 checkpoint is historical; read [the repeated reliability results](REAL_AI_RELIABILITY_RESULTS.md) before using any quality figure.
 
 ## About the project — add or replace the conversational paragraph
 
 FixPilot X turns an assembly manual into an interactive plan that can adapt when a part or tool is missing. Its original Three.js assemblies and dependency engine distinguish work that is ready, blocked or waiting for prerequisites. Rescue Intelligence lets users explore and compare hypothetical setbacks without changing their saved project.
 
-An experimental local AI upgrade adds Qwen2.5 7B Instruct through Ollama. It accepts free-form Spanish and English and demonstrated contextual loss reports, canceling a recent hypothesis and preparing human review. Our final evaluation exposed failures in dependency requests and independent comparisons, plus generic conversational replies, so we have not approved it as the primary competition experience. A real model interprets intent, extracts structured arguments and generates conversation. Validated read-only tools calculate the effects. Critical assembly findings are rendered directly from verified engine results, separately from model-generated dialogue, to prevent a fluent but incorrect paraphrase from becoming an instruction.
+An experimental local AI branch adds Qwen2.5 7B Instruct through Ollama. We evaluated it with actual model generations and genuine MCP calls across Spanish and English conversations, contextual resource reports, prerequisites, comparisons and human-review boundaries. Its conversational reliability has not passed our release gate, so it is not the primary competition experience. A real model proposes intent and structured arguments; validated read-only tools calculate the effects. Critical assembly findings are rendered directly from verified engine results, separately from generated dialogue. The experimental branch and its failed evaluations are available for inspection.
 
 The model cannot apply scenarios, alter inventory or confirm physical work. A completion report can only open an unchecked human review dialog; a separate explicit approval and engine validation are required to update the record. The viewer labels actual and hypothetical states, missing components remain visibly absent, and tool receipts identify what actually ran.
 
@@ -21,14 +21,15 @@ TypeScript, React, Vite, Three.js, Node.js, Express, Ollama, Qwen2.5 7B Instruct
 - Public Rescue preview (deterministic browser engine): https://erickamestegui.github.io/fixpilot-x/?rescue
 - Real local AI source: https://github.com/ErickAmestegui/fixpilot-x/tree/real-ai-copilot
 - Local AI setup: https://github.com/ErickAmestegui/fixpilot-x/blob/real-ai-copilot/docs/REAL_AI.md
-- Real AI evidence: https://github.com/ErickAmestegui/fixpilot-x/blob/real-ai-copilot/docs/REAL_AI_EVIDENCE.md
+- Current reliability evidence: https://github.com/ErickAmestegui/fixpilot-x/blob/real-ai-copilot/docs/REAL_AI_RELIABILITY_RESULTS.md
+- Historical 9/11 checkpoint: https://github.com/ErickAmestegui/fixpilot-x/blob/real-ai-copilot/docs/REAL_AI_EVIDENCE.md
 - Additional open source contribution: https://github.com/ErickAmestegui/mcp-scenario-lab
 
 ## Video field
 
 Existing published Rescue + real MCP demo: https://youtu.be/-VrmiK0tyqg
 
-This 2:24 video predates the LLM upgrade and must not be described as proof of generative AI. A new local AI recording was prepared with actual model/MCP responses and illustrative human reports. It needs a public upload and an exact verified URL before it can replace this field. Do not paste a localhost address or invent a video URL.
+This 2:24 video predates the LLM upgrade and must not be described as proof of generative AI. The historical local AI recording also predates this reliability candidate. No new competition demonstration is approved while this release gate fails. Do not replace the stable video with an unqualified experimental recording, paste a localhost address or invent a video URL.
 
 ## Alexa+ category disclosure
 
@@ -36,7 +37,7 @@ FixPilot X presents a simulated Alexa+ experience. There is no native Alexa+/Ech
 
 ## MCP integration
 
-The existing server exposes 22 tools over genuine MCP Streamable HTTP. In the recorded local session, the SDK initialized protocol 2025-11-25, discovered the catalog and transferred validated current project state. The AI controller can invoke only preview_scenario, compare_scenarios and explain_recovery. It also performs a separately identified context read. Every returned result is checked against the original dependency engine; invalid references, stale state and inconsistent results are rejected. Bounded protocol normalization and catalog reference repairs remain visible in the evidence. A request to record work only prepares the existing human review dialog. Mutations remain outside the model's capability set.
+The existing server exposes 22 tools over genuine MCP Streamable HTTP. In the recorded local sessions, the SDK initialized protocol 2025-11-25 and discovered the catalog. The experimental model proposes structured JSON controller decisions; these must not be represented as native Ollama tool calls. Ten internal controller facades map to existing actions and are not additional MCP tools. The controller can execute only preview_scenario, compare_scenarios and explain_recovery, including a separately identified context read. Every returned result is checked against the original dependency engine; invalid references, stale state and inconsistent results are rejected. Raw model proposals, agreement checks, protocol normalization and genuine MCP receipts remain visible in the evidence. A completion report can at most prepare the existing unchecked human review dialog. Mutations remain outside the model's capability set.
 
 ## Product feedback / authentic friction
 

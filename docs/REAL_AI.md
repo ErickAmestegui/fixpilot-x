@@ -16,7 +16,7 @@ npm run dev:copilot
 
 Keep Ollama running; a portable installation may require `ollama serve` in another terminal. Open `http://127.0.0.1:5173/?ai`. Choose **Connect local MCP**, then **Connect Ollama · Qwen2.5 7B**. The launcher starts Vite (5173), MCP (3101) and the AI adapter (3103); it does not install Ollama, download weights or start billing. Separate equivalents are `npm run dev`, `npm run mcp` and `npm run ai`.
 
-Selected weights: **Qwen2.5 7B Instruct, qwen2.5:7b, 7.6B, Q4_K_M**, Apache 2.0. Observed digest: `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e`; download size 4,683,087,332 bytes. A mutable model tag may change: compare your digest with [recorded identity](ai-evidence/model-qwen25.json). Settings: temperature 0.2, top_p 0.8, top_k 20, min_p 0, context 8192, output limit 700 tokens, keep_alive 5m. No thinking parameter or silent model fallback is used.
+Selected weights: **Qwen2.5 7B Instruct, qwen2.5:7b, 7.6B, Q4_K_M**, Apache 2.0. Observed digest: `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e`; download size 4,683,087,332 bytes. A mutable model tag may change: compare your digest with [recorded identity](ai-evidence/model-qwen25.json). Settings: structured interpretation temperature 0, dialogue temperature 0.2, top_p 0.8, top_k 20, min_p 0, context 8192, output limit 700 tokens, keep_alive 5m. No thinking parameter or silent model fallback is used.
 
 ## What is actually generative
 
@@ -50,7 +50,7 @@ The model never receives a mutation capability. It can only prepare an unchecked
 
 ## Memory and failure behavior
 
-Memory is separate per project and browser tab: at most 12 turns, two compact recent user/tool summaries in argument context, and six draft hypotheses. The intent router sees only the current message and project ID. New hypothesis edits merge with the prior draft; canceling only the latest edit restores the previous draft. Reload clears conversation memory; original project persistence is unchanged. No cloud or cross-device memory is claimed.
+Memory is separate per project and browser tab: at most 12 turns and six draft hypotheses. The active adapter supplies verified state, the draft, draft count, viewer selection and catalog-grounded resource references from the two most recent user turns. It does not replay raw previous manual instructions or generated replies. New hypothesis edits merge with the prior draft; canceling only the latest edit restores the previous draft. Reload clears conversation memory; original project persistence is unchanged. No cloud or cross-device memory is claimed.
 
 The UI shows the actual provider/model, generated text, timestamped engine findings, real tool receipts and actual versus hypothetical views. Model unavailable/busy/invalid replies produce an error, not a fake AI bubble. The deterministic command fallback is explicitly labeled. Old findings are snapshots at their turn, not live progress claims.
 
@@ -69,7 +69,7 @@ npm run test:ai:reliability -- --repeat 3
 npm run demo:ai
 ```
 
-The 32 new capability/protocol tests use explicit doubles; the two AI UI boundary tests mock the adapter. They are not real-model proof. The live evaluator never substitutes a mock and records actual model output, genuine MCP receipts, state invariance and scenario expectations. Its initial confirmations belong to a synthetic fixture. The UI recording uses actual services and explicit illustrative human reports, without response mocking or state injection. See the evidence report for completed results and failures.
+Automated capability/protocol tests use explicit doubles; the two AI UI boundary tests mock the adapter. They are not real-model proof. The live evaluator never substitutes a mock and records actual model output, genuine MCP receipts, state invariance and scenario expectations. Its initial confirmations belong to a synthetic fixture. The historical UI recording used actual services and explicit illustrative human reports, without response mocking or state injection; it predates this reliability candidate. See the evidence reports for completed results and failures.
 
 ## Costs, rejected candidates and limits
 
@@ -83,4 +83,4 @@ Primary references: [Qwen2.5 model card](https://huggingface.co/Qwen/Qwen2.5-7B-
 
 ## Reliability gate follow-up
 
-The follow-up on the same branch replaces the forced first-route lock with semantic function selection, operation-specific native extraction, separate alternative parsing and semantic review. Raw native model calls and failed protocol diagnostics are retained. No public stable deployment changes. See [method and fixed acceptance rule](REAL_AI_RELIABILITY.md) and the timestamped records in `docs/ai-evidence/reliability/`. Review all repetitions and the manual assessment before updating any capability claim; extra mock tests are not real-model passes.
+The follow-up replaces the forced first-route lock with joint structured function/argument proposals and a second interpretation. A third interpretation resolves disagreement only when two schema-valid meanings agree. Exact comparison quotes and catalog grounding keep alternatives separate. These JSON proposals are controller decisions, not proof of native Ollama tool calling; validated reads execute through actual MCP. All raw generations and failed diagnostics are retained. No public stable deployment changes. See [method and fixed acceptance rule](REAL_AI_RELIABILITY.md) and the timestamped records in `docs/ai-evidence/reliability/`. Review all repetitions and the manual assessment before updating any capability claim; extra mock tests are not real-model passes.
