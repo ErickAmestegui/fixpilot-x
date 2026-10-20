@@ -1,0 +1,11 @@
+MCP initialize: 2025-11-25 · 22 tools · UI capability advertised
+resources/read: ui://fixpilot-x/rescue-card.html · text/html;profile=mcp-app
+ui/initialize + ui/notifications/initialized: official App ↔ AppBridge handshake complete
+restore_progress · 14 ms · real MCP · returned
+preview_scenario · 20 ms · real MCP · returned
+preview_scenario · 24 ms · real MCP · returned
+compare_scenarios · 12 ms · real MCP · returned
+explain_recovery · 7 ms · real MCP · returned
+Host refused apply_scenario: no explicit host approval
+apply_scenario · 41 ms · real MCP · returned
+preview_scenario · 10 ms · real MCP · returned

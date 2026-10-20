@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-20T22:13:29.659Z",
+  "mocked": false,
+  "protocol": "2025-11-25",
+  "toolCount": 22,
+  "resource": {
+    "uri": "ui://fixpilot-x/rescue-card.html",
+    "mimeType": "text/html;profile=mcp-app",
+    "bytes": 1315368
+  },
+  "result": "FAIL",
+  "failure": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '[1,\"table\",[],[],[],null,1,4,[[\"action-1\",\"2026-10-20T22:13:26.684Z\",\"load_assembly\",\"Montaje reiniciado: Mesa auxiliar modular. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:13:26.697Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"action-3\",\"2026-10-20T22:13:26.704Z\",\"get_assembly_state\",\"0 de 8 pasos confirmados por vos. No hay piezas declaradas faltantes.\",\"info\",3],[\"action-4\",\"2026-10-20T22:13:29.656Z\",\"get_assembly_state\",\"0 de 8 pasos confirmados por vos. No hay piezas declaradas faltantes.\",\"info\",4]]]'\n- '[1,\"table\",[],[],[],null,1,3,[[\"action-1\",\"2026-10-20T22:13:26.684Z\",\"load_assembly\",\"Montaje reiniciado: Mesa auxiliar modular. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:13:26.697Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"action-3\",\"2026-10-20T22:13:26.704Z\",\"get_assembly_state\",\"0 de 8 pasos confirmados por vos. No hay piezas declaradas faltantes.\",\"info\",3]]]'\n",
+  "total": 1024,
+  "durationMs": 3185,
+  "scope": "All part/tool-shortage subsets for both original assemblies at three explicitly simulated prior-progress profiles. Not every possible progress sequence, no LLM and no physical verification.",
+  "rawArchive": "matrix-development-failed.json.gz",
+  "rawSha256": "80ddcd582827579e380daf83c9654f790a2bcb50a802a16cd905745d9767e0dd"
+}

@@ -1,0 +1,240 @@
+{
+  "mocked": false,
+  "transport": "Real MCP Streamable HTTP",
+  "requests": [
+    {
+      "name": "restore_progress",
+      "arguments": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[],\"missing\":[],\"missingTools\":[],\"selectedPart\":null,\"selectedStep\":1,\"revision\":0,\"history\":[]}"
+      }
+    },
+    {
+      "name": "restore_progress",
+      "arguments": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2,3,4,5,6],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"F1\",\"selectedStep\":6,\"revision\":6,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-20T22:07:36.784Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-20T22:07:36.785Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2},{\"id\":\"action-3\",\"at\":\"2026-10-20T22:07:36.785Z\",\"tool\":\"complete_step\",\"message\":\"Paso 3 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":3},{\"id\":\"action-4\",\"at\":\"2026-10-20T22:07:36.785Z\",\"tool\":\"complete_step\",\"message\":\"Paso 4 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":4},{\"id\":\"action-5\",\"at\":\"2026-10-20T22:07:36.785Z\",\"tool\":\"complete_step\",\"message\":\"Paso 5 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":5},{\"id\":\"action-6\",\"at\":\"2026-10-20T22:07:36.786Z\",\"tool\":\"complete_step\",\"message\":\"Paso 6 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":6}]}"
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "C1"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "F1"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "compare_scenarios",
+      "arguments": {
+        "scenarios": [
+          {
+            "id": "A",
+            "changes": {
+              "missingParts": [
+                "C1"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          },
+          {
+            "id": "B",
+            "changes": {
+              "missingParts": [
+                "F1"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "explain_recovery",
+      "arguments": {
+        "stepId": 7,
+        "changes": {
+          "missingParts": [
+            "F1"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "C1"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "apply_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "C1"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2,3,4,5,6],[],[],\"F1\",6,2,[[\"action-1\",\"2026-10-20T22:07:35.521Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-20T22:07:36.789Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "C1"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "apply_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "C1"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2,4,6],[\"C1\"],[],\"F1\",6,3,[[\"action-1\",\"2026-10-20T22:07:35.521Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-20T22:07:36.789Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-20T22:07:39.833Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: C1; unavailable tools: none; digital confirmations invalidated: 3, 5. Physical work was not verified or undone.\",\"success\",3]]]",
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "complete_step",
+      "arguments": {
+        "stepId": 3,
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "complete_step",
+      "arguments": {
+        "stepId": 5,
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "complete_step",
+      "arguments": {
+        "stepId": 7,
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "complete_step",
+      "arguments": {
+        "stepId": 8,
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    }
+  ]
+}

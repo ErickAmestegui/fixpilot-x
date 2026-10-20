@@ -10,3 +10,10 @@ demo-final-results/
 .env*
 !.env.example
 demo-rescue-results/
+.mcp-app/
+demo-challenge-results/
+demo-ai-results/
+.stable-rescue/
+site-release/
+docs/challenge-evidence/matrix.json
+docs/challenge-evidence/matrix-development-failed.json

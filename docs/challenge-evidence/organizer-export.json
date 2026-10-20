@@ -1,0 +1,543 @@
+{
+  "name": "FixPilot X — The Rescue Challenge",
+  "version": 1,
+  "seed": {
+    "assemblyId": "organizer",
+    "completed": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "missingParts": [
+      "O5"
+    ],
+    "missingTools": []
+  },
+  "draft": {
+    "missingParts": [],
+    "recoveredParts": [],
+    "unavailableTools": [],
+    "recoveredTools": [],
+    "undoSteps": []
+  },
+  "state": {
+    "version": 1,
+    "assemblyId": "organizer",
+    "completed": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "missing": [],
+    "missingTools": [],
+    "selectedPart": "O6",
+    "selectedStep": 5,
+    "revision": 3,
+    "history": [
+      {
+        "id": "action-1",
+        "at": "2026-10-20T22:08:00.337Z",
+        "tool": "load_assembly",
+        "message": "Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.",
+        "kind": "success",
+        "revision": 1
+      },
+      {
+        "id": "action-2",
+        "at": "2026-10-20T22:08:00.365Z",
+        "tool": "restore_progress",
+        "message": "Progreso validado e importado. Plan recalculado.",
+        "kind": "success",
+        "revision": 2
+      },
+      {
+        "id": "rescue-3",
+        "at": "2026-10-20T22:08:01.388Z",
+        "tool": "apply_scenario",
+        "message": "Scenario applied after explicit approval. Missing parts: none; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+        "kind": "success",
+        "revision": 3
+      }
+    ]
+  },
+  "transport": "MCP Streamable HTTP · 2025-11-25",
+  "receipts": [
+    {
+      "id": 1,
+      "tool": "load_assembly",
+      "args": {
+        "assemblyId": "organizer"
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 32,
+      "kind": "success",
+      "before": "[1,\"table\",[],[],[],null,1,0,[]]",
+      "after": "[1,\"organizer\",[],[],[],null,1,1,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1]]]"
+    },
+    {
+      "id": 2,
+      "tool": "restore_progress",
+      "args": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"organizer\",\"completed\":[1,2,3,5],\"missing\":[\"O5\"],\"missingTools\":[],\"selectedPart\":\"O6\",\"selectedStep\":5,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-20T22:07:59.516Z\",\"tool\":\"load_assembly\",\"message\":\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-20T22:07:59.517Z\",\"tool\":\"restore_progress\",\"message\":\"Progreso validado e importado. Plan recalculado.\",\"kind\":\"success\",\"revision\":2}]}"
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 17,
+      "kind": "success",
+      "before": "[1,\"organizer\",[],[],[],null,1,1,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1]]]",
+      "after": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "plan": [
+          {
+            "id": 1,
+            "title": "Preparar la base",
+            "description": "Apoyá O1 sobre una superficie protegida e identificá los orificios de los marcos.",
+            "parts": [
+              "O1"
+            ],
+            "tools": [],
+            "dependencies": [],
+            "safety": "Trabajá sobre una mesa plana y despejada. Es un diseño demostrativo original.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 2,
+            "title": "Fijar los marcos laterales",
+            "description": "Alineá O2 y O3 con O1 y fijalos con los conectores H1 y la llave Allen.",
+            "parts": [
+              "O1",
+              "O2",
+              "O3",
+              "H1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              1
+            ],
+            "safety": "Sostené cada marco durante la unión. Mantené el conjunto apoyado y sin carga.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 3,
+            "title": "Instalar la repisa superior",
+            "description": "Alineá O4 entre los marcos y fijala con sus conectores H1 y la llave Allen.",
+            "parts": [
+              "O4",
+              "H1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              2
+            ],
+            "safety": "Sujetá la repisa mientras ajustás. No aprietes en exceso ni coloques objetos todavía.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 4,
+            "title": "Fijar la barra posterior",
+            "description": "Ubicá O5 detrás del conjunto, bajo la repisa, y fijala con los tornillos H1 y el destornillador.",
+            "parts": [
+              "O5",
+              "H1"
+            ],
+            "tools": [
+              "screwdriver"
+            ],
+            "dependencies": [
+              3
+            ],
+            "safety": "La barra pertenece al diseño completo. No la omitas ni uses fijaciones improvisadas.",
+            "status": "blocked",
+            "reasons": [
+              "Falta la pieza O5."
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Preparar los protectores",
+            "description": "Separá las cuatro almohadillas O6 y revisá sus adhesivos. Dejalas listas sin mover el conjunto incompleto.",
+            "parts": [
+              "O6"
+            ],
+            "tools": [],
+            "dependencies": [
+              1
+            ],
+            "safety": "Prepará los protectores por separado y conservá sus películas adhesivas hasta instalarlos.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 6,
+            "title": "Colocar fieltros y revisar",
+            "description": "Con el conjunto completo apoyado de forma segura, colocá O6 bajo O1. Ponelo sobre el escritorio y revisá sus uniones y apoyo.",
+            "parts": [
+              "O1",
+              "O6"
+            ],
+            "tools": [],
+            "dependencies": [
+              4,
+              5
+            ],
+            "safety": "La app registra tu revisión, no verifica resistencia física. No te subas ni lo uses como asiento; no cargues sin capacidad validada.",
+            "status": "blocked",
+            "reasons": [
+              "Paso 4 bloqueado: Falta la pieza O5."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "O5"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 96,
+      "kind": "info",
+      "before": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "organizer",
+          "completed": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "missing": [
+            "O5"
+          ],
+          "missingTools": [],
+          "selectedPart": "O6",
+          "selectedStep": 5,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-20T22:08:00.337Z",
+              "tool": "load_assembly",
+              "message": "Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-20T22:08:00.365Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "O5"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "organizer",
+          "completed": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "O6",
+          "selectedStep": 5,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-20T22:08:00.337Z",
+              "tool": "load_assembly",
+              "message": "Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-20T22:08:00.365Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "baseToken": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "directAffected": [
+          4
+        ],
+        "indirectAffected": [
+          6
+        ],
+        "available": [
+          4
+        ],
+        "blocked": [],
+        "invalidatedCompleted": [],
+        "diff": [
+          {
+            "stepId": 4,
+            "before": "blocked",
+            "after": "available"
+          },
+          {
+            "stepId": 6,
+            "before": "blocked",
+            "after": "pending"
+          }
+        ],
+        "unchanged": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "causes": [
+          {
+            "stepId": 4,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              4
+            ],
+            "chains": [
+              [
+                6,
+                4
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [],
+          "prerequisiteSteps": [
+            4,
+            6
+          ],
+          "availableSteps": [
+            4
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 4,
+      "tool": "apply_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "O5"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "confirmed": true
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 17,
+      "kind": "success",
+      "before": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"organizer\",[1,2,3,5],[],[],\"O6\",5,3,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-20T22:08:01.388Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: none; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "data": {
+        "applied": true,
+        "preview": {
+          "base": {
+            "version": 1,
+            "assemblyId": "organizer",
+            "completed": [
+              1,
+              2,
+              3,
+              5
+            ],
+            "missing": [
+              "O5"
+            ],
+            "missingTools": [],
+            "selectedPart": "O6",
+            "selectedStep": 5,
+            "revision": 2,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-20T22:08:00.337Z",
+                "tool": "load_assembly",
+                "message": "Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-20T22:08:00.365Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              }
+            ]
+          },
+          "changes": {
+            "missingParts": [],
+            "recoveredParts": [
+              "O5"
+            ],
+            "unavailableTools": [],
+            "recoveredTools": [],
+            "undoSteps": []
+          },
+          "hypothetical": {
+            "version": 1,
+            "assemblyId": "organizer",
+            "completed": [
+              1,
+              2,
+              3,
+              5
+            ],
+            "missing": [],
+            "missingTools": [],
+            "selectedPart": "O6",
+            "selectedStep": 5,
+            "revision": 2,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-20T22:08:00.337Z",
+                "tool": "load_assembly",
+                "message": "Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-20T22:08:00.365Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              }
+            ]
+          },
+          "baseToken": "[1,\"organizer\",[1,2,3,5],[\"O5\"],[],\"O6\",5,2,[[\"action-1\",\"2026-10-20T22:08:00.337Z\",\"load_assembly\",\"Montaje reiniciado: Organizador de escritorio. Prepará la base para comenzar.\",\"success\",1],[\"action-2\",\"2026-10-20T22:08:00.365Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+          "directAffected": [
+            4
+          ],
+          "indirectAffected": [
+            6
+          ],
+          "available": [
+            4
+          ],
+          "blocked": [],
+          "invalidatedCompleted": [],
+          "diff": [
+            {
+              "stepId": 4,
+              "before": "blocked",
+              "after": "available"
+            },
+            {
+              "stepId": 6,
+              "before": "blocked",
+              "after": "pending"
+            }
+          ],
+          "unchanged": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "causes": [
+            {
+              "stepId": 4,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 6,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                4
+              ],
+              "chains": [
+                [
+                  6,
+                  4
+                ]
+              ]
+            }
+          ],
+          "recovery": {
+            "resources": [],
+            "prerequisiteSteps": [
+              4,
+              6
+            ],
+            "availableSteps": [
+              4
+            ],
+            "blockedSteps": [],
+            "requiresHumanVerification": true
+          }
+        }
+      }
+    }
+  ],
+  "disclosure": "Starting progress is simulated. All scenario results use the original engine. Physical work is not verified. Alexa+ is simulated."
+}

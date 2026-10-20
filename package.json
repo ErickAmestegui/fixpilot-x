@@ -5,17 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run build:mcp-app",
+    "build:mcp-app": "vite build --config vite.mcp-app.config.ts",
+    "challenge:replay": "tsx scripts/replay-challenge.ts",
+    "test:challenge:matrix": "tsx scripts/verify-rescue-challenge.ts",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "mcp": "tsx server/mcp.ts",
     "test:e2e": "playwright test",
     "demo:record": "playwright test -c demo.config.ts",
     "demo:final": "playwright test -c demo.final.config.ts",
-    "demo:rescue": "playwright test -c demo.rescue.config.ts"
+    "demo:rescue": "playwright test -c demo.rescue.config.ts",
+    "demo:challenge": "playwright test -c demo.challenge.config.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "@modelcontextprotocol/sdk": "1.32.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "lucide-react": "^0.468.0",
@@ -36,6 +41,7 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "^6.4.0",
-    "vitest": "^3.2.4"
+    "vite-plugin-singlefile": "2.3.4",
+    "vitest": "4.1.11"
   }
 }

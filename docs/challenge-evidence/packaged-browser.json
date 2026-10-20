@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-20T22:29:50.667Z",
+  "result": "PASS",
+  "mode": "Packaged stable root + Challenge subpath",
+  "stableProgressPreserved": true,
+  "challengeRouteWithoutQueryWorks": true,
+  "browserOnlyModeHonest": true,
+  "mcpNetworkCalls": 0,
+  "pageErrors": [],
+  "stablePublishedClientToNewMcpServer": "PASS: preserved stable 1.x client connected and executed a real hypothetical preview"
+}

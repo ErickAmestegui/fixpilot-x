@@ -1,5 +1,9 @@
 # FixPilot X
 
+## The Rescue Challenge branch
+
+This branch adds an isolated **Blind Rescue Challenge** and an official-SDK MCP App to stable Rescue Intelligence. Judges choose valid catalog shortages, recoveries and prior progress; the original engine computes every consequence. No LLM is used. [Run, verify and inspect the boundaries](docs/RESCUE_CHALLENGE.md) · [Entrant-reviewed Devpost additions](docs/CHALLENGE_DEVPOST_UPDATE.md). The stable public root, 22 tools, separate Scenario Lab contribution and frozen Qwen checkpoint are preserved.
+
 **The manual that adapts to you.** A functional assembly copilot with an original interactive 3D table, a dependency planner, deterministic conversational commands, and an optional genuine MCP server.
 
 Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience is simulated.** The planner, inventory, 3D interactions, persistence, and MCP tools run real code. There is no connection to an Alexa device, private Amazon SDK, paid AI API, or Amazon Shopping.

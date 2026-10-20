@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-20T22:14:35.921Z",
+  "mocked": false,
+  "protocol": "2025-11-25",
+  "toolCount": 22,
+  "resource": {
+    "uri": "ui://fixpilot-x/rescue-card.html",
+    "mimeType": "text/html;profile=mcp-app",
+    "bytes": 1315368
+  },
+  "result": "PASS",
+  "total": 4608,
+  "durationMs": 12743,
+  "scope": "All part/tool-shortage subsets for both original assemblies at three explicitly simulated prior-progress profiles. Not every possible progress sequence, no LLM and no physical verification.",
+  "rawArchive": "matrix.json.gz",
+  "rawSha256": "d08ae0be7c7a5a580afa273064118d1bec7e450cf9d85af5717a2c169dad543f"
+}

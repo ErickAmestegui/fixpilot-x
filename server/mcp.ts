@@ -7,6 +7,9 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
+import {readFile} from 'node:fs/promises';
+import {registerAppResource,registerAppTool,RESOURCE_MIME_TYPE} from '@modelcontextprotocol/ext-apps/server';
+import {RESCUE_APP_URI,RESCUE_APP_TOOLS} from '../src/mcp-app-shared.js';
 import { createInitialState } from '../src/engine.js';
 import { executeTool as execute } from '../src/rescue-tools.js';
 
@@ -49,12 +52,14 @@ export const TOOL_DEFINITIONS: Record<string, Definition> = {
 function makeServer() {
   let state = createInitialState();
   const server = new McpServer({ name: 'fixpilot-x', version: '1.0.0' });
+  registerAppResource(server,'FixPilot X Rescue Challenge',RESCUE_APP_URI,{mimeType:RESOURCE_MIME_TYPE},async()=>({contents:[{uri:RESCUE_APP_URI,mimeType:RESOURCE_MIME_TYPE,text:await readFile(new URL('../.mcp-app/rescue-card.html',import.meta.url),'utf8'),_meta:{ui:{csp:{connectDomains:[],resourceDomains:[]}}}}]}));
   for (const [name, definition] of Object.entries(TOOL_DEFINITIONS)) {
-    server.registerTool(name, {
+    const config={
       description: definition.description,
       inputSchema: definition.inputSchema,
       annotations: { readOnlyHint: definition.readOnly ?? false, openWorldHint: false },
-    }, async (args) => {
+    };
+    const handler=async (args:Record<string,unknown>) => {
       try {
         const result = execute(state, name as Parameters<typeof execute>[1], args);
         state = result.state;
@@ -67,7 +72,9 @@ function makeServer() {
         const message = error instanceof Error ? error.message : 'Tool execution failed.';
         return { content: [{ type: 'text' as const, text: message }], structuredContent: { state, message, kind: 'error' }, isError: true };
       }
-    });
+    };
+    if((RESCUE_APP_TOOLS as readonly string[]).includes(name))registerAppTool(server,name,{...config,_meta:{ui:{resourceUri:RESCUE_APP_URI}}},handler);
+    else server.registerTool(name,config,handler);
   }
   return server;
 }

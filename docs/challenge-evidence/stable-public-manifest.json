@@ -1,0 +1,22 @@
+{
+  "capturedAt": "2026-10-20T22:23:10.943Z",
+  "base": "https://erickamestegui.github.io/fixpilot-x/",
+  "stableCheckpoint": "ea8be24c0c77525b8bed09f8641a4f93ebb6cce6",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 561,
+      "sha256": "ffdc9224ff0b2eeea30481f1076c85607c60304867917d096ab603a2b4f46f7e"
+    },
+    {
+      "path": "assets/index-CP5fXlIn.js",
+      "bytes": 1178544,
+      "sha256": "84e6099df1706bccbd0062fd2cfdbeca0b59007fb214e51f5f0e11960ecfb5f4"
+    },
+    {
+      "path": "assets/index-Cr1Qau7p.css",
+      "bytes": 46875,
+      "sha256": "5851b9e2ef72922a714637078deeec3e1259e0923351843d30b9d596ad5cf2e7"
+    }
+  ]
+}
