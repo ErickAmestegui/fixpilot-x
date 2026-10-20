@@ -7,5 +7,5 @@ const children=services.map(([name,args])=>{const child=spawn(process.execPath,a
 function stop(code=0){if(stopping)return;stopping=true;for(const child of children)child.kill();setTimeout(()=>process.exit(code),400).unref();}
 process.on('SIGINT',()=>stop());process.on('SIGTERM',()=>stop());
 console.log('FixPilot real AI copilot: http://127.0.0.1:5173/?ai');
-console.log('Ollama prerequisite: ollama pull qwen3:8b (one-time download). Keep Ollama running.');
+console.log('Ollama prerequisite: ollama pull qwen2.5:7b (one-time download). Keep Ollama running.');
 console.log('Connect the local model in the UI. MCP is optional; connect it to inspect real HTTP tool calls. Stop this launcher with Ctrl+C.');

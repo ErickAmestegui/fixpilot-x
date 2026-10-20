@@ -1,0 +1,348 @@
+{
+  "at": "2026-10-20T09:07:23.145Z",
+  "mocked": false,
+  "source": "Observed actual browser responses; captions only, no state injection",
+  "durationMs": 54239,
+  "replies": [
+    "Gracias por compartir la información, ya están listos los hallazgos del motor para revisar.",
+    "Gracias por tu paciencia, los resultados se han mostrado.",
+    "Gracias por tu paciencia, los cambios han sido cancelados según solicitaste.",
+    "Got it, the human review preparation is ready for your review."
+  ],
+  "observed": [
+    {
+      "kind": "real MCP",
+      "method": "initialize",
+      "protocol": "2025-11-25"
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/list",
+      "tools": 22
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "load_assembly",
+      "completed": [],
+      "missing": []
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "restore_progress",
+      "completed": [],
+      "missing": []
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "complete_step",
+      "completed": [
+        1
+      ],
+      "missing": []
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "complete_step",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": []
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [],
+      "hypotheticalTools": [],
+      "available": [
+        3,
+        4,
+        6
+      ],
+      "blocked": []
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "plan",
+      "content": "{\"changes\":{\"missingParts\":[\"B7\"]},\"action\":\"preview_scenario\",\"catalogRequested\":false,\"language\":\"es\"}",
+      "durationMs": 6488,
+      "tokens": 33,
+      "nativeToolCalls": [
+        {
+          "id": "call_f7i9p4zp",
+          "function": {
+            "index": 0,
+            "name": "preview_scenario",
+            "arguments": {
+              "reports": [
+                {
+                  "condition": "missing",
+                  "resourceId": "B7"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "modelText": ""
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [],
+      "available": [
+        3,
+        6
+      ],
+      "blocked": [
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "answer",
+      "content": "{\"reply\":\"Gracias por compartir la información, ya están listos los hallazgos del motor para revisar.\",\"partIds\":[],\"stepIds\":[],\"actualChanged\":false}",
+      "durationMs": 1966,
+      "tokens": 22,
+      "modelText": "Gracias por compartir la información, ya están listos los hallazgos del motor para revisar."
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [],
+      "available": [
+        3,
+        6
+      ],
+      "blocked": [
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "plan",
+      "content": "{\"changes\":{\"unavailableTools\":[\"hex\"]},\"action\":\"preview_scenario\",\"catalogRequested\":true,\"language\":\"es\",\"replyIntent\":\"catalog\"}",
+      "durationMs": 6001,
+      "tokens": 32,
+      "nativeToolCalls": [
+        {
+          "id": "call_nvz0o06s",
+          "function": {
+            "index": 0,
+            "name": "preview_scenario",
+            "arguments": {
+              "reports": [
+                {
+                  "condition": "missing",
+                  "resourceId": "hex"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "modelText": ""
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [
+        "hex"
+      ],
+      "available": [
+        6
+      ],
+      "blocked": [
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "answer",
+      "content": "{\"reply\":\"Gracias por tu paciencia, los resultados se han mostrado.\",\"partIds\":[],\"stepIds\":[],\"actualChanged\":false}",
+      "durationMs": 1398,
+      "tokens": 16,
+      "modelText": "Gracias por tu paciencia, los resultados se han mostrado."
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [
+        "hex"
+      ],
+      "available": [
+        6
+      ],
+      "blocked": [
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "plan",
+      "content": "{\"language\":\"es\",\"replyIntent\":\"refuse\",\"action\":\"undo_hypothesis\",\"catalogRequested\":false}",
+      "durationMs": 3178,
+      "tokens": 30,
+      "modelText": "{\n  \"action\": \"undo_hypothesis\",\n  \"language\": \"es\",\n  \"replyIntent\": \"refuse\"\n}"
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [],
+      "available": [
+        3,
+        6
+      ],
+      "blocked": [
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "answer",
+      "content": "{\"reply\":\"Gracias por tu paciencia, los cambios han sido cancelados según solicitaste.\",\"partIds\":[],\"stepIds\":[],\"actualChanged\":false}",
+      "durationMs": 1697,
+      "tokens": 19,
+      "modelText": "Gracias por tu paciencia, los cambios han sido cancelados según solicitaste."
+    },
+    {
+      "kind": "real MCP",
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "hypotheticalMissing": [
+        "B7"
+      ],
+      "hypotheticalTools": [],
+      "available": [
+        3,
+        6
+      ],
+      "blocked": [
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "plan",
+      "content": "{\"stepId\":3,\"reviewAction\":\"complete\",\"action\":\"review_step\",\"catalogRequested\":false,\"language\":\"en\"}",
+      "durationMs": 5444,
+      "tokens": 28,
+      "nativeToolCalls": [
+        {
+          "id": "call_z516omnn",
+          "function": {
+            "index": 0,
+            "name": "review_step",
+            "arguments": {
+              "stepId": 3,
+              "reviewAction": "complete"
+            }
+          }
+        }
+      ],
+      "modelText": ""
+    },
+    {
+      "kind": "real model",
+      "model": "qwen2.5:7b",
+      "stage": "answer",
+      "content": "{\"reply\":\"Got it, the human review preparation is ready for your review.\",\"partIds\":[],\"stepIds\":[],\"actualChanged\":false}",
+      "durationMs": 1251,
+      "tokens": 14,
+      "modelText": "Got it, the human review preparation is ready for your review."
+    }
+  ],
+  "video": {
+    "durationSeconds": 54.84,
+    "sha256": "5E25E8FD6F07572EE560E9C45B5B21F5992C6767F6C0D98FC587302B20E84D35",
+    "file": "fixpilot-ai-demo.webm",
+    "publiclyUploaded": false
+  }
+}

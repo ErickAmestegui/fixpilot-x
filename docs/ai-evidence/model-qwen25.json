@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-20T07:11:18.625Z",
+  "model": "qwen2.5:7b",
+  "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+  "size": 4683087332,
+  "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+      "qwen2"
+    ],
+    "parameter_size": "7.6B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 3584,
+    "runner": "ggml"
+  },
+  "capabilities": [
+    "completion",
+    "tools"
+  ],
+  "metadata": {
+    "general.architecture": "qwen2",
+    "general.base_model.0.name": "Qwen2.5 7B",
+    "general.base_model.0.organization": "Qwen",
+    "general.base_model.0.repo_url": "https://huggingface.co/Qwen/Qwen2.5-7B",
+    "general.base_model.count": 1,
+    "general.basename": "Qwen2.5",
+    "general.file_type": 15,
+    "general.finetune": "Instruct",
+    "general.languages": [
+      "en"
+    ],
+    "general.license": "apache-2.0",
+    "general.license.link": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/LICENSE",
+    "general.parameter_count": 7615616512,
+    "general.quantization_version": 2,
+    "general.size_label": "7B",
+    "general.type": "model"
+  },
+  "inference": {
+    "thinking": "not used; classic instruct model",
+    "temperature": 0.2,
+    "top_p": 0.8,
+    "top_k": 20,
+    "context": 8192,
+    "maxGeneratedTokens": 700
+  },
+  "runtime": "Ollama 0.40.6",
+  "hardware": "16 GB RAM, RTX 3050 Laptop 6 GB VRAM",
+  "installation": "Official registry manifest and every layer SHA256 checked; normal Ollama pull finalized registration"
+}

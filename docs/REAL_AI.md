@@ -1,65 +1,80 @@
 # Real local AI copilot
 
-The upgrade is isolated on `real-ai-copilot`. Rescue Intelligence remains tagged `rescue-ready-2026-10-19`; V1, V2, the original 22 MCP tools and renderer are preserved.
+This upgrade lives on `real-ai-copilot`. Rescue Intelligence remains tagged `rescue-ready-2026-10-19` (`ea8be24`). The original assemblies, renderer, dependency engine and 22 MCP tools are preserved. Read [current evidence](REAL_AI_EVIDENCE.md) before making quality or hosting claims.
 
-## Run the actual local LLM
+## Reproduce local inference
 
-Requires Node.js 22+, npm, Ollama and a compatible machine. Our evaluation machine has 16 GB system RAM and an NVIDIA RTX 3050 Laptop with 6 GB VRAM. Model downloads require internet, disk space and time; inference uses local hardware, not a paid API.
+Requirements: Node.js 22+, npm, Ollama, a modern WebGL browser, and enough RAM/disk for the model. Evaluated on Windows, 16 GB RAM, i5-13420H and RTX 3050 Laptop 6 GB VRAM, with Ollama 0.40.6. Other hardware may be substantially slower.
 
 ```sh
 git clone --branch real-ai-copilot https://github.com/ErickAmestegui/fixpilot-x.git
 cd fixpilot-x
 npm ci
-ollama pull qwen3:8b
+ollama pull qwen2.5:7b
 npm run dev:copilot
 ```
 
-Open `http://127.0.0.1:5173/?ai`. Choose **Connect Ollama · Qwen3 8B**. If Ollama was installed as a portable CLI, start `ollama serve` separately first. The one-command launcher starts only the browser UI, MCP and the local AI adapter; it does not install software, download weights or enable billing. The equivalent separate commands are `npm run dev`, `npm run mcp` and `npm run ai`.
+Keep Ollama running; a portable installation may require `ollama serve` in another terminal. Open `http://127.0.0.1:5173/?ai`. Choose **Connect local MCP**, then **Connect Ollama · Qwen2.5 7B**. The launcher starts Vite (5173), MCP (3101) and the AI adapter (3103); it does not install Ollama, download weights or start billing. Separate equivalents are `npm run dev`, `npm run mcp` and `npm run ai`.
 
-The selected candidate is **qwen3:8b**, being evaluated in both native reasoning and non-thinking configurations, with an 8192-token context and bounded output. Consult the current evidence report for its actual release decision, digest and measured behavior. In this environment the generic `qwen3:4b` resolved to **Qwen3-4B-Thinking-2507**, a thinking-only variant. Disabling thinking for that variant was a configuration mistake. The separate `qwen3:4b-instruct` candidate also failed real conversational quality checks. These attempts are not hidden or counted as passes. No silent model fallback is used.
+Selected weights: **Qwen2.5 7B Instruct, qwen2.5:7b, 7.6B, Q4_K_M**, Apache 2.0. Observed digest: `845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e`; download size 4,683,087,332 bytes. A mutable model tag may change: compare your digest with [recorded identity](ai-evidence/model-qwen25.json). Settings: temperature 0.2, top_p 0.8, top_k 20, min_p 0, context 8192, output limit 700 tokens, keep_alive 5m. No thinking parameter or silent model fallback is used.
 
-In the workbench, **Connect local MCP** initializes the genuine 22-tool Streamable HTTP session and transfers the current validated browser snapshot. The AI then queries through that session. Without MCP connected, the same tools execute directly in the browser; each receipt identifies its transport. The AI adapter's `/chat` endpoint is an ordinary local HTTP adapter, **not MCP**. The actual MCP endpoint remains `/mcp` on port 3101.
+## What is actually generative
 
-## Rejected browser inference candidate
+A real local model interprets the current Spanish/English message, selects an action, extracts structured arguments, and generates conversational replies or clarification. There is no lookup table of conversational answers or natural-language phrase router in this AI path.
 
-WebLLM with `Qwen3-1.7B-q4f16_1-MLC` loaded and generated actual responses on this machine's normal WebGPU adapter. It added unmentioned shortages and confused pending work with ready work in our real conversation. It was rejected and removed from the release UI and dependencies. Downloaded weights or a successful initialization are not conversational quality evidence. The public static Rescue preview does not run a language model. Use localhost for real local inference; no public inference endpoint is exposed.
+**Critical assembly findings are rendered directly from verified engine data, separately labeled, and are not model-authored explanations.** Earlier models invented shortages or misread step readiness when paraphrasing tool results. The final design gives the model intent/dialogue work and gives the engine authority over parts, dependencies, readiness and recorded progress. Model acknowledgements do not restate those facts. This deliberately limits free-form technical explanation; it does not claim arbitrary natural-language reasoning is reliable.
 
-## Architecture and approval boundary
+```mermaid
+flowchart LR
+  U[User message] --> S[Bounded project session]
+  S --> L[Local model: intent and arguments]
+  L --> V[Catalog and capability validation]
+  V --> T[Three read-only tools]
+  T --> M[Real MCP or labeled browser dispatcher]
+  M --> E[Original engine]
+  E --> F[Verified findings and existing 3D viewer]
+  L --> D[Generated dialogue or clarification]
+  V --> H[Prepare unchecked human review]
+  H -->|Explicit human approval only| W[Original validated mutation]
+```
 
-1. A bounded session reads the current assembly through the real `preview_scenario` dispatcher/MCP path, which returns the exact unchanged state.
-2. A genuine local model generates a structured routing decision. The decoder's schema uses the current catalog's valid part IDs, tool IDs and step numbers; parts and tools have separate enums.
-3. The controller validates parameters, hypothetical state and actual base token. A proposed resource must be grounded in a catalog ID/name/alias in the current request, recent user context, current shortage or explicit viewer selection. Unusual resource paraphrases may need clarification rather than guessing. This is argument validation, not the deterministic command interpreter. The controller can invoke only `preview_scenario`, `compare_scenarios` and `explain_recovery`. It cannot call any inventory, progress, restore, load or apply mutator.
-4. Validated hypothetical effects update the existing Three.js viewer and scenario controls. Comparisons and recovery use the existing planner. A request to record/undo work can only open the existing human dialog.
-5. Actual returned facts feed the model's natural-language answer. Reference/progress validation and one bounded model repair attempt reject malformed or unsupported claims. This does not make arbitrary natural language provably correct; the exact engine result and human review remain authoritative.
-6. Applying a scenario or confirming a physical report is still a separate explicit user action, validated by the original engine. Text, model output and imported document instructions cannot check the approval box.
+## MCP and controller boundaries
 
-Conversation memory is in browser-session memory, separate per project: at most 12 displayed turns, two compact prior-user/tool summaries in the routing prompt, and six draft hypotheses. Context includes the selected viewer part/step. Canceling the last hypothetical pops only that draft; it cannot erase actual progress. Reloading clears conversational memory; original per-project assembly persistence remains unchanged. No cross-device/cloud memory is claimed.
+After connection the SDK initializes a real Streamable HTTP session, discovers 22 tools and transfers the current validated browser snapshot. The model controller can call only `preview_scenario`, `compare_scenarios` and `explain_recovery`. Each turn also performs a separately labeled initial context read. Without MCP connected, the same operations use the browser dispatcher and receipts explicitly say `local`.
 
-All catalog, tool and document strings are untrusted data in prompts. A malicious instruction in those strings cannot expand the controller's read-only capability set. Replies are displayed as text. The local adapter accepts only loopback hosts/origins, fixes the upstream to Ollama on loopback, constrains request sizes and runs one generation at a time. There are no arbitrary provider URLs or frontend credentials.
+The ordinary loopback `/chat` adapter is **not MCP**. The real MCP endpoint is `http://127.0.0.1:3101/mcp`, negotiating protocol `2025-11-25` in the observed run.
 
-## Honest failure modes
+Every tool result must exactly match the original engine's calculation; mismatches are rejected, not silently replaced. Valid IDs, grounded resource references, independent exact comparison quotes and unchanged actual state are checked. Bounded syntax normalization and catalog quote repairs are recorded alongside raw model output. Unavailable work requests are redirected to a real recovery query. Invalid or ambiguous proposals request clarification. These safeguards improve bounded workflows; they do not guarantee arbitrary intent recognition.
 
-No model is enabled by default. A failed initialization/generation is displayed as a failure, not as a canned AI reply. The deterministic command fallback is explicitly labeled. The UI displays the selected provider/model, actual tool receipts and whether requests used MCP. AI output may still be mistaken; catalog controls, engine validation and human review remain the authority. Software cannot inspect physical work or certify strength/safety. Only two original educational assemblies are supported.
+The model never receives a mutation capability. It can only prepare an unchecked human review dialog. Inventory/progress updates remain original human actions with engine validation. Imported documents and model text cannot approve work. The software records user reports; it cannot inspect furniture or certify physical safety.
 
-## Verification
+## Memory and failure behavior
+
+Memory is separate per project and browser tab: at most 12 turns, two compact recent user/tool summaries in argument context, and six draft hypotheses. The intent router sees only the current message and project ID. New hypothesis edits merge with the prior draft; canceling only the latest edit restores the previous draft. Reload clears conversation memory; original project persistence is unchanged. No cloud or cross-device memory is claimed.
+
+The UI shows the actual provider/model, generated text, timestamped engine findings, real tool receipts and actual versus hypothetical views. Model unavailable/busy/invalid replies produce an error, not a fake AI bubble. The deterministic command fallback is explicitly labeled. Old findings are snapshots at their turn, not live progress claims.
+
+The adapter fixes its upstream to loopback Ollama, accepts only loopback hosts/origins, requires a custom client header, bounds request sizes and runs one generation at a time. No provider credentials or arbitrary upstream URL are accepted. This is a local development service, not a hardened public inference deployment.
+
+## Checks and recording
 
 ```sh
 npm test
 npm run build
-# Leave the dev app running, then:
 npm run test:e2e
-# Opt-in actual Ollama + actual MCP (both services must be running):
+# Opt-in: actual Ollama and MCP must already be running
 npm run test:ai:live
+npm run demo:ai
 ```
 
-The 27 enforcement/adapter tests use explicitly scripted provider doubles, and the two AI UI boundary tests mock the local adapter. They are not real-model evidence. `test:ai:live` never substitutes a mock: it records actual model outputs, actual MCP receipts, state invariance and exact scenario expectations. Its initial confirmations belong to a documented synthetic fixture; they are not model-approved or verified physical work. Real transcripts, performance, failures and release status belong in a separate current evidence report. Automated scenario checks alone cannot approve natural-language factual accuracy; replies must also be reviewed against the engine.
+The 32 new capability/protocol tests use explicit doubles; the two AI UI boundary tests mock the adapter. They are not real-model proof. The live evaluator never substitutes a mock and records actual model output, genuine MCP receipts, state invariance and scenario expectations. Its initial confirmations belong to a synthetic fixture. The UI recording uses actual services and explicit illustrative human reports, without response mocking or state injection. See the evidence report for completed results and failures.
 
-## Provider choice and cost
+## Costs, rejected candidates and limits
 
-Ollama runs downloaded open weights on local hardware. Its inference path uses no paid API or hosting; hardware, electricity, storage and connectivity are not magically free. No cloud account or billing project was enabled.
+No paid API, cloud account or billing project was enabled. Actual inference used local downloaded weights with zero API charges. Existing hardware, electricity, disk space, connectivity and model-download time are still required. The public static Rescue preview does **not** run an LLM or a hosted MCP service. Real AI requires this local setup; no always-on free public inference is promised.
 
-Gemini was researched but is not connected: a real project-specific free quota, authorized key and no-billing status were not verified. We do not assume a free-tier promise guarantees access or US$0. Google documents that active limits vary by project and are not guaranteed: https://ai.google.dev/gemini-api/docs/rate-limits . No Gemini key is requested or embedded.
+Qwen3 4B/8B configurations and a WebLLM Qwen3-1.7B candidate generated real outputs but failed quality checks during development. WebLLM was removed from the UI/dependencies. The generic qwen3:4b tag initially resolved to a thinking-only variant; disabling thinking there was a configuration mistake. Prompts/orchestration evolved, so these attempts are not a controlled ranking of models. Gemini was not connected because actual authorized quota and no-billing access were not verified.
 
-Primary references: https://ollama.com/library/qwen3/tags , https://docs.ollama.com/api/chat , https://huggingface.co/Qwen/Qwen3-4B , https://webllm.mlc.ai/docs/ . Qwen advises against greedy decoding for its reasoning model and recommends temperature/top-p/top-k sampling for non-thinking use. Model runtimes/weights retain their own licenses; the app's MIT license is unchanged.
+Only the two existing educational assemblies are supported. Alexa+ remains simulated: no native Echo connection, private Amazon SDK, physical inspection or arbitrary-manual ingestion is claimed. Runtime/weights retain their own licenses; the app remains MIT.
 
-Alexa+ remains a simulated experience. Genuine local LLM generation and genuine MCP transport do not imply native Alexa/Echo access, a private Amazon SDK, arbitrary manual conversion or physical verification.
+Primary references: [Qwen2.5 model card](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct), [Ollama model](https://ollama.com/library/qwen2.5:7b), [Ollama API](https://docs.ollama.com/api/chat). Recorded behavior and digests take precedence over assumptions about mutable tags.
