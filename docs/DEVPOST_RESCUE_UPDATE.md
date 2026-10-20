@@ -56,8 +56,8 @@ The simulated experience exposed a critical distinction between exploring a shor
 - Run/challenge instructions: https://github.com/ErickAmestegui/fixpilot-x/blob/rescue-intelligence/docs/RESCUE_INTELLIGENCE.md
 - Verification: https://github.com/ErickAmestegui/fixpilot-x/blob/rescue-intelligence/docs/RESCUE_EVIDENCE.md
 - Previous public backup demo, retain as backup: https://youtu.be/ok_BsZNJxzk
-- New video: use the exact verified public URL from the delivery note, not the backup or a Studio edit URL.
-- Optional static preview: use only after public deployment is verified. The local MCP remains optional and unexposed.
+- New video field: https://youtu.be/-VrmiK0tyqg (Rescue Intelligence, 2:24; public playback verified without account credentials).
+- Try it out field: https://erickamestegui.github.io/fixpilot-x/?rescue (public static preview, browser engine; local MCP remains optional and unexposed).
 - Replace 18 tools with 22 and scope current test counts accurately. Preserve historical V2 counts in historical evidence.
 - Upload real Rescue screenshots and ensure the selected video is under three minutes and public without sign-in.
 - Keep existing truthful team/credit/AI-assisted-development disclosures; the entrant confirms their personal details and eligibility.
