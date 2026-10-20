@@ -13,10 +13,11 @@
     "demo:record": "playwright test -c demo.config.ts",
     "demo:final": "playwright test -c demo.final.config.ts",
     "demo:rescue": "playwright test -c demo.rescue.config.ts",
-    "ai": "tsx server/copilot.ts"
+    "ai": "tsx server/copilot.ts",
+    "test:ai:live": "tsx scripts/evaluate-ai.ts",
+    "dev:copilot": "node scripts/start-copilot.mjs"
   },
   "dependencies": {
-    "@mlc-ai/web-llm": "^0.2.86",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",

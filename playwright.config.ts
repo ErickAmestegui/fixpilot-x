@@ -10,7 +10,7 @@ const browserPath = [
 
 export default defineConfig({
   testDir: './tests',
-  testMatch: ['e2e.spec.ts','rescue.e2e.spec.ts'],
+  testMatch: ['e2e.spec.ts','rescue.e2e.spec.ts','copilot.e2e.spec.ts'],
   fullyParallel: false,
   workers: 1,
   timeout: 60_000,
