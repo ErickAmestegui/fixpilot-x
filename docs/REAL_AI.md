@@ -16,7 +16,7 @@ npm run dev:copilot
 
 Open `http://127.0.0.1:5173/?ai`. Choose **Connect Ollama · Qwen3 8B**. If Ollama was installed as a portable CLI, start `ollama serve` separately first. The one-command launcher starts only the browser UI, MCP and the local AI adapter; it does not install software, download weights or enable billing. The equivalent separate commands are `npm run dev`, `npm run mcp` and `npm run ai`.
 
-The selected candidate is **qwen3:8b**, with thinking explicitly disabled, a 4096-token context and bounded structured output. Consult the current evidence report for its actual release decision, digest and measured behavior. In this environment the generic `qwen3:4b` resolved to **Qwen3-4B-Thinking-2507**, a thinking-only variant. Disabling thinking for that variant was a configuration mistake. The separate `qwen3:4b-instruct` candidate also failed real conversational quality checks. These attempts are not hidden or counted as passes. No silent model fallback is used.
+The selected candidate is **qwen3:8b**, being evaluated in both native reasoning and non-thinking configurations, with an 8192-token context and bounded output. Consult the current evidence report for its actual release decision, digest and measured behavior. In this environment the generic `qwen3:4b` resolved to **Qwen3-4B-Thinking-2507**, a thinking-only variant. Disabling thinking for that variant was a configuration mistake. The separate `qwen3:4b-instruct` candidate also failed real conversational quality checks. These attempts are not hidden or counted as passes. No silent model fallback is used.
 
 In the workbench, **Connect local MCP** initializes the genuine 22-tool Streamable HTTP session and transfers the current validated browser snapshot. The AI then queries through that session. Without MCP connected, the same tools execute directly in the browser; each receipt identifies its transport. The AI adapter's `/chat` endpoint is an ordinary local HTTP adapter, **not MCP**. The actual MCP endpoint remains `/mcp` on port 3101.
 
@@ -52,7 +52,7 @@ npm run test:e2e
 npm run test:ai:live
 ```
 
-The 20 enforcement/adapter tests use explicitly scripted provider doubles, and the two AI UI boundary tests mock the local adapter. They are not real-model evidence. `test:ai:live` never substitutes a mock: it records actual model outputs, actual MCP receipts, state invariance and exact scenario expectations. Its initial confirmations belong to a documented synthetic fixture; they are not model-approved or verified physical work. Real transcripts, performance, failures and release status belong in a separate current evidence report. Automated scenario checks alone cannot approve natural-language factual accuracy; replies must also be reviewed against the engine.
+The 27 enforcement/adapter tests use explicitly scripted provider doubles, and the two AI UI boundary tests mock the local adapter. They are not real-model evidence. `test:ai:live` never substitutes a mock: it records actual model outputs, actual MCP receipts, state invariance and exact scenario expectations. Its initial confirmations belong to a documented synthetic fixture; they are not model-approved or verified physical work. Real transcripts, performance, failures and release status belong in a separate current evidence report. Automated scenario checks alone cannot approve natural-language factual accuracy; replies must also be reviewed against the engine.
 
 ## Provider choice and cost
 

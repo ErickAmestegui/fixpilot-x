@@ -1,0 +1,1876 @@
+{
+  "at": "2026-10-20T06:52:47.089Z",
+  "model": "qwen3:8b",
+  "provider": "Real Ollama loopback inference",
+  "transport": "Real MCP Streamable HTTP",
+  "mocked": false,
+  "scope": "Five-case smoke: conversation, multi-turn hypotheses, undo and exact comparison",
+  "result": "FAIL",
+  "setup": "Two confirmations scripted in an isolated synthetic test fixture before model turns. LLM never receives a mutation capability.",
+  "exchanges": [
+    {
+      "project": "table",
+      "question": "Hoy tengo la cabeza en otra cosa y me da cosa equivocarme. ¿Me acompañás con calma?",
+      "result": {
+        "turn": {
+          "user": "Hoy tengo la cabeza en otra cosa y me da cosa equivocarme. ¿Me acompañás con calma?",
+          "reply": "¡Claro que sí! Estoy aquí para acompañarte con calma y ayudarte en lo que necesites. ¿En qué puedo ayudarte?",
+          "provider": "Ollama · local server",
+          "model": "qwen3:8b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 21459,
+          "generated": true
+        }
+      },
+      "modelExchanges": [
+        {
+          "stage": "plan",
+          "output": "{\"action\":\"respond\",\"directReply\":\"¡Claro que sí! Estoy aquí para acompañarte con calma y ayudarte en lo que necesites. ¿En qué puedo ayudarte?\"}",
+          "durationMs": 21445
+        }
+      ],
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen3:8b",
+          "durationMs": 21422,
+          "tokens": 32,
+          "promptTokens": 1978,
+          "decisionProtocol": "plain-model-text",
+          "modelText": "¡Claro que sí! Estoy aquí para acompañarte con calma y ayudarte en lo que necesites. ¿En qué puedo ayudarte?"
+        }
+      ],
+      "actualUnchanged": true,
+      "expectationPassed": true
+    },
+    {
+      "project": "table",
+      "question": "Se me perdio la B7, pero todavia no anotes nada como definitivo. ¿Qué efecto tendría?",
+      "error": "INVALID_MODEL_RESPONSE",
+      "modelExchanges": [],
+      "providerExchanges": [],
+      "actualUnchanged": true
+    },
+    {
+      "project": "table",
+      "question": "¿Y si encima desaparece la llave Allen?",
+      "result": {
+        "preview": {
+          "changes": {
+            "unavailableTools": [
+              "hex"
+            ]
+          },
+          "directAffected": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "indirectAffected": [
+            7,
+            8
+          ],
+          "available": [
+            6
+          ],
+          "blocked": [
+            3,
+            4,
+            5,
+            7,
+            8
+          ],
+          "invalidatedCompleted": [],
+          "diff": [
+            {
+              "stepId": 3,
+              "before": "available",
+              "after": "blocked"
+            },
+            {
+              "stepId": 4,
+              "before": "available",
+              "after": "blocked"
+            },
+            {
+              "stepId": 5,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 7,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 8,
+              "before": "pending",
+              "after": "blocked"
+            }
+          ],
+          "unchanged": [
+            1,
+            2,
+            6
+          ],
+          "causes": [
+            {
+              "stepId": 3,
+              "missingParts": [],
+              "unavailableTools": [
+                "hex"
+              ],
+              "prerequisites": [],
+              "chains": [
+                [
+                  3
+                ]
+              ]
+            },
+            {
+              "stepId": 4,
+              "missingParts": [],
+              "unavailableTools": [
+                "hex"
+              ],
+              "prerequisites": [],
+              "chains": [
+                [
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 5,
+              "missingParts": [],
+              "unavailableTools": [
+                "hex"
+              ],
+              "prerequisites": [
+                3,
+                4
+              ],
+              "chains": [
+                [
+                  5
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 6,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 7,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                5,
+                6
+              ],
+              "chains": [
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  7,
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 8,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                7
+              ],
+              "chains": [
+                [
+                  8,
+                  7,
+                  5
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  8,
+                  7,
+                  6
+                ]
+              ]
+            }
+          ],
+          "recovery": {
+            "resources": [
+              {
+                "kind": "tool",
+                "id": "hex",
+                "steps": [
+                  3,
+                  4,
+                  5
+                ]
+              }
+            ],
+            "prerequisiteSteps": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "availableSteps": [
+              6
+            ],
+            "blockedSteps": [
+              3,
+              4,
+              5,
+              7,
+              8
+            ],
+            "requiresHumanVerification": true
+          }
+        },
+        "turn": {
+          "user": "¿Y si encima desaparece la llave Allen?",
+          "reply": "La llave Allen es necesaria para varios pasos. Si desaparece, se detendrá el proceso.",
+          "provider": "Ollama · local server",
+          "model": "qwen3:8b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            },
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {
+                  "unavailableTools": [
+                    "hex"
+                  ]
+                }
+              },
+              "kind": "info",
+              "data": {
+                "changes": {
+                  "unavailableTools": [
+                    "hex"
+                  ]
+                },
+                "directAffected": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "indirectAffected": [
+                  7,
+                  8
+                ],
+                "available": [
+                  6
+                ],
+                "blocked": [
+                  3,
+                  4,
+                  5,
+                  7,
+                  8
+                ],
+                "invalidatedCompleted": [],
+                "diff": [
+                  {
+                    "stepId": 3,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 4,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 5,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 7,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 8,
+                    "before": "pending",
+                    "after": "blocked"
+                  }
+                ],
+                "unchanged": [
+                  1,
+                  2,
+                  6
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5
+                      ],
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5
+                      ],
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [
+                    {
+                      "kind": "tool",
+                      "id": "hex",
+                      "steps": [
+                        3,
+                        4,
+                        5
+                      ]
+                    }
+                  ],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    6
+                  ],
+                  "blockedSteps": [
+                    3,
+                    4,
+                    5,
+                    7,
+                    8
+                  ],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "model-decision"
+            }
+          ],
+          "durationMs": 12761,
+          "generated": true
+        }
+      },
+      "modelExchanges": [
+        {
+          "stage": "plan",
+          "output": "{\"language\":\"es\",\"changes\":{\"missingParts\":[],\"unavailableTools\":[\"hex\"]},\"action\":\"preview_scenario\"}",
+          "durationMs": 5446
+        },
+        {
+          "stage": "answer",
+          "output": "{\"reply\":\"La llave Allen es necesaria para varios pasos. Si desaparece, se detendrá el proceso.\",\"partIds\":[],\"stepIds\":[3,4,5,7,8],\"actualChanged\":false}",
+          "durationMs": 7300
+        }
+      ],
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen3:8b",
+          "nativeToolCalls": [
+            {
+              "id": "call_hz3kq5o7",
+              "function": {
+                "index": 0,
+                "name": "preview_scenario",
+                "arguments": {
+                  "language": "es",
+                  "changes": {
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "durationMs": 5442,
+          "tokens": 38,
+          "promptTokens": 2000,
+          "decisionProtocol": "native-tool-call",
+          "modelText": ""
+        },
+        {
+          "stage": "answer",
+          "model": "qwen3:8b",
+          "durationMs": 7297,
+          "tokens": 54,
+          "promptTokens": 860
+        }
+      ],
+      "actualUnchanged": true,
+      "expectationPassed": false
+    },
+    {
+      "project": "table",
+      "question": "Olvidate solamente de esta última posibilidad.",
+      "result": {
+        "clearPreview": true,
+        "turn": {
+          "user": "Olvidate solamente de esta última posibilidad.",
+          "reply": "Entendido, la última posibilidad se ha descartado. ¿Hay algo más que necesites?",
+          "provider": "Ollama · local server",
+          "model": "qwen3:8b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {
+                  "unavailableTools": [
+                    "hex"
+                  ]
+                }
+              },
+              "kind": "info",
+              "data": {
+                "changes": {
+                  "unavailableTools": [
+                    "hex"
+                  ]
+                },
+                "directAffected": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "indirectAffected": [
+                  7,
+                  8
+                ],
+                "available": [
+                  6
+                ],
+                "blocked": [
+                  3,
+                  4,
+                  5,
+                  7,
+                  8
+                ],
+                "invalidatedCompleted": [],
+                "diff": [
+                  {
+                    "stepId": 3,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 4,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 5,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 7,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 8,
+                    "before": "pending",
+                    "after": "blocked"
+                  }
+                ],
+                "unchanged": [
+                  1,
+                  2,
+                  6
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "hex"
+                    ],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5
+                      ],
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5
+                      ],
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [
+                    {
+                      "kind": "tool",
+                      "id": "hex",
+                      "steps": [
+                        3,
+                        4,
+                        5
+                      ]
+                    }
+                  ],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    6
+                  ],
+                  "blockedSteps": [
+                    3,
+                    4,
+                    5,
+                    7,
+                    8
+                  ],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            }
+          ],
+          "durationMs": 9554,
+          "generated": true
+        }
+      },
+      "modelExchanges": [
+        {
+          "stage": "plan",
+          "output": "{\"language\":\"es\",\"action\":\"clear_hypotheses\"}",
+          "durationMs": 3081
+        },
+        {
+          "stage": "answer",
+          "output": "{\"reply\":\"Entendido, la última posibilidad se ha descartado. ¿Hay algo más que necesites?\",\"partIds\":[],\"stepIds\":[1,2,3,4,6,7,8],\"actualChanged\":false}",
+          "durationMs": 6467
+        }
+      ],
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen3:8b",
+          "nativeToolCalls": [
+            {
+              "id": "call_excrelnd",
+              "function": {
+                "index": 0,
+                "name": "clear_hypotheses",
+                "arguments": {
+                  "language": "es"
+                }
+              }
+            }
+          ],
+          "durationMs": 3080,
+          "tokens": 22,
+          "promptTokens": 2029,
+          "decisionProtocol": "native-tool-call",
+          "modelText": ""
+        },
+        {
+          "stage": "answer",
+          "model": "qwen3:8b",
+          "durationMs": 6463,
+          "tokens": 55,
+          "promptTokens": 660
+        }
+      ],
+      "actualUnchanged": true,
+      "expectationPassed": false
+    },
+    {
+      "project": "table",
+      "question": "Show what changes between losing the screwdriver and losing B7 plus the Allen key.",
+      "result": {
+        "preview": {
+          "changes": {
+            "missingParts": [
+              "B7"
+            ],
+            "unavailableTools": [
+              "screwdriver"
+            ],
+            "undoSteps": [
+              4
+            ]
+          },
+          "directAffected": [
+            4,
+            6,
+            7
+          ],
+          "indirectAffected": [
+            5,
+            8
+          ],
+          "available": [
+            3
+          ],
+          "blocked": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "invalidatedCompleted": [],
+          "diff": [
+            {
+              "stepId": 4,
+              "before": "available",
+              "after": "blocked"
+            },
+            {
+              "stepId": 5,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 6,
+              "before": "available",
+              "after": "blocked"
+            },
+            {
+              "stepId": 7,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 8,
+              "before": "pending",
+              "after": "blocked"
+            }
+          ],
+          "unchanged": [
+            1,
+            2,
+            3
+          ],
+          "causes": [
+            {
+              "stepId": 3,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  3
+                ]
+              ]
+            },
+            {
+              "stepId": 4,
+              "missingParts": [
+                "B7"
+              ],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 5,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                3,
+                4
+              ],
+              "chains": [
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 6,
+              "missingParts": [],
+              "unavailableTools": [
+                "screwdriver"
+              ],
+              "prerequisites": [],
+              "chains": [
+                [
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 7,
+              "missingParts": [],
+              "unavailableTools": [
+                "screwdriver"
+              ],
+              "prerequisites": [
+                5,
+                6
+              ],
+              "chains": [
+                [
+                  7
+                ],
+                [
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  7,
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 8,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                7
+              ],
+              "chains": [
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  8,
+                  7,
+                  6
+                ]
+              ]
+            }
+          ],
+          "recovery": {
+            "resources": [
+              {
+                "kind": "part",
+                "id": "B7",
+                "steps": [
+                  4
+                ]
+              },
+              {
+                "kind": "tool",
+                "id": "screwdriver",
+                "steps": [
+                  6,
+                  7
+                ]
+              }
+            ],
+            "prerequisiteSteps": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "availableSteps": [
+              3
+            ],
+            "blockedSteps": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "requiresHumanVerification": true
+          }
+        },
+        "turn": {
+          "user": "Show what changes between losing the screwdriver and losing B7 plus the Allen key.",
+          "reply": "Losing the screwdriver blocks steps 4, 5, 6, 7, 8. Losing B7 blocks step 4 and affects steps 5, 7, 8. Losing the Allen key has no impact as it is not listed in the shortage catalog.",
+          "provider": "Ollama · local server",
+          "model": "qwen3:8b",
+          "receipts": [
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {}
+              },
+              "kind": "info",
+              "data": {
+                "changes": {},
+                "directAffected": [],
+                "indirectAffected": [],
+                "available": [
+                  3,
+                  4,
+                  6
+                ],
+                "blocked": [],
+                "invalidatedCompleted": [],
+                "diff": [],
+                "unchanged": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "blockedSteps": [],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "context-read"
+            },
+            {
+              "tool": "preview_scenario",
+              "arguments": {
+                "changes": {
+                  "missingParts": [
+                    "B7"
+                  ],
+                  "unavailableTools": [
+                    "screwdriver"
+                  ],
+                  "undoSteps": [
+                    4
+                  ]
+                }
+              },
+              "kind": "info",
+              "data": {
+                "changes": {
+                  "missingParts": [
+                    "B7"
+                  ],
+                  "unavailableTools": [
+                    "screwdriver"
+                  ],
+                  "undoSteps": [
+                    4
+                  ]
+                },
+                "directAffected": [
+                  4,
+                  6,
+                  7
+                ],
+                "indirectAffected": [
+                  5,
+                  8
+                ],
+                "available": [
+                  3
+                ],
+                "blocked": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "invalidatedCompleted": [],
+                "diff": [
+                  {
+                    "stepId": 4,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 5,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 6,
+                    "before": "available",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 7,
+                    "before": "pending",
+                    "after": "blocked"
+                  },
+                  {
+                    "stepId": 8,
+                    "before": "pending",
+                    "after": "blocked"
+                  }
+                ],
+                "unchanged": [
+                  1,
+                  2,
+                  3
+                ],
+                "causes": [
+                  {
+                    "stepId": 3,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        3
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 4,
+                    "missingParts": [
+                      "B7"
+                    ],
+                    "unavailableTools": [],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 5,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      3,
+                      4
+                    ],
+                    "chains": [
+                      [
+                        5,
+                        3
+                      ],
+                      [
+                        5,
+                        4
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 6,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "screwdriver"
+                    ],
+                    "prerequisites": [],
+                    "chains": [
+                      [
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 7,
+                    "missingParts": [],
+                    "unavailableTools": [
+                      "screwdriver"
+                    ],
+                    "prerequisites": [
+                      5,
+                      6
+                    ],
+                    "chains": [
+                      [
+                        7
+                      ],
+                      [
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        7,
+                        6
+                      ]
+                    ]
+                  },
+                  {
+                    "stepId": 8,
+                    "missingParts": [],
+                    "unavailableTools": [],
+                    "prerequisites": [
+                      7
+                    ],
+                    "chains": [
+                      [
+                        8,
+                        7
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        3
+                      ],
+                      [
+                        8,
+                        7,
+                        5,
+                        4
+                      ],
+                      [
+                        8,
+                        7,
+                        6
+                      ]
+                    ]
+                  }
+                ],
+                "recovery": {
+                  "resources": [
+                    {
+                      "kind": "part",
+                      "id": "B7",
+                      "steps": [
+                        4
+                      ]
+                    },
+                    {
+                      "kind": "tool",
+                      "id": "screwdriver",
+                      "steps": [
+                        6,
+                        7
+                      ]
+                    }
+                  ],
+                  "prerequisiteSteps": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "availableSteps": [
+                    3
+                  ],
+                  "blockedSteps": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8
+                  ],
+                  "requiresHumanVerification": true
+                }
+              },
+              "transport": "mcp",
+              "initiator": "model-decision"
+            }
+          ],
+          "durationMs": 26503,
+          "generated": true
+        }
+      },
+      "modelExchanges": [
+        {
+          "stage": "plan",
+          "output": "{\"language\":\"en\",\"changes\":{\"missingParts\":[\"B7\"],\"recoveredParts\":[\"D1\"],\"recoveredTools\":[\"hex\"],\"unavailableTools\":[\"screwdriver\"]},\"action\":\"preview_scenario\"}",
+          "durationMs": 7656
+        },
+        {
+          "stage": "plan",
+          "output": "{\"language\":\"en\",\"changes\":{\"missingParts\":[\"B7\"],\"recoveredParts\":[],\"recoveredTools\":[],\"unavailableTools\":[\"screwdriver\"],\"undoSteps\":[4]},\"action\":\"preview_scenario\"}",
+          "durationMs": 5543
+        },
+        {
+          "stage": "answer",
+          "output": "{\n  \"reply\": \"Losing the screwdriver blocks steps 4, 5, 6, 7, 8. Losing B7 blocks step 4 and affects steps 5, 7, 8. Losing the Allen key has no impact as it is not listed in the shortage catalog.\",\n  \"partIds\": [\"B7\", \"S1\"],\n  \"stepIds\": [4, 5, 6, 7, 8],\n  \"actualChanged\": false\n}",
+          "durationMs": 13288
+        }
+      ],
+      "providerExchanges": [
+        {
+          "stage": "plan",
+          "model": "qwen3:8b",
+          "nativeToolCalls": [
+            {
+              "id": "call_u4kztv7a",
+              "function": {
+                "index": 0,
+                "name": "preview_scenario",
+                "arguments": {
+                  "language": "en",
+                  "changes": {
+                    "missingParts": [
+                      "B7"
+                    ],
+                    "recoveredParts": [
+                      "D1"
+                    ],
+                    "recoveredTools": [
+                      "hex"
+                    ],
+                    "unavailableTools": [
+                      "screwdriver"
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "durationMs": 7652,
+          "tokens": 60,
+          "promptTokens": 2015,
+          "decisionProtocol": "native-tool-call",
+          "modelText": ""
+        },
+        {
+          "stage": "plan",
+          "model": "qwen3:8b",
+          "durationMs": 5539,
+          "tokens": 43,
+          "promptTokens": 2148,
+          "decisionProtocol": "model-json",
+          "modelText": "{\"language\":\"en\",\"changes\":{\"missingParts\":[\"B7\"],\"recoveredParts\":[],\"recoveredTools\":[],\"unavailableTools\":[\"screwdriver\"],\"undoSteps\":[4]},\"action\":\"preview_scenario\"}"
+        },
+        {
+          "stage": "answer",
+          "model": "qwen3:8b",
+          "durationMs": 13285,
+          "tokens": 110,
+          "promptTokens": 891
+        }
+      ],
+      "actualUnchanged": true,
+      "expectationPassed": false
+    }
+  ]
+}

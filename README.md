@@ -6,6 +6,8 @@ Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience i
 
 ## Real local AI copilot branch
 
+**Experimental integration: conversational release approval is still pending. The stable Rescue submission remains preserved.**
+
 The isolated `real-ai-copilot` branch adds actual local Qwen3 generation through Ollama, bounded project conversation memory, structured read-only tool decisions and the existing human approval dialogs. Follow [local setup and boundaries](docs/REAL_AI.md), [real-model evidence and release decision](docs/REAL_AI_EVIDENCE.md), and [Devpost wording changes](docs/DEVPOST_REAL_AI_UPDATE.md). Open `http://127.0.0.1:5173/?ai` after starting the local services. Check the current evidence before making a conversational quality claim; scripted tests are not model evaluations.
 
 **The public static Rescue preview does not run this LLM.** Real AI and genuine MCP transport run locally. The existing V2/Rescue tags, public preview and videos are preserved; their deterministic behavior is documented below. The local AI adapter is ordinary HTTP, separate from the genuine 22-tool MCP server.
