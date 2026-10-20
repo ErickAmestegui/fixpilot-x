@@ -38,3 +38,7 @@ The verified V2 catalog has 18 tools. Each initialized session starts with a fre
 Tools return text plus `structuredContent: { state, message, kind, data? }`. `kind` is `success`, `info`, or `warning`. A warning may represent a valid inventory change (missing B7), a safety refusal, or an invalid domain request; inspect returned state and data. SDK schema failures and unexpected exceptions use MCP `isError`. Every handled engine operation increments a revision and records an audit entry, even reads and refusals; read-only annotations refer to assembly progress and inventory.
 
 The renderer reacts to selection and completion state. Animation playback is a UI operation, not an advertised MCP tool; playing it never marks the physical assembly complete. Browser CORS permits loopback origins only. The service is intended for a trusted user's local computer, not the public internet.
+
+## Rescue Intelligence extension
+
+The rescue-intelligence branch exposes 22 tools. See [the four new tools and exact contracts](RESCUE_INTELLIGENCE.md#architecture-and-mcp-contract). The original tools below remain unchanged. Query annotations are read-only; apply_scenario revalidates an exact base snapshot and requires confirmed:true from a human-reviewing client.

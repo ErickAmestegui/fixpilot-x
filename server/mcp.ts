@@ -7,13 +7,25 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
-import { createInitialState, execute } from '../src/engine.js';
+import { createInitialState } from '../src/engine.js';
+import { executeTool as execute } from '../src/rescue-tools.js';
 
 const part = { partId: z.string().min(1).max(16) };
 const step = { stepId: z.number().int().min(1).max(8) };
+const scenarioChanges=z.object({
+  missingParts:z.array(z.string().min(1).max(16)).max(20).optional(),
+  recoveredParts:z.array(z.string().min(1).max(16)).max(20).optional(),
+  unavailableTools:z.array(z.string().min(1).max(32)).max(10).optional(),
+  recoveredTools:z.array(z.string().min(1).max(32)).max(10).optional(),
+  undoSteps:z.array(z.number().int().min(1).max(8)).max(8).optional(),
+}).strict();
 type Definition = { description: string; inputSchema: z.ZodRawShape; readOnly?: boolean };
 
 export const TOOL_DEFINITIONS: Record<string, Definition> = {
+  preview_scenario:{description:'Read-only counterfactual resource and progress analysis. Returns a validated hypothetical copy and exact base token; never changes actual inventory, confirmations or audit.',inputSchema:{changes:scenarioChanges},readOnly:true},
+  compare_scenarios:{description:'Compare one to six independent counterfactuals against the same actual snapshot using the real dependency planner.',inputSchema:{scenarios:z.array(z.object({id:z.string().regex(/^[A-Za-z0-9_-]{1,64}$/),changes:scenarioChanges}).strict()).min(1).max(6)},readOnly:true},
+  explain_recovery:{description:'Read actual or hypothetical graph-derived resource requirements and prerequisite work. This does not certify physical safety or optimize repair order.',inputSchema:{stepId:step.stepId.optional(),changes:scenarioChanges.optional()},readOnly:true},
+  apply_scenario:{description:'Atomically apply reviewed resource changes and digital confirmation invalidation. Requires explicit client human approval and an exact unchanged base token; rejects stale proposals.',inputSchema:{changes:scenarioChanges,baseToken:z.string().min(1).max(250_000),confirmed:z.boolean().optional()}},
   load_assembly: { description: 'Load a catalog assembly in this isolated session. Resets this session only.', inputSchema: { assemblyId: z.enum(['table','organizer']).optional() } },
   get_assembly_state: { description: 'Read this session’s current assembly and action history.', inputSchema: {}, readOnly: true },
   list_parts: { description: 'List original model parts and their inventory states.', inputSchema: {}, readOnly: true },

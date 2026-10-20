@@ -1,6 +1,6 @@
 {
   "name": "fixpilot-x",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,7 +11,8 @@
     "mcp": "tsx server/mcp.ts",
     "test:e2e": "playwright test",
     "demo:record": "playwright test -c demo.config.ts",
-    "demo:final": "playwright test -c demo.final.config.ts"
+    "demo:final": "playwright test -c demo.final.config.ts",
+    "demo:rescue": "playwright test -c demo.rescue.config.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

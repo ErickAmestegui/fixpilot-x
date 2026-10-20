@@ -1,7 +1,10 @@
 import {useEffect,useRef,useState,type ReactNode} from 'react';
 import {Box,Check,ChevronDown,ChevronRight,ChevronLeft,ArrowUpRight,ArrowUp,ArrowLeft,ArrowRight,Expand,Eye,Layers3,Mic,MicOff,Move3D,Play,RotateCcw,Search,Settings2,ShieldCheck,Volume2,VolumeX,X,ZoomIn,ZoomOut,Download,Upload,CheckCircle2,LockKeyhole,AlertCircle,Clock3,BookOpen,Package,History,Plug,Square,Undo2,Info,MousePointer2,Wrench,Menu} from 'lucide-react';
 import AssemblyViewer from './AssemblyViewer';
-import {ASSEMBLIES,getAssembly,createInitialState,plan,execute,restoreState,serializeState,type AssemblyState} from './engine';
+import {ASSEMBLIES,getAssembly,createInitialState,plan,restoreState,serializeState,type AssemblyState} from './engine';
+import {executeTool as execute} from './rescue-tools';
+import {parseRescueIntent} from './rescue-intent';
+import RescueWorkbench from './RescueWorkbench';
 import {parseIntent} from './intent';
 import {SoundBus} from './audio';
 import {AssemblyMcpClient,type ToolResult} from './mcp-client';
@@ -25,6 +28,8 @@ function Modal({title,children,onClose}:{title:string,children:ReactNode,onClose
 function PartThumbnail({id,missing=false}:{id:string,missing?:boolean}){return <span aria-hidden="true" className={`part-thumb part-${id} ${missing?'absent':''}`}><span/><span/><span/></span>;}
 
 export default function App(){
+  const [rescueOpen,setRescueOpen]=useState(()=>new URLSearchParams(location.search).has('rescue'));
+  const [rescueQuestion,setRescueQuestion]=useState('');
   const [initial]=useState(loadInitial);
   const [state,setState]=useState(initial.state),stateRef=useRef(state);
   const [prefs,setPrefs]=useState(loadPreferences);
@@ -65,13 +70,13 @@ export default function App(){
     try{
       await sound.current.unlock();
       const result:ToolResult=mcpConnected?await mcp.current.call(tool,args):execute(stateRef.current,tool,args);
-      stateRef.current=result.state;setState(result.state);persist(result.state);
+      stateRef.current=result.state;setState(result.state);if(result.state!==before&&serializeState(result.state)!==serializeState(before))persist(result.state);
       recordTrace(before,result.state,request||toolLabels[tool]||tool,tool,args,result.message,result.kind);
       if(!quiet)add({role:'assistant',text:result.message,tool:toolLabels[tool]||tool,kind:result.kind});
       if(['focus_3d_part','inspect_part','mark_part_missing','restore_part'].includes(tool))setTab('3d');
       if((tool==='complete_step'&&result.kind==='success')||tool==='undo_step')setMode('progress');
       sound.current.play(result.kind==='warning'?'warning':tool==='inspect_part'||tool==='select_step'?'select':'success');
-      settle(result.kind==='warning'?'warning':'success');if(!quiet)speak(result.message);
+      settle(result.kind==='warning'?'warning':'success');if(!quiet)speak(result.message);return result;
     }catch(error){const text=error instanceof Error?error.message:'No se pudo completar la operación.';recordTrace(before,before,request||tool,tool,args,text,'error');add({role:'assistant',text,kind:'warning'});settle('error');sound.current.play('warning');}
     finally{lock.current=false;setBusy(false);}
   }
@@ -80,7 +85,7 @@ export default function App(){
     else if(tool==='undo_step'){setPhase('idle');setChecked(false);setConfirmation({tool,args,request,title:'Deshacer una operación'});}
     else void run(tool,args,false,request);
   }
-  async function send(text:string){if(!text.trim()||busy)return;setInput('');add({role:'user',text:text.trim()});setPhase('understanding');await sound.current.unlock();sound.current.play('send');const intent=parseIntent(text,stateRef.current);if('message' in intent){recordTrace(stateRef.current,stateRef.current,text,'clarify',{},intent.message,'info');add({role:'assistant',text:intent.message});settle('idle');speak(intent.message);}else if('view' in intent){view(intent.view);add({role:'assistant',text:intent.view==='replay'?'Vista previa de la trayectoria. Reproducirla no confirma ningún paso.':'Vista 3D actualizada.'});settle('success');}else requestAction(intent.tool,intent.args,text);}
+  async function send(text:string){if(!text.trim()||busy)return;setInput('');add({role:'user',text:text.trim()});setPhase('understanding');await sound.current.unlock();sound.current.play('send');const rescue=parseRescueIntent(text,stateRef.current,{},'es');if(rescue&&!("message" in rescue)){setRescueQuestion(text);setRescueOpen(true);setPhase('idle');return;}const intent=parseIntent(text,stateRef.current);if('message' in intent){recordTrace(stateRef.current,stateRef.current,text,'clarify',{},intent.message,'info');add({role:'assistant',text:intent.message});settle('idle');speak(intent.message);}else if('view' in intent){view(intent.view);add({role:'assistant',text:intent.view==='replay'?'Vista previa de la trayectoria. Reproducirla no confirma ningún paso.':'Vista 3D actualizada.'});settle('success');}else requestAction(intent.tool,intent.args,text);}
   function startMicrophone(){
     if(listening){recognition.current?.stop();return;}const Constructor=(window as any).SpeechRecognition||(window as any).webkitSpeechRecognition;if(!Constructor){add({role:'assistant',text:'Este navegador no ofrece reconocimiento de voz. Podés usar todos los comandos por texto.'});return;}
     window.speechSynthesis?.cancel();const rec=new Constructor();recognition.current=rec;rec.lang='es-BO';rec.interimResults=true;setTranscript('');rec.continuous=false;
@@ -93,22 +98,23 @@ export default function App(){
   async function connectMcp(){
     if(lock.current)return;lock.current=true;setBusy(true);
     try {
-      if(mcpConnected){await mcp.current.close();setMcpConnected(false);setMcpStatus('Motor local · sin API de pago');return;}
+      if(mcpConnected){await mcp.current.close();setMcpConnected(false);setMcpStatus('Motor local · sin API de pago');return true;}
       setMcpStatus('Conectando al servidor local…');await mcp.current.connect();
       await mcp.current.call('load_assembly',{assemblyId:getAssembly(stateRef.current).id});
       const result=await mcp.current.call('restore_progress',{serialized:serializeState(stateRef.current)});
       if(result.kind==='warning')throw new Error(result.message);
       setState(result.state);stateRef.current=result.state;persist(result.state);setMcpConnected(true);
-      setMcpStatus(`MCP conectado · ${mcp.current.tools.length} herramientas`);
-    }catch(error){await mcp.current.close().catch(()=>{});setMcpConnected(false);setMcpStatus(`No se conectó: ${error instanceof Error?error.message:'servidor no disponible'}. El motor local sigue activo.`);}
+      setMcpStatus(`MCP conectado · ${mcp.current.tools.length} herramientas`);return true;
+    }catch(error){await mcp.current.close().catch(()=>{});setMcpConnected(false);setMcpStatus(`No se conectó: ${error instanceof Error?error.message:'servidor no disponible'}. El motor local sigue activo.`);return false;}
     finally{lock.current=false;setBusy(false);}
   }
   function exportProgress(){const blob=new Blob([serializeState(stateRef.current)],{type:'application/json'});const url=URL.createObjectURL(blob);const anchor=document.createElement('a');anchor.href=url;anchor.download=`fixpilot-${assembly.id}-progress.json`;anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   async function importProgress(file:File){try{if(file.size>1000000)throw new Error('El archivo supera 1 MB.');const text=await file.text();restoreState(text);requestAction('restore_progress',{serialized:text});setModal(null);}catch(error){add({role:'assistant',text:`No se importó el archivo: ${error instanceof Error?error.message:'formato inválido'}`,kind:'warning'});setModal(null);}}
   const nextStep=available[0],problems=[...state.missing,...state.missingTools.map(id=>TOOLS.find(t=>t.id===id)?.name||id)];
+  if(rescueOpen)return <RescueWorkbench state={state} run={run} busy={busy} reducedMotion={reduced} onClose={()=>{setRescueOpen(false);setRescueQuestion('');}} onProject={switchProject} mcpConnected={mcpConnected} connectMcp={async()=>{if(!await connectMcp())throw new Error('MCP connection failed.');}} initialQuestion={rescueQuestion}/>;
   return <div className={`app ${reduced?'reduced-motion':''}`}>
     <header className="topbar"><a className="brand" href="#" aria-label="FixPilot X inicio" onClick={e=>{e.preventDefault();setModal('project');}}><span className="brand-cube"><Box size={30} strokeWidth={1.6}/></span><strong>FixPilot <b>X</b></strong></a><span className="tagline">The manual that adapts to you.</span><div className="top-actions"><button onClick={()=>setModal('project')}><Package size={18}/><span>Mi proyecto</span></button><button onClick={()=>void run('save_progress')} disabled={busy}><CheckCircle2 size={18}/><span>{saved?'Guardado':'Guardar'}</span></button><button className="icon-button" onClick={()=>setModal('settings')} aria-label="Configuración"><Settings2 size={20}/></button><span className="avatar" aria-label="Espacio local">E</span></div></header>
-    <div className="workspace-heading"><div><span className="eyebrow">TU ESPACIO DE MONTAJE</span><span className="workspace-name">Un buen comienzo. Pieza a pieza.</span></div><button className="demo-link" onClick={()=>setModal('demo')}><Play size={13} fill="currentColor"/> Recorrido de 90 segundos <ArrowUpRight size={15}/></button></div>
+    <div className="workspace-heading"><div><span className="eyebrow">TU ESPACIO DE MONTAJE</span><span className="workspace-name">Un buen comienzo. Pieza a pieza.</span></div><button className="demo-link" onClick={()=>{setRescueQuestion('');setRescueOpen(true);}}>Rescue Intelligence · Judge challenge <ArrowUpRight size={15}/></button><button className="demo-link" onClick={()=>setModal('demo')}><Play size={13} fill="currentColor"/> Recorrido de 90 segundos <ArrowUpRight size={15}/></button></div>
     <nav className="mobile-nav" aria-label="Paneles"><button aria-pressed={mobilePanel==='assistant'} onClick={()=>setMobilePanel('assistant')}>Asistente</button><button aria-pressed={mobilePanel==='model'} onClick={()=>setMobilePanel('model')}>Modelo 3D</button><button aria-pressed={mobilePanel==='steps'} onClick={()=>setMobilePanel('steps')}>Pasos</button></nav>
     <main className="workspace">
       <section className={`panel assistant-panel ${mobilePanel==='assistant'?'mobile-active':''}`} aria-label="Asistente de montaje">
@@ -140,4 +146,3 @@ export default function App(){
     {confirmation&&<Modal title={confirmation.title} onClose={()=>{setConfirmation(null);setPhase('idle');}}><p className="modal-lead">{confirmation.tool==='complete_step'?STEPS.find(s=>s.id===confirmation.args.stepId)?.description:confirmation.tool==='undo_step'?`Se retirará la confirmación del paso ${confirmation.args.stepId} y sus operaciones dependientes. Esto modifica el registro digital; no comprueba que hayas desmontado físicamente las piezas.`:'Se borrarán los pasos completados y el inventario ausente de este navegador. Podés exportar primero tu progreso.'}</p>{confirmation.tool==='complete_step'&&<div className="notice"><ShieldCheck size={21}/><p>{STEPS.find(s=>s.id===confirmation.args.stepId)?.safety}</p></div>}<label className="confirmation-check"><input type="checkbox" checked={checked} onChange={e=>setChecked(e.target.checked)}/><span>{confirmation.tool==='complete_step'?'Confirmo que realicé el trabajo y revisé estas condiciones. El software no comprueba la instalación física.':'Entiendo el cambio y quiero continuar.'}</span></label><div className="modal-actions"><button className="subtle-button" onClick={()=>{setConfirmation(null);setPhase('idle');}}>Cancelar</button><button className="primary" disabled={!checked||busy} onClick={()=>{const action=confirmation;setConfirmation(null);void run(action.tool,{...action.args,confirmed:true,cascade:true},false,action.request);}}><Check size={17}/>Confirmar</button></div></Modal>}
   </div>;
 }
-

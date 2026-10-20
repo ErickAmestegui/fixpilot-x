@@ -1,0 +1,184 @@
+{
+  "recordedAt": "2026-10-20T03:32:09.888Z",
+  "source": "Observed browser HTTP responses, no state injection",
+  "exchanges": [
+    {
+      "method": "initialize",
+      "status": 200,
+      "protocol": "2025-11-25",
+      "isError": false
+    },
+    {
+      "method": "tools/list",
+      "status": 200,
+      "toolCount": 22,
+      "isError": false
+    },
+    {
+      "method": "tools/call",
+      "tool": "load_assembly",
+      "status": 200,
+      "isError": false,
+      "completed": [],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "restore_progress",
+      "status": 200,
+      "isError": false,
+      "completed": [],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "explain_recovery",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "compare_scenarios",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [],
+      "missingTools": []
+    },
+    {
+      "method": "tools/call",
+      "tool": "apply_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2
+      ],
+      "missing": [
+        "B7"
+      ],
+      "missingTools": [
+        "screwdriver"
+      ]
+    },
+    {
+      "method": "tools/call",
+      "tool": "complete_step",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2,
+        3
+      ],
+      "missing": [
+        "B7"
+      ],
+      "missingTools": [
+        "screwdriver"
+      ]
+    },
+    {
+      "method": "tools/call",
+      "tool": "preview_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2,
+        3
+      ],
+      "missing": [
+        "B7"
+      ],
+      "missingTools": [
+        "screwdriver"
+      ]
+    },
+    {
+      "method": "tools/call",
+      "tool": "apply_scenario",
+      "status": 200,
+      "isError": false,
+      "completed": [
+        1,
+        2,
+        3
+      ],
+      "missing": [],
+      "missingTools": [
+        "screwdriver"
+      ]
+    }
+  ]
+}

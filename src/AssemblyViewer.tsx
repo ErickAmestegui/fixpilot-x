@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import type { AssemblyState } from './engine';
+import {resourceName} from './rescue-i18n';
 import './viewer.css';
 
 type Mode = 'exploded' | 'assembled' | 'progress';
 interface Props {
+  locale?: 'en' | 'es';
   state: AssemblyState;
   mode: Mode;
   reducedMotion: boolean;
@@ -97,10 +99,11 @@ function makeBolt(material: THREE.MeshStandardMaterial, length = .12) {
   return group;
 }
 
-export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, command }: Props) {
+export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, command, locale='es' }: Props) {
   const assemblyId = (state as AssemblyState & { assemblyId?: string }).assemblyId ?? 'table';
   const organizer = assemblyId === 'organizer';
   const partSpecs = organizer ? ORGANIZER_PARTS : TABLE_PARTS;
+  const partName=(part:Part)=>locale==='en'?resourceName(part.id,state,'en'):part.name;
   const mount = useRef<HTMLDivElement>(null);
   const labels = useRef<Record<string, HTMLButtonElement | null>>({});
   const runtime = useRef<Runtime | null>(null);
@@ -362,10 +365,11 @@ export default function AssemblyViewer({ state, mode, reducedMotion, onSelect, c
     view.controls.update();
   }, [command]);
 
+  useEffect(()=>{mount.current?.querySelector('canvas')?.setAttribute('aria-label',locale==='en'?`Interactive 3D ${organizer?'organizer':'table'}. Drag to rotate; select parts using the buttons.`:`Modelo 3D interactivo ${organizer?'del organizador':'de la mesa'}. Arrastrá para rotar; usá los botones para seleccionar las piezas.`);},[locale,assemblyId]);
   return <div className="assembly-viewer" ref={mount}>
-    {unavailable ? <div className="viewer-fallback" role="status"><span className="fallback-cube">◇</span><strong>Vista 3D no disponible</strong><p>Este navegador no pudo iniciar WebGL. Podés seguir con la lista de piezas y el manual.</p><div className="fallback-parts">{partSpecs.map(part => <button key={part.id} onClick={() => onSelect(part.id)}>{part.id} · {part.name}</button>)}</div></div> : <div className="viewer-labels" aria-label="Piezas del modelo 3D">
-      {partSpecs.map(part => <button key={part.id} ref={el => { labels.current[part.id] = el; }} className={`part-label ${state.selectedPart === part.id ? 'is-selected' : ''} ${state.missing.includes(part.id) ? 'is-missing' : ''} ${['F1', 'S1', 'O6', 'H1'].includes(part.id) ? 'is-small' : ''}`} onClick={() => onSelect(part.id)} aria-label={`${part.id}: ${part.name}${state.missing.includes(part.id) ? ', pieza faltante' : ''}`} aria-pressed={state.selectedPart === part.id} title={`${part.id} · ${part.name}`}>{part.id}{state.missing.includes(part.id) && <span aria-hidden="true"> · ausente</span>}</button>)}
+    {unavailable ? <div className="viewer-fallback" role="status"><span className="fallback-cube">◇</span><strong>{locale==='en'?'3D view unavailable':'Vista 3D no disponible'}</strong><p>{locale==='en'?'This browser could not start WebGL. You can continue with the parts and step instructions.':'Este navegador no pudo iniciar WebGL. Podés seguir con la lista de piezas y el manual.'}</p><div className="fallback-parts">{partSpecs.map(part => <button key={part.id} onClick={() => onSelect(part.id)}>{part.id} · {partName(part)}</button>)}</div></div> : <div className="viewer-labels" aria-label={locale==='en'?'3D model parts':'Piezas del modelo 3D'}>
+      {partSpecs.map(part => <button key={part.id} ref={el => { labels.current[part.id] = el; }} className={`part-label ${state.selectedPart === part.id ? 'is-selected' : ''} ${state.missing.includes(part.id) ? 'is-missing' : ''} ${['F1', 'S1', 'O6', 'H1'].includes(part.id) ? 'is-small' : ''}`} onClick={() => onSelect(part.id)} aria-label={`${part.id}: ${partName(part)}${state.missing.includes(part.id) ? (locale==='en'?', missing part':', pieza faltante') : ''}`} aria-pressed={state.selectedPart === part.id} title={`${part.id} · ${partName(part)}`}>{part.id}{state.missing.includes(part.id) && <span aria-hidden="true"> · {locale==='en'?'missing':'ausente'}</span>}</button>)}
     </div>}
-    {!unavailable && <div className="viewer-gesture" aria-hidden="true"><span>↔</span> Arrastrá para explorar <i /> Scroll para acercar</div>}
+    {!unavailable && <div className="viewer-gesture" aria-hidden="true"><span>↔</span> {locale==='en'?'Drag to explore':'Arrastrá para explorar'} <i /> {locale==='en'?'Scroll to zoom':'Scroll para acercar'}</div>}
   </div>;
 }

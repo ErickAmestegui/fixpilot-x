@@ -108,7 +108,7 @@ test('browser initializes, discovers and invokes real MCP tools without losing l
     const dialog = page.getByRole('dialog');
     await dialog.locator('summary').click();
     await dialog.getByRole('button', { name: 'Conectar servidor local', exact: true }).click();
-    await expect(dialog.getByRole('status')).toContainText('MCP conectado · 18 herramientas');
+    await expect(dialog.getByRole('status')).toContainText('MCP conectado · 22 herramientas');
     await page.keyboard.press('Escape');
     await send(page, 'Me falta B7');
     expect((await storedState(page)).completed).toEqual([1]);

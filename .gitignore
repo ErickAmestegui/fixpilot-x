@@ -9,3 +9,4 @@ demo-final-results/
 *.tsbuildinfo
 .env*
 !.env.example
+demo-rescue-results/

@@ -6,6 +6,10 @@ Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience i
 
 For evaluation, start with the [judge quickstart](docs/JUDGE_QUICKSTART.md), [final public 2:14 demo](https://youtu.be/ok_BsZNJxzk), [final verification](docs/EVIDENCE_FINAL.md) and [recording notes](docs/DEMO_FINAL.md). [Final Devpost fields](docs/DEVPOST_COPY_READY.md) are prepared for entrant review. The separate additional open source contribution is [MCP Scenario Lab](https://github.com/ErickAmestegui/mcp-scenario-lab), a generic stateful MCP test runner with its own license, fixture and tests.
 
+## Rescue Intelligence upgrade
+
+The separate `rescue-intelligence` branch adds a bilingual judge workbench at `/?rescue`: hypothetical multi-resource changes, graph explanations, scenario comparison, explicit atomic approval and partial recovery. [Run and challenge the upgrade](docs/RESCUE_INTELLIGENCE.md); [current verification](docs/RESCUE_EVIDENCE.md). V2 tags and videos remain preserved. The current catalog has **22 real MCP tools**; the 18-tool and 164-test references below describe historical V2.
+
 ## Run locally
 
 Use Node.js 22 LTS or newer with npm, a modern desktop browser, and WebGL. Installation needs internet; the app has no paid-service dependency or runtime API key. No Echo or AWS account is required.
@@ -15,7 +19,7 @@ npm install
 npm run dev
 ```
 
-Open the localhost URL printed by Vite (normally `http://127.0.0.1:5173`). For reproducible installation after the lockfile is present, use `npm ci`. Keep the terminal running. The UI is in Spanish; English instructions and an English submission draft are included here.
+Open the localhost URL printed by Vite (normally `http://127.0.0.1:5173`). For reproducible installation after the lockfile is present, use `npm ci`. Keep the terminal running. The original assembly UI is in Spanish; open `/?rescue` for the English/Spanish judge workbench.
 
 To exercise genuine MCP, open a second terminal in the same directory:
 

@@ -45,7 +45,36 @@ describe('real MCP Streamable HTTP integration', () => {
     const result = await client.listTools();
     expect(result.tools.map(tool => tool.name)).toEqual(expect.arrayContaining(['mark_part_missing', 'restore_part', 'complete_step', 'restore_progress']));
     expect(result.tools.find(tool => tool.name === 'complete_step')?.inputSchema.properties).toHaveProperty('confirmed');
-    expect(result.tools).toHaveLength(18);
+    expect(result.tools).toHaveLength(22);
+  });
+
+  it('previews and compares without mutation, then atomically applies approval and rejects stale reuse',async()=>{
+    const client=await connect();await call(client,'complete_step',{stepId:1,confirmed:true});const base=await call(client,'complete_step',{stepId:2,confirmed:true});
+    const changes={missingParts:['B7'],unavailableTools:['screwdriver']};
+    const result=await call(client,'preview_scenario',{changes});expect(result.state).toEqual(base.state);
+    const preview=result.data as {baseToken:string;available:number[];blocked:number[]};expect(preview.available).toEqual([3]);expect(preview.blocked).toEqual([4,5,6,7,8]);
+    const compared=await call(client,'compare_scenarios',{scenarios:[{id:'A',changes},{id:'B',changes:{missingParts:['B7']}}]});expect(compared.state).toEqual(base.state);
+    const refused=await call(client,'apply_scenario',{changes,baseToken:preview.baseToken});expect(refused.state).toEqual(base.state);expect(refused.data).toMatchObject({errorCode:'CONFIRMATION_REQUIRED'});
+    const applied=await call(client,'apply_scenario',{changes,baseToken:preview.baseToken,confirmed:true});expect(applied.state.missing).toEqual(['B7']);expect(applied.state.missingTools).toEqual(['screwdriver']);expect(applied.state.completed).toEqual([1,2]);expect(applied.state.history.at(-1)?.tool).toBe('apply_scenario');expect(applied.state.revision).toBe(base.state.revision+1);
+    const stale=await call(client,'apply_scenario',{changes,baseToken:preview.baseToken,confirmed:true});expect(stale.data).toMatchObject({errorCode:'STALE_BASE'});expect(stale.state).toEqual(applied.state);
+    const explanation=await call(client,'explain_recovery',{stepId:5});expect(explanation.state).toEqual(applied.state);expect(explanation.data).toMatchObject({resources:[{kind:'part',id:'B7',steps:[4]}]});
+    const recovered=await call(client,'preview_scenario',{changes:{recoveredParts:['B7']}});expect(recovered.state).toEqual(applied.state);const recoveredPreview=recovered.data as typeof preview;expect(recoveredPreview.available).toEqual([3,4]);
+    const partial=await call(client,'apply_scenario',{changes:{recoveredParts:['B7']},baseToken:recoveredPreview.baseToken,confirmed:true});expect(partial.state.missing).toEqual([]);expect(partial.state.missingTools).toEqual(['screwdriver']);expect(partial.state.completed).toEqual([1,2]);
+  });
+
+  it('recovers after MCP schema and domain errors without accepting partial hypothetical changes',async()=>{
+    const client=await connect();const base=await call(client,'get_assembly_state');
+    const malformed=await client.callTool({name:'preview_scenario',arguments:{changes:{missingParts:'B7'}}});expect(malformed.isError).toBe(true);
+    const unknown=await call(client,'preview_scenario',{changes:{missingParts:['B7','X99']}});expect(unknown.data).toMatchObject({errorCode:'INVALID_RESOURCE'});expect(unknown.state).toEqual(base.state);
+    const contradictory=await call(client,'preview_scenario',{changes:{missingParts:['B7'],recoveredParts:['B7']}});expect(contradictory.data).toMatchObject({errorCode:'CONTRADICTORY_CHANGES'});expect(contradictory.state).toEqual(base.state);
+    const good=await call(client,'preview_scenario',{changes:{missingParts:['B7']}});expect(good.state).toEqual(base.state);expect(good.kind).toBe('info');
+    const second=await connect();const independent=await call(second,'get_assembly_state');expect(independent.state.missing).toEqual([]);
+  });
+
+  it('advertises new analysis tools as read-only and application as an explicit mutation',async()=>{
+    const client=await connect(),catalog=await client.listTools();for(const name of ['preview_scenario','compare_scenarios','explain_recovery'])expect(catalog.tools.find(t=>t.name===name)?.annotations?.readOnlyHint).toBe(true);
+    expect(catalog.tools.find(t=>t.name==='apply_scenario')?.annotations?.readOnlyHint).toBe(false);
+    const base=await call(client,'get_assembly_state');const result=await call(client,'explain_recovery',{stepId:5,changes:{missingParts:['B7'],unavailableTools:['hex']}});expect(result.state).toEqual(base.state);expect(result.data).toMatchObject({stepId:5,resources:expect.arrayContaining([{kind:'part',id:'B7',steps:[4]},{kind:'tool',id:'hex',steps:[2,3,4,5]}])});
   });
 
   it('runs the second catalog and missing-tool recovery through the same MCP engine',async()=>{
