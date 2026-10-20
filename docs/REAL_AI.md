@@ -10,13 +10,13 @@ Requires Node.js 22+, npm, Ollama and a compatible machine. Our evaluation machi
 git clone --branch real-ai-copilot https://github.com/ErickAmestegui/fixpilot-x.git
 cd fixpilot-x
 npm ci
-ollama pull qwen3:4b-instruct
+ollama pull qwen3:8b
 npm run dev:copilot
 ```
 
-Open `http://127.0.0.1:5173/?ai`. Choose **Connect Ollama · Qwen3 4B**. If Ollama was installed as a portable CLI, start `ollama serve` separately first. The one-command launcher starts only the browser UI, MCP and the local AI adapter; it does not install software, download weights or enable billing. The equivalent separate commands are `npm run dev`, `npm run mcp` and `npm run ai`.
+Open `http://127.0.0.1:5173/?ai`. Choose **Connect Ollama · Qwen3 8B**. If Ollama was installed as a portable CLI, start `ollama serve` separately first. The one-command launcher starts only the browser UI, MCP and the local AI adapter; it does not install software, download weights or enable billing. The equivalent separate commands are `npm run dev`, `npm run mcp` and `npm run ai`.
 
-Use the explicit **qwen3:4b-instruct** tag. In this environment the generic `qwen3:4b` resolved to **Qwen3-4B-Thinking-2507**, a thinking-only variant. Disabling thinking for that model produced unacceptable real-evaluation results; the upgrade does not hide or count those attempts as passes. The selected Instruct model and sampling must be verified in the current evidence before release.
+The selected candidate is **qwen3:8b**, with thinking explicitly disabled, a 4096-token context and bounded structured output. Consult the current evidence report for its actual release decision, digest and measured behavior. In this environment the generic `qwen3:4b` resolved to **Qwen3-4B-Thinking-2507**, a thinking-only variant. Disabling thinking for that variant was a configuration mistake. The separate `qwen3:4b-instruct` candidate also failed real conversational quality checks. These attempts are not hidden or counted as passes. No silent model fallback is used.
 
 In the workbench, **Connect local MCP** initializes the genuine 22-tool Streamable HTTP session and transfers the current validated browser snapshot. The AI then queries through that session. Without MCP connected, the same tools execute directly in the browser; each receipt identifies its transport. The AI adapter's `/chat` endpoint is an ordinary local HTTP adapter, **not MCP**. The actual MCP endpoint remains `/mcp` on port 3101.
 
@@ -28,7 +28,7 @@ WebLLM with `Qwen3-1.7B-q4f16_1-MLC` loaded and generated actual responses on th
 
 1. A bounded session reads the current assembly through the real `preview_scenario` dispatcher/MCP path, which returns the exact unchanged state.
 2. A genuine local model generates a structured routing decision. The decoder's schema uses the current catalog's valid part IDs, tool IDs and step numbers; parts and tools have separate enums.
-3. The controller validates parameters, hypothetical state and actual base token. It can invoke only `preview_scenario`, `compare_scenarios` and `explain_recovery`. It cannot call any inventory, progress, restore, load or apply mutator.
+3. The controller validates parameters, hypothetical state and actual base token. A proposed resource must be grounded in a catalog ID/name/alias in the current request, recent user context, current shortage or explicit viewer selection. Unusual resource paraphrases may need clarification rather than guessing. This is argument validation, not the deterministic command interpreter. The controller can invoke only `preview_scenario`, `compare_scenarios` and `explain_recovery`. It cannot call any inventory, progress, restore, load or apply mutator.
 4. Validated hypothetical effects update the existing Three.js viewer and scenario controls. Comparisons and recovery use the existing planner. A request to record/undo work can only open the existing human dialog.
 5. Actual returned facts feed the model's natural-language answer. Reference/progress validation and one bounded model repair attempt reject malformed or unsupported claims. This does not make arbitrary natural language provably correct; the exact engine result and human review remain authoritative.
 6. Applying a scenario or confirming a physical report is still a separate explicit user action, validated by the original engine. Text, model output and imported document instructions cannot check the approval box.
@@ -52,7 +52,7 @@ npm run test:e2e
 npm run test:ai:live
 ```
 
-The 19 enforcement/adapter tests use explicitly scripted provider doubles, and the two AI UI boundary tests mock the local adapter. They are not real-model evidence. `test:ai:live` never substitutes a mock: it records actual model outputs, actual MCP receipts, state invariance and exact scenario expectations. Its initial confirmations belong to a documented synthetic fixture; they are not model-approved or verified physical work. Real transcripts, performance, failures and release status belong in a separate current evidence report. Automated scenario checks alone cannot approve natural-language factual accuracy; replies must also be reviewed against the engine.
+The 20 enforcement/adapter tests use explicitly scripted provider doubles, and the two AI UI boundary tests mock the local adapter. They are not real-model evidence. `test:ai:live` never substitutes a mock: it records actual model outputs, actual MCP receipts, state invariance and exact scenario expectations. Its initial confirmations belong to a documented synthetic fixture; they are not model-approved or verified physical work. Real transcripts, performance, failures and release status belong in a separate current evidence report. Automated scenario checks alone cannot approve natural-language factual accuracy; replies must also be reviewed against the engine.
 
 ## Provider choice and cost
 

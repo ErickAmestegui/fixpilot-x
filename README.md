@@ -4,6 +4,12 @@
 
 Built for the Alexa+ track of Build, Ship, Shape 2026. **The Alexa+ experience is simulated.** The planner, inventory, 3D interactions, persistence, and MCP tools run real code. There is no connection to an Alexa device, private Amazon SDK, paid AI API, or Amazon Shopping.
 
+## Real local AI copilot branch
+
+The isolated `real-ai-copilot` branch adds actual local Qwen3 generation through Ollama, bounded project conversation memory, structured read-only tool decisions and the existing human approval dialogs. Follow [local setup and boundaries](docs/REAL_AI.md), [real-model evidence and release decision](docs/REAL_AI_EVIDENCE.md), and [Devpost wording changes](docs/DEVPOST_REAL_AI_UPDATE.md). Open `http://127.0.0.1:5173/?ai` after starting the local services. Check the current evidence before making a conversational quality claim; scripted tests are not model evaluations.
+
+**The public static Rescue preview does not run this LLM.** Real AI and genuine MCP transport run locally. The existing V2/Rescue tags, public preview and videos are preserved; their deterministic behavior is documented below. The local AI adapter is ordinary HTTP, separate from the genuine 22-tool MCP server.
+
 For evaluation, start with the [judge quickstart](docs/JUDGE_QUICKSTART.md), [final public 2:14 demo](https://youtu.be/ok_BsZNJxzk), [final verification](docs/EVIDENCE_FINAL.md) and [recording notes](docs/DEMO_FINAL.md). [Final Devpost fields](docs/DEVPOST_COPY_READY.md) are prepared for entrant review. The separate additional open source contribution is [MCP Scenario Lab](https://github.com/ErickAmestegui/mcp-scenario-lab), a generic stateful MCP test runner with its own license, fixture and tests.
 
 ## Rescue Intelligence upgrade

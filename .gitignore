@@ -10,3 +10,4 @@ demo-final-results/
 .env*
 !.env.example
 demo-rescue-results/
+demo-ai-results/
