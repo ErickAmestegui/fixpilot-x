@@ -1,0 +1,4 @@
+participant_id,session_date,release_sha,device_browser,prior_assembly_experience,prior_mcp_experience,task,start_time,end_time,elapsed_seconds,setup_download_seconds,build_seconds,interaction_seconds,completion_status,hints,recoverable_errors,critical_errors,ease_1_to_7,preview_vs_record_understanding,physical_work_understanding,observations,facilitator_notes
+,,,,,,1,,,,,,,,,,,,,,,
+,,,,,,2,,,,,,,,,,,,,,,
+,,,,,,3,,,,,,,,,,,,,,,

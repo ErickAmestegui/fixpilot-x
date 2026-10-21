@@ -1,0 +1,19 @@
+{
+  "videos": [
+    {
+      "file": "demo-podium-results/fixpilot-judge-mode.webm",
+      "bytes": 8482210,
+      "sha256": "3d050df82d97ddfc886ff60bfdf1f635a33e71f34d4e3f1ed0871554583fe243",
+      "duration": "00:00:53.00"
+    },
+    {
+      "file": "demo-podium-results/clean-install-mcp-app.webm",
+      "bytes": 3048637,
+      "sha256": "a990468600b246970b5feebc978efcfc0c179c830a27494448801ea72d601d41",
+      "duration": "00:00:09.48"
+    }
+  ],
+  "publicUpload": false,
+  "contestVideoUnchanged": true,
+  "disclosure": "Automated genuine UI/MCP, not participant data. Judge video has authored English captions and no audio. The final guard changes control availability, not the calculated outputs shown."
+}

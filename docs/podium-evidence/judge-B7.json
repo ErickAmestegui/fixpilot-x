@@ -1,0 +1,2894 @@
+{
+  "name": "FixPilot X — The Rescue Challenge",
+  "version": 1,
+  "seed": {
+    "assemblyId": "table",
+    "completed": [
+      1,
+      2
+    ],
+    "missingParts": [],
+    "missingTools": []
+  },
+  "draft": {
+    "missingParts": [],
+    "recoveredParts": [],
+    "unavailableTools": [],
+    "recoveredTools": [],
+    "undoSteps": []
+  },
+  "state": {
+    "version": 1,
+    "assemblyId": "table",
+    "completed": [
+      1,
+      2
+    ],
+    "missing": [],
+    "missingTools": [],
+    "selectedPart": "D1",
+    "selectedStep": 2,
+    "revision": 4,
+    "history": [
+      {
+        "id": "action-1",
+        "at": "2026-10-21T05:25:26.701Z",
+        "tool": "restore_progress",
+        "message": "Progreso validado e importado. Plan recalculado.",
+        "kind": "success",
+        "revision": 1
+      },
+      {
+        "id": "action-2",
+        "at": "2026-10-21T05:25:26.834Z",
+        "tool": "restore_progress",
+        "message": "Progreso validado e importado. Plan recalculado.",
+        "kind": "success",
+        "revision": 2
+      },
+      {
+        "id": "rescue-3",
+        "at": "2026-10-21T05:25:29.298Z",
+        "tool": "apply_scenario",
+        "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+        "kind": "success",
+        "revision": 3
+      },
+      {
+        "id": "rescue-4",
+        "at": "2026-10-21T05:25:30.808Z",
+        "tool": "apply_scenario",
+        "message": "Scenario applied after explicit approval. Missing parts: none; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+        "kind": "success",
+        "revision": 4
+      }
+    ]
+  },
+  "transport": "MCP Streamable HTTP · 2025-11-25",
+  "receipts": [
+    {
+      "id": 1,
+      "tool": "restore_progress",
+      "args": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[],\"missing\":[],\"missingTools\":[],\"selectedPart\":null,\"selectedStep\":1,\"revision\":0,\"history\":[]}"
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 15,
+      "kind": "success",
+      "before": "[1,\"table\",[],[],[],null,1,0,[]]",
+      "after": "[1,\"table\",[],[],[],null,1,1,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1]]]",
+      "data": {
+        "plan": [
+          {
+            "id": 1,
+            "title": "Preparar la base",
+            "description": "Colocá D1 sobre una superficie plana protegida, con los orificios de unión accesibles. Identificá sus bordes y separá las fijaciones.",
+            "parts": [
+              "D1"
+            ],
+            "tools": [],
+            "dependencies": [],
+            "safety": "Trabajá sobre una superficie estable y despejada. Este prototipo no sustituye las instrucciones de un fabricante.",
+            "status": "available",
+            "reasons": []
+          },
+          {
+            "id": 2,
+            "title": "Instalar paneles laterales",
+            "description": "Alineá B1 y B2 con los orificios de D1. Sostené cada panel mientras colocás los conectores S1. Mantené el conjunto apoyado.",
+            "parts": [
+              "D1",
+              "B1",
+              "B2",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              1
+            ],
+            "safety": "Sostené los paneles hasta fijarlos. No cargues el conjunto ni lo dejes de pie sin apoyo antes de instalar B7.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 1."
+            ]
+          },
+          {
+            "id": 3,
+            "title": "Instalar repisa central",
+            "description": "Con el conjunto apoyado, alineá C1 entre B1 y B2 y fijala con sus soportes S1. Este paso puede realizarse mientras falta B7.",
+            "parts": [
+              "C1",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              2
+            ],
+            "safety": "Mantené los laterales apoyados y las manos fuera de los puntos de unión. No cargues la repisa.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 2."
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Fijar travesaño B7",
+            "description": "Uní B7 horizontalmente entre los laterales, por la parte posterior, debajo de la futura cubierta. Usá las fijaciones S1.",
+            "parts": [
+              "B7",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              2
+            ],
+            "safety": "B7 es estructural. No continúes con la cubierta si falta o está dañado; no uses una pieza improvisada.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 2."
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Colocar panel superior",
+            "description": "Alineá A1 sobre los laterales y el travesaño ya fijados. Instalá sus conectores S1 y ajustá con cuidado.",
+            "parts": [
+              "A1",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              3,
+              4
+            ],
+            "safety": "Verificá manualmente las uniones de C1 y B7 antes de apoyar A1. No aprietes en exceso.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 3.",
+              "Completá primero el paso 4."
+            ]
+          },
+          {
+            "id": 6,
+            "title": "Preparar los cuatro pies",
+            "description": "Sobre la mesa de trabajo, prepará las placas y protectores de F1 con S1. Dejá los cuatro pies separados del mueble, listos para fijar.",
+            "parts": [
+              "F1",
+              "S1"
+            ],
+            "tools": [
+              "screwdriver"
+            ],
+            "dependencies": [
+              1
+            ],
+            "safety": "Los pies se preparan por separado. No intentes voltear ni sostener el mueble incompleto para colocarlos.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 1."
+            ]
+          },
+          {
+            "id": 7,
+            "title": "Fijar pies a la base",
+            "description": "Con el conjunto completo y apoyado de forma segura sobre una superficie protegida, fijá los cuatro pies preparados en los puntos de D1.",
+            "parts": [
+              "D1",
+              "F1",
+              "S1"
+            ],
+            "tools": [
+              "screwdriver"
+            ],
+            "dependencies": [
+              5,
+              6
+            ],
+            "safety": "Pedí ayuda para mover el conjunto si no podés sujetarlo cómodamente. Nunca trabajes debajo de un mueble sostenido a mano.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 5.",
+              "Completá primero el paso 6."
+            ]
+          },
+          {
+            "id": 8,
+            "title": "Revisión final",
+            "description": "Colocá el mueble en suelo plano. Revisá manualmente todas las uniones, que los cuatro pies apoyen y que no haya movimiento inesperado.",
+            "parts": [],
+            "tools": [],
+            "dependencies": [
+              7
+            ],
+            "safety": "La app registra tu confirmación; no verifica la resistencia física. No te subas, no lo uses como asiento ni lo cargues sin una capacidad validada.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 7."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "tool": "restore_progress",
+      "args": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:25:26.830Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:25:26.830Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 9,
+      "kind": "success",
+      "before": "[1,\"table\",[],[],[],null,1,1,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1]]]",
+      "after": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "plan": [
+          {
+            "id": 1,
+            "title": "Preparar la base",
+            "description": "Colocá D1 sobre una superficie plana protegida, con los orificios de unión accesibles. Identificá sus bordes y separá las fijaciones.",
+            "parts": [
+              "D1"
+            ],
+            "tools": [],
+            "dependencies": [],
+            "safety": "Trabajá sobre una superficie estable y despejada. Este prototipo no sustituye las instrucciones de un fabricante.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 2,
+            "title": "Instalar paneles laterales",
+            "description": "Alineá B1 y B2 con los orificios de D1. Sostené cada panel mientras colocás los conectores S1. Mantené el conjunto apoyado.",
+            "parts": [
+              "D1",
+              "B1",
+              "B2",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              1
+            ],
+            "safety": "Sostené los paneles hasta fijarlos. No cargues el conjunto ni lo dejes de pie sin apoyo antes de instalar B7.",
+            "status": "complete",
+            "reasons": []
+          },
+          {
+            "id": 3,
+            "title": "Instalar repisa central",
+            "description": "Con el conjunto apoyado, alineá C1 entre B1 y B2 y fijala con sus soportes S1. Este paso puede realizarse mientras falta B7.",
+            "parts": [
+              "C1",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              2
+            ],
+            "safety": "Mantené los laterales apoyados y las manos fuera de los puntos de unión. No cargues la repisa.",
+            "status": "available",
+            "reasons": []
+          },
+          {
+            "id": 4,
+            "title": "Fijar travesaño B7",
+            "description": "Uní B7 horizontalmente entre los laterales, por la parte posterior, debajo de la futura cubierta. Usá las fijaciones S1.",
+            "parts": [
+              "B7",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              2
+            ],
+            "safety": "B7 es estructural. No continúes con la cubierta si falta o está dañado; no uses una pieza improvisada.",
+            "status": "available",
+            "reasons": []
+          },
+          {
+            "id": 5,
+            "title": "Colocar panel superior",
+            "description": "Alineá A1 sobre los laterales y el travesaño ya fijados. Instalá sus conectores S1 y ajustá con cuidado.",
+            "parts": [
+              "A1",
+              "S1"
+            ],
+            "tools": [
+              "hex"
+            ],
+            "dependencies": [
+              3,
+              4
+            ],
+            "safety": "Verificá manualmente las uniones de C1 y B7 antes de apoyar A1. No aprietes en exceso.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 3.",
+              "Completá primero el paso 4."
+            ]
+          },
+          {
+            "id": 6,
+            "title": "Preparar los cuatro pies",
+            "description": "Sobre la mesa de trabajo, prepará las placas y protectores de F1 con S1. Dejá los cuatro pies separados del mueble, listos para fijar.",
+            "parts": [
+              "F1",
+              "S1"
+            ],
+            "tools": [
+              "screwdriver"
+            ],
+            "dependencies": [
+              1
+            ],
+            "safety": "Los pies se preparan por separado. No intentes voltear ni sostener el mueble incompleto para colocarlos.",
+            "status": "available",
+            "reasons": []
+          },
+          {
+            "id": 7,
+            "title": "Fijar pies a la base",
+            "description": "Con el conjunto completo y apoyado de forma segura sobre una superficie protegida, fijá los cuatro pies preparados en los puntos de D1.",
+            "parts": [
+              "D1",
+              "F1",
+              "S1"
+            ],
+            "tools": [
+              "screwdriver"
+            ],
+            "dependencies": [
+              5,
+              6
+            ],
+            "safety": "Pedí ayuda para mover el conjunto si no podés sujetarlo cómodamente. Nunca trabajes debajo de un mueble sostenido a mano.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 5.",
+              "Completá primero el paso 6."
+            ]
+          },
+          {
+            "id": 8,
+            "title": "Revisión final",
+            "description": "Colocá el mueble en suelo plano. Revisá manualmente todas las uniones, que los cuatro pies apoyen y que no haya movimiento inesperado.",
+            "parts": [],
+            "tools": [],
+            "dependencies": [
+              7
+            ],
+            "safety": "La app registra tu confirmación; no verifica la resistencia física. No te subas, no lo uses como asiento ni lo cargues sin una capacidad validada.",
+            "status": "pending",
+            "reasons": [
+              "Completá primero el paso 7."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 60,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "directAffected": [],
+        "indirectAffected": [],
+        "available": [
+          3,
+          4,
+          6
+        ],
+        "blocked": [],
+        "invalidatedCompleted": [],
+        "diff": [],
+        "unchanged": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "causes": [
+          {
+            "stepId": 3,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                3
+              ]
+            ]
+          },
+          {
+            "stepId": 4,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 5,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              3,
+              4
+            ],
+            "chains": [
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 7,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              5,
+              6
+            ],
+            "chains": [
+              [
+                7,
+                5,
+                3
+              ],
+              [
+                7,
+                5,
+                4
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 8,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              7
+            ],
+            "chains": [
+              [
+                8,
+                7,
+                5,
+                3
+              ],
+              [
+                8,
+                7,
+                5,
+                4
+              ],
+              [
+                8,
+                7,
+                6
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "availableSteps": [
+            3,
+            4,
+            6
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 4,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 79,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [
+            "B7"
+          ],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "directAffected": [
+          4
+        ],
+        "indirectAffected": [
+          5,
+          7,
+          8
+        ],
+        "available": [
+          3,
+          6
+        ],
+        "blocked": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "invalidatedCompleted": [],
+        "diff": [
+          {
+            "stepId": 4,
+            "before": "available",
+            "after": "blocked"
+          },
+          {
+            "stepId": 5,
+            "before": "pending",
+            "after": "blocked"
+          },
+          {
+            "stepId": 7,
+            "before": "pending",
+            "after": "blocked"
+          },
+          {
+            "stepId": 8,
+            "before": "pending",
+            "after": "blocked"
+          }
+        ],
+        "unchanged": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "causes": [
+          {
+            "stepId": 3,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                3
+              ]
+            ]
+          },
+          {
+            "stepId": 4,
+            "missingParts": [
+              "B7"
+            ],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 5,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              3,
+              4
+            ],
+            "chains": [
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 7,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              5,
+              6
+            ],
+            "chains": [
+              [
+                7,
+                5,
+                3
+              ],
+              [
+                7,
+                5,
+                4
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 8,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              7
+            ],
+            "chains": [
+              [
+                8,
+                7,
+                5,
+                3
+              ],
+              [
+                8,
+                7,
+                5,
+                4
+              ],
+              [
+                8,
+                7,
+                6
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [
+            {
+              "kind": "part",
+              "id": "B7",
+              "steps": [
+                4
+              ]
+            }
+          ],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "availableSteps": [
+            3,
+            6
+          ],
+          "blockedSteps": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 5,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 61,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [
+            "B7"
+          ],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 2,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            }
+          ]
+        },
+        "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "directAffected": [
+          4
+        ],
+        "indirectAffected": [
+          5,
+          7,
+          8
+        ],
+        "available": [
+          3,
+          6
+        ],
+        "blocked": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "invalidatedCompleted": [],
+        "diff": [
+          {
+            "stepId": 4,
+            "before": "available",
+            "after": "blocked"
+          },
+          {
+            "stepId": 5,
+            "before": "pending",
+            "after": "blocked"
+          },
+          {
+            "stepId": 7,
+            "before": "pending",
+            "after": "blocked"
+          },
+          {
+            "stepId": 8,
+            "before": "pending",
+            "after": "blocked"
+          }
+        ],
+        "unchanged": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "causes": [
+          {
+            "stepId": 3,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                3
+              ]
+            ]
+          },
+          {
+            "stepId": 4,
+            "missingParts": [
+              "B7"
+            ],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 5,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              3,
+              4
+            ],
+            "chains": [
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 7,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              5,
+              6
+            ],
+            "chains": [
+              [
+                7,
+                5,
+                3
+              ],
+              [
+                7,
+                5,
+                4
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 8,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              7
+            ],
+            "chains": [
+              [
+                8,
+                7,
+                5,
+                3
+              ],
+              [
+                8,
+                7,
+                5,
+                4
+              ],
+              [
+                8,
+                7,
+                6
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [
+            {
+              "kind": "part",
+              "id": "B7",
+              "steps": [
+                4
+              ]
+            }
+          ],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "availableSteps": [
+            3,
+            6
+          ],
+          "blockedSteps": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 6,
+      "tool": "apply_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+        "confirmed": true
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 7,
+      "kind": "success",
+      "before": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+      "after": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "data": {
+        "applied": true,
+        "preview": {
+          "base": {
+            "version": 1,
+            "assemblyId": "table",
+            "completed": [
+              1,
+              2
+            ],
+            "missing": [],
+            "missingTools": [],
+            "selectedPart": "D1",
+            "selectedStep": 2,
+            "revision": 2,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-21T05:25:26.701Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-21T05:25:26.834Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              }
+            ]
+          },
+          "changes": {
+            "missingParts": [
+              "B7"
+            ],
+            "recoveredParts": [],
+            "unavailableTools": [],
+            "recoveredTools": [],
+            "undoSteps": []
+          },
+          "hypothetical": {
+            "version": 1,
+            "assemblyId": "table",
+            "completed": [
+              1,
+              2
+            ],
+            "missing": [
+              "B7"
+            ],
+            "missingTools": [],
+            "selectedPart": "D1",
+            "selectedStep": 2,
+            "revision": 2,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-21T05:25:26.701Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-21T05:25:26.834Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              }
+            ]
+          },
+          "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2]]]",
+          "directAffected": [
+            4
+          ],
+          "indirectAffected": [
+            5,
+            7,
+            8
+          ],
+          "available": [
+            3,
+            6
+          ],
+          "blocked": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "invalidatedCompleted": [],
+          "diff": [
+            {
+              "stepId": 4,
+              "before": "available",
+              "after": "blocked"
+            },
+            {
+              "stepId": 5,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 7,
+              "before": "pending",
+              "after": "blocked"
+            },
+            {
+              "stepId": 8,
+              "before": "pending",
+              "after": "blocked"
+            }
+          ],
+          "unchanged": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "causes": [
+            {
+              "stepId": 3,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  3
+                ]
+              ]
+            },
+            {
+              "stepId": 4,
+              "missingParts": [
+                "B7"
+              ],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 5,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                3,
+                4
+              ],
+              "chains": [
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 6,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 7,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                5,
+                6
+              ],
+              "chains": [
+                [
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  7,
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 8,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                7
+              ],
+              "chains": [
+                [
+                  8,
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  8,
+                  7,
+                  6
+                ]
+              ]
+            }
+          ],
+          "recovery": {
+            "resources": [
+              {
+                "kind": "part",
+                "id": "B7",
+                "steps": [
+                  4
+                ]
+              }
+            ],
+            "prerequisiteSteps": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "availableSteps": [
+              3,
+              6
+            ],
+            "blockedSteps": [
+              4,
+              5,
+              7,
+              8
+            ],
+            "requiresHumanVerification": true
+          }
+        }
+      }
+    },
+    {
+      "id": 7,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 49,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "after": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [
+            "B7"
+          ],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 3,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            },
+            {
+              "id": "rescue-3",
+              "at": "2026-10-21T05:25:29.298Z",
+              "tool": "apply_scenario",
+              "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+              "kind": "success",
+              "revision": 3
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [
+            "B7"
+          ],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 3,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            },
+            {
+              "id": "rescue-3",
+              "at": "2026-10-21T05:25:29.298Z",
+              "tool": "apply_scenario",
+              "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+              "kind": "success",
+              "revision": 3
+            }
+          ]
+        },
+        "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+        "directAffected": [],
+        "indirectAffected": [],
+        "available": [
+          3,
+          6
+        ],
+        "blocked": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "invalidatedCompleted": [],
+        "diff": [],
+        "unchanged": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "causes": [
+          {
+            "stepId": 3,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                3
+              ]
+            ]
+          },
+          {
+            "stepId": 4,
+            "missingParts": [
+              "B7"
+            ],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 5,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              3,
+              4
+            ],
+            "chains": [
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 7,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              5,
+              6
+            ],
+            "chains": [
+              [
+                7,
+                5,
+                3
+              ],
+              [
+                7,
+                5,
+                4
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 8,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              7
+            ],
+            "chains": [
+              [
+                8,
+                7,
+                5,
+                3
+              ],
+              [
+                8,
+                7,
+                5,
+                4
+              ],
+              [
+                8,
+                7,
+                6
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [
+            {
+              "kind": "part",
+              "id": "B7",
+              "steps": [
+                4
+              ]
+            }
+          ],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "availableSteps": [
+            3,
+            6
+          ],
+          "blockedSteps": [
+            4,
+            5,
+            7,
+            8
+          ],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 8,
+      "tool": "compare_scenarios",
+      "args": {
+        "scenarios": [
+          {
+            "id": "A",
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          },
+          {
+            "id": "B",
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [
+                "B7"
+              ],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        ]
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 17,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "after": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "data": {
+        "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+        "scenarios": [
+          {
+            "id": "A",
+            "base": {
+              "version": 1,
+              "assemblyId": "table",
+              "completed": [
+                1,
+                2
+              ],
+              "missing": [
+                "B7"
+              ],
+              "missingTools": [],
+              "selectedPart": "D1",
+              "selectedStep": 2,
+              "revision": 3,
+              "history": [
+                {
+                  "id": "action-1",
+                  "at": "2026-10-21T05:25:26.701Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 1
+                },
+                {
+                  "id": "action-2",
+                  "at": "2026-10-21T05:25:26.834Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 2
+                },
+                {
+                  "id": "rescue-3",
+                  "at": "2026-10-21T05:25:29.298Z",
+                  "tool": "apply_scenario",
+                  "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                  "kind": "success",
+                  "revision": 3
+                }
+              ]
+            },
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            },
+            "hypothetical": {
+              "version": 1,
+              "assemblyId": "table",
+              "completed": [
+                1,
+                2
+              ],
+              "missing": [
+                "B7"
+              ],
+              "missingTools": [],
+              "selectedPart": "D1",
+              "selectedStep": 2,
+              "revision": 3,
+              "history": [
+                {
+                  "id": "action-1",
+                  "at": "2026-10-21T05:25:26.701Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 1
+                },
+                {
+                  "id": "action-2",
+                  "at": "2026-10-21T05:25:26.834Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 2
+                },
+                {
+                  "id": "rescue-3",
+                  "at": "2026-10-21T05:25:29.298Z",
+                  "tool": "apply_scenario",
+                  "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                  "kind": "success",
+                  "revision": 3
+                }
+              ]
+            },
+            "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+            "directAffected": [],
+            "indirectAffected": [],
+            "available": [
+              3,
+              6
+            ],
+            "blocked": [
+              4,
+              5,
+              7,
+              8
+            ],
+            "invalidatedCompleted": [],
+            "diff": [],
+            "unchanged": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "causes": [
+              {
+                "stepId": 3,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    3
+                  ]
+                ]
+              },
+              {
+                "stepId": 4,
+                "missingParts": [
+                  "B7"
+                ],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    4
+                  ]
+                ]
+              },
+              {
+                "stepId": 5,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  3,
+                  4
+                ],
+                "chains": [
+                  [
+                    5,
+                    3
+                  ],
+                  [
+                    5,
+                    4
+                  ]
+                ]
+              },
+              {
+                "stepId": 6,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    6
+                  ]
+                ]
+              },
+              {
+                "stepId": 7,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  5,
+                  6
+                ],
+                "chains": [
+                  [
+                    7,
+                    5,
+                    3
+                  ],
+                  [
+                    7,
+                    5,
+                    4
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ]
+              },
+              {
+                "stepId": 8,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  7
+                ],
+                "chains": [
+                  [
+                    8,
+                    7,
+                    5,
+                    3
+                  ],
+                  [
+                    8,
+                    7,
+                    5,
+                    4
+                  ],
+                  [
+                    8,
+                    7,
+                    6
+                  ]
+                ]
+              }
+            ],
+            "recovery": {
+              "resources": [
+                {
+                  "kind": "part",
+                  "id": "B7",
+                  "steps": [
+                    4
+                  ]
+                }
+              ],
+              "prerequisiteSteps": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "availableSteps": [
+                3,
+                6
+              ],
+              "blockedSteps": [
+                4,
+                5,
+                7,
+                8
+              ],
+              "requiresHumanVerification": true
+            }
+          },
+          {
+            "id": "B",
+            "base": {
+              "version": 1,
+              "assemblyId": "table",
+              "completed": [
+                1,
+                2
+              ],
+              "missing": [
+                "B7"
+              ],
+              "missingTools": [],
+              "selectedPart": "D1",
+              "selectedStep": 2,
+              "revision": 3,
+              "history": [
+                {
+                  "id": "action-1",
+                  "at": "2026-10-21T05:25:26.701Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 1
+                },
+                {
+                  "id": "action-2",
+                  "at": "2026-10-21T05:25:26.834Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 2
+                },
+                {
+                  "id": "rescue-3",
+                  "at": "2026-10-21T05:25:29.298Z",
+                  "tool": "apply_scenario",
+                  "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                  "kind": "success",
+                  "revision": 3
+                }
+              ]
+            },
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [
+                "B7"
+              ],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            },
+            "hypothetical": {
+              "version": 1,
+              "assemblyId": "table",
+              "completed": [
+                1,
+                2
+              ],
+              "missing": [],
+              "missingTools": [],
+              "selectedPart": "D1",
+              "selectedStep": 2,
+              "revision": 3,
+              "history": [
+                {
+                  "id": "action-1",
+                  "at": "2026-10-21T05:25:26.701Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 1
+                },
+                {
+                  "id": "action-2",
+                  "at": "2026-10-21T05:25:26.834Z",
+                  "tool": "restore_progress",
+                  "message": "Progreso validado e importado. Plan recalculado.",
+                  "kind": "success",
+                  "revision": 2
+                },
+                {
+                  "id": "rescue-3",
+                  "at": "2026-10-21T05:25:29.298Z",
+                  "tool": "apply_scenario",
+                  "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                  "kind": "success",
+                  "revision": 3
+                }
+              ]
+            },
+            "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+            "directAffected": [
+              4
+            ],
+            "indirectAffected": [
+              5,
+              7,
+              8
+            ],
+            "available": [
+              3,
+              4,
+              6
+            ],
+            "blocked": [],
+            "invalidatedCompleted": [],
+            "diff": [
+              {
+                "stepId": 4,
+                "before": "blocked",
+                "after": "available"
+              },
+              {
+                "stepId": 5,
+                "before": "blocked",
+                "after": "pending"
+              },
+              {
+                "stepId": 7,
+                "before": "blocked",
+                "after": "pending"
+              },
+              {
+                "stepId": 8,
+                "before": "blocked",
+                "after": "pending"
+              }
+            ],
+            "unchanged": [
+              1,
+              2,
+              3,
+              6
+            ],
+            "causes": [
+              {
+                "stepId": 3,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    3
+                  ]
+                ]
+              },
+              {
+                "stepId": 4,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    4
+                  ]
+                ]
+              },
+              {
+                "stepId": 5,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  3,
+                  4
+                ],
+                "chains": [
+                  [
+                    5,
+                    3
+                  ],
+                  [
+                    5,
+                    4
+                  ]
+                ]
+              },
+              {
+                "stepId": 6,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [],
+                "chains": [
+                  [
+                    6
+                  ]
+                ]
+              },
+              {
+                "stepId": 7,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  5,
+                  6
+                ],
+                "chains": [
+                  [
+                    7,
+                    5,
+                    3
+                  ],
+                  [
+                    7,
+                    5,
+                    4
+                  ],
+                  [
+                    7,
+                    6
+                  ]
+                ]
+              },
+              {
+                "stepId": 8,
+                "missingParts": [],
+                "unavailableTools": [],
+                "prerequisites": [
+                  7
+                ],
+                "chains": [
+                  [
+                    8,
+                    7,
+                    5,
+                    3
+                  ],
+                  [
+                    8,
+                    7,
+                    5,
+                    4
+                  ],
+                  [
+                    8,
+                    7,
+                    6
+                  ]
+                ]
+              }
+            ],
+            "recovery": {
+              "resources": [],
+              "prerequisiteSteps": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "availableSteps": [
+                3,
+                4,
+                6
+              ],
+              "blockedSteps": [],
+              "requiresHumanVerification": true
+            }
+          }
+        ],
+        "pairs": [
+          {
+            "left": "A",
+            "right": "B",
+            "onlyLeftAvailable": [],
+            "onlyRightAvailable": [
+              4
+            ],
+            "onlyLeftBlocked": [
+              4,
+              5,
+              7,
+              8
+            ],
+            "onlyRightBlocked": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "tool": "preview_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "B7"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 61,
+      "kind": "info",
+      "before": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "after": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "data": {
+        "base": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [
+            "B7"
+          ],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 3,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            },
+            {
+              "id": "rescue-3",
+              "at": "2026-10-21T05:25:29.298Z",
+              "tool": "apply_scenario",
+              "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+              "kind": "success",
+              "revision": 3
+            }
+          ]
+        },
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "B7"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "hypothetical": {
+          "version": 1,
+          "assemblyId": "table",
+          "completed": [
+            1,
+            2
+          ],
+          "missing": [],
+          "missingTools": [],
+          "selectedPart": "D1",
+          "selectedStep": 2,
+          "revision": 3,
+          "history": [
+            {
+              "id": "action-1",
+              "at": "2026-10-21T05:25:26.701Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 1
+            },
+            {
+              "id": "action-2",
+              "at": "2026-10-21T05:25:26.834Z",
+              "tool": "restore_progress",
+              "message": "Progreso validado e importado. Plan recalculado.",
+              "kind": "success",
+              "revision": 2
+            },
+            {
+              "id": "rescue-3",
+              "at": "2026-10-21T05:25:29.298Z",
+              "tool": "apply_scenario",
+              "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+              "kind": "success",
+              "revision": 3
+            }
+          ]
+        },
+        "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+        "directAffected": [
+          4
+        ],
+        "indirectAffected": [
+          5,
+          7,
+          8
+        ],
+        "available": [
+          3,
+          4,
+          6
+        ],
+        "blocked": [],
+        "invalidatedCompleted": [],
+        "diff": [
+          {
+            "stepId": 4,
+            "before": "blocked",
+            "after": "available"
+          },
+          {
+            "stepId": 5,
+            "before": "blocked",
+            "after": "pending"
+          },
+          {
+            "stepId": 7,
+            "before": "blocked",
+            "after": "pending"
+          },
+          {
+            "stepId": 8,
+            "before": "blocked",
+            "after": "pending"
+          }
+        ],
+        "unchanged": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "causes": [
+          {
+            "stepId": 3,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                3
+              ]
+            ]
+          },
+          {
+            "stepId": 4,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 5,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              3,
+              4
+            ],
+            "chains": [
+              [
+                5,
+                3
+              ],
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "stepId": 6,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [],
+            "chains": [
+              [
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 7,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              5,
+              6
+            ],
+            "chains": [
+              [
+                7,
+                5,
+                3
+              ],
+              [
+                7,
+                5,
+                4
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          {
+            "stepId": 8,
+            "missingParts": [],
+            "unavailableTools": [],
+            "prerequisites": [
+              7
+            ],
+            "chains": [
+              [
+                8,
+                7,
+                5,
+                3
+              ],
+              [
+                8,
+                7,
+                5,
+                4
+              ],
+              [
+                8,
+                7,
+                6
+              ]
+            ]
+          }
+        ],
+        "recovery": {
+          "resources": [],
+          "prerequisiteSteps": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "availableSteps": [
+            3,
+            4,
+            6
+          ],
+          "blockedSteps": [],
+          "requiresHumanVerification": true
+        }
+      }
+    },
+    {
+      "id": 10,
+      "tool": "apply_scenario",
+      "args": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "B7"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+        "confirmed": true
+      },
+      "transport": "MCP Streamable HTTP · 2025-11-25",
+      "ms": 13,
+      "kind": "success",
+      "before": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+      "after": "[1,\"table\",[1,2],[],[],\"D1\",2,4,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3],[\"rescue-4\",\"2026-10-21T05:25:30.808Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: none; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",4]]]",
+      "data": {
+        "applied": true,
+        "preview": {
+          "base": {
+            "version": 1,
+            "assemblyId": "table",
+            "completed": [
+              1,
+              2
+            ],
+            "missing": [
+              "B7"
+            ],
+            "missingTools": [],
+            "selectedPart": "D1",
+            "selectedStep": 2,
+            "revision": 3,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-21T05:25:26.701Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-21T05:25:26.834Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              },
+              {
+                "id": "rescue-3",
+                "at": "2026-10-21T05:25:29.298Z",
+                "tool": "apply_scenario",
+                "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                "kind": "success",
+                "revision": 3
+              }
+            ]
+          },
+          "changes": {
+            "missingParts": [],
+            "recoveredParts": [
+              "B7"
+            ],
+            "unavailableTools": [],
+            "recoveredTools": [],
+            "undoSteps": []
+          },
+          "hypothetical": {
+            "version": 1,
+            "assemblyId": "table",
+            "completed": [
+              1,
+              2
+            ],
+            "missing": [],
+            "missingTools": [],
+            "selectedPart": "D1",
+            "selectedStep": 2,
+            "revision": 3,
+            "history": [
+              {
+                "id": "action-1",
+                "at": "2026-10-21T05:25:26.701Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 1
+              },
+              {
+                "id": "action-2",
+                "at": "2026-10-21T05:25:26.834Z",
+                "tool": "restore_progress",
+                "message": "Progreso validado e importado. Plan recalculado.",
+                "kind": "success",
+                "revision": 2
+              },
+              {
+                "id": "rescue-3",
+                "at": "2026-10-21T05:25:29.298Z",
+                "tool": "apply_scenario",
+                "message": "Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.",
+                "kind": "success",
+                "revision": 3
+              }
+            ]
+          },
+          "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,3,[[\"action-1\",\"2026-10-21T05:25:26.701Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"action-2\",\"2026-10-21T05:25:26.834Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",2],[\"rescue-3\",\"2026-10-21T05:25:29.298Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",3]]]",
+          "directAffected": [
+            4
+          ],
+          "indirectAffected": [
+            5,
+            7,
+            8
+          ],
+          "available": [
+            3,
+            4,
+            6
+          ],
+          "blocked": [],
+          "invalidatedCompleted": [],
+          "diff": [
+            {
+              "stepId": 4,
+              "before": "blocked",
+              "after": "available"
+            },
+            {
+              "stepId": 5,
+              "before": "blocked",
+              "after": "pending"
+            },
+            {
+              "stepId": 7,
+              "before": "blocked",
+              "after": "pending"
+            },
+            {
+              "stepId": 8,
+              "before": "blocked",
+              "after": "pending"
+            }
+          ],
+          "unchanged": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "causes": [
+            {
+              "stepId": 3,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  3
+                ]
+              ]
+            },
+            {
+              "stepId": 4,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 5,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                3,
+                4
+              ],
+              "chains": [
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ]
+              ]
+            },
+            {
+              "stepId": 6,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [],
+              "chains": [
+                [
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 7,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                5,
+                6
+              ],
+              "chains": [
+                [
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  7,
+                  6
+                ]
+              ]
+            },
+            {
+              "stepId": 8,
+              "missingParts": [],
+              "unavailableTools": [],
+              "prerequisites": [
+                7
+              ],
+              "chains": [
+                [
+                  8,
+                  7,
+                  5,
+                  3
+                ],
+                [
+                  8,
+                  7,
+                  5,
+                  4
+                ],
+                [
+                  8,
+                  7,
+                  6
+                ]
+              ]
+            }
+          ],
+          "recovery": {
+            "resources": [],
+            "prerequisiteSteps": [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "availableSteps": [
+              3,
+              4,
+              6
+            ],
+            "blockedSteps": [],
+            "requiresHumanVerification": true
+          }
+        }
+      }
+    }
+  ],
+  "disclosure": "Starting progress is simulated. All scenario results use the original engine. Physical work is not verified. Alexa+ is simulated."
+}

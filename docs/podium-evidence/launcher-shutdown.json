@@ -1,0 +1,7 @@
+{
+  "signal": "Ctrl+C",
+  "ports": {
+    "3101": "closed",
+    "5175": "closed"
+  }
+}

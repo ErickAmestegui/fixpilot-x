@@ -1,0 +1,80 @@
+{
+  "unitIntegration": {
+    "passed": 219,
+    "total": 219
+  },
+  "finalBrowser": {
+    "passed": 22,
+    "total": 22,
+    "existing": 18,
+    "new": 4,
+    "localScope": "22 passed after edit-epoch fix; all four affected Judge cases passed again after readiness guard"
+  },
+  "earlierRuns": [
+    {
+      "scope": "Initial Judge Mode cases",
+      "passed": 2,
+      "failed": 1,
+      "reason": "Incorrect test expectation for B1; engine correct."
+    },
+    {
+      "scope": "Complete browser suite before repeated-proposal regression",
+      "passed": 21,
+      "failed": 0
+    },
+    {
+      "scope": "Second assembly and restart verification",
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "scope": "Clean-host follow-up",
+      "passed": 0,
+      "failed": 1,
+      "reason": "5-second preview timeout; retained and investigated."
+    },
+    {
+      "scope": "Rapid first previews",
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "scope": "Repeated identical proposals before fix",
+      "passed": 0,
+      "failed": 8,
+      "reason": "Preview cleared without rescheduling; fixed with edit epoch."
+    },
+    {
+      "scope": "Post-epoch host follow-up",
+      "passed": 1,
+      "failed": 1,
+      "reason": "Intermittent initial-preview timeout; subsequent readiness guard added"
+    },
+    {
+      "scope": "Diagnostic full-host batch before readiness guard",
+      "passed": 5,
+      "failed": 0
+    }
+  ],
+  "engineServerViewerUnchanged": true,
+  "llmOrPaidApiAdded": false,
+  "humanParticipants": 0,
+  "humanImpactValidation": "Pending; no fabricated results",
+  "publicDeployment": "Pending",
+  "cleanHostFinal": {
+    "completeRuns": 3,
+    "passed": 3,
+    "realToolCallsPerRun": 10,
+    "toolsDiscovered": 22,
+    "hostDeclinePreservedState": true,
+    "foreignOriginRejected": 403,
+    "repeatedProposalPassed": true
+  },
+  "productionBuild": "Passed; isolated copy and original produce identical named bundles",
+  "renderedInteractiveControls": {
+    "guided": 28,
+    "full": 57,
+    "humanImpactScore": false
+  },
+  "auditProductionVulnerabilities": 0
+}

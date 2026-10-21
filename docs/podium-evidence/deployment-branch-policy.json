@@ -1,0 +1,42 @@
+{
+  "before": [
+    {
+      "id": 63657316,
+      "name": "main",
+      "type": "branch"
+    },
+    {
+      "id": 63774110,
+      "name": "rescue-challenge",
+      "type": "branch"
+    },
+    {
+      "id": 63657812,
+      "name": "rescue-intelligence",
+      "type": "branch"
+    }
+  ],
+  "after": [
+    {
+      "id": 63657316,
+      "name": "main",
+      "type": "branch"
+    },
+    {
+      "id": 63795612,
+      "name": "podium-push",
+      "type": "branch"
+    },
+    {
+      "id": 63774110,
+      "name": "rescue-challenge",
+      "type": "branch"
+    },
+    {
+      "id": 63657812,
+      "name": "rescue-intelligence",
+      "type": "branch"
+    }
+  ],
+  "existingRulesPreserved": true
+}

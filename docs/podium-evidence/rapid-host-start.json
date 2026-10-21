@@ -1,0 +1,461 @@
+{
+  "mocked": false,
+  "trials": [
+    {
+      "trial": 1,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:12:50.439Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:12:50.440Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:12:54.033Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:12:54.034Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:12:57.881Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:12:57.882Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:01.767Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:01.768Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:05.768Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:05.768Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 6,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:09.071Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:09.072Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 7,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:12.650Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:12.651Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 8,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:16.519Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:16.519Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 9,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:20.583Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:20.584Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 10,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:24.917Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:24.918Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 11,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:29.589Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:29.590Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trial": 12,
+      "passed": true,
+      "calls": [
+        {
+          "name": "restore_progress",
+          "arguments": {
+            "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T05:13:33.744Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T05:13:33.745Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        },
+        {
+          "name": "preview_scenario",
+          "arguments": {
+            "changes": {
+              "missingParts": [
+                "B7"
+              ],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

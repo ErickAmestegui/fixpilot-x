@@ -1,0 +1,24 @@
+{
+  "firstRun": {
+    "passed": 2,
+    "failed": 1
+  },
+  "reason": "Test incorrectly expected B1 loss to invalidate both initial reports. Actual engine correctly preserves step 1 and invalidates step 2. Assertion and documentation corrected; engine unchanged.",
+  "finalHostCheck": {
+    "initialFailure": "One 5-second wait saw no blocked steps; not enough captured data to assign that timeout conclusively.",
+    "subsequentRapidStarts": "12/12 genuine first-preview checks passed; all retained in rapid-host-start.json",
+    "confirmedDefect": "Eight of eight repeated identical proposals cleared preview without rescheduling because the effect depended only on JSON draft content.",
+    "fix": "An edit epoch schedules recomputation even for identical proposals; approval is reset and exact state validation is retained.",
+    "evidence": "host-preview-diagnostic.json retains every before-fix trial; final regression and clean-host verification include repeated proposals."
+  },
+  "packaging": {
+    "initialRefusal": "Local legacy HTML copy was 562 bytes; public HTML was 561 bytes. Packaging refused rather than overwriting.",
+    "resolution": "Pinned authoritative public bytes for all seven Challenge files and verified deployment source c7b19c2 before packaging. All ten old files matched thereafter."
+  },
+  "hostReadiness": {
+    "observation": "Three fast first-preview follow-up attempts timed out across separate checks, without sufficient failure-time request telemetry to assign the exact event conclusively. The repeated-proposal defect was separately reproduced 8/8 and fixed.",
+    "followUp": "A diagnostic batch of five complete real-host checks then passed. These do not erase the failures.",
+    "mitigation": "Guide preview actions now require a valid current preview as well as no pending work, closing the initially enabled interval before the debounced baseline calculation. Repeated edits also reschedule via the edit epoch.",
+    "finalVerification": "Three complete checks against the gated production build passed, including repeated preview, host decline and recovery. All raw final run records retained."
+  }
+}

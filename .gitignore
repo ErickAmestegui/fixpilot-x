@@ -17,3 +17,6 @@ demo-ai-results/
 site-release/
 docs/challenge-evidence/matrix.json
 docs/challenge-evidence/matrix-development-failed.json
+
+demo-podium-results/
+.clean-podium/

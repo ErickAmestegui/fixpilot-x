@@ -1,0 +1,43 @@
+{
+  "base": "https://erickamestegui.github.io/fixpilot-x/",
+  "sourceCommit": "c7b19c2f54988db79e96818811f546fe5d843f50",
+  "files": [
+    {
+      "path": "challenge/index.html",
+      "bytes": 561,
+      "sha256": "2310620375e33753b07a7973cf09d072c6effb09376d1f1615021231bb129f06"
+    },
+    {
+      "path": "challenge/release.json",
+      "bytes": 741,
+      "sha256": "0a9db0e707ba629bcb848ca10823858bcf63995f90ed6fee3955f6099937814b"
+    },
+    {
+      "path": "challenge/assets/challenge-DM9ThVqX.css",
+      "bytes": 17272,
+      "sha256": "803abd9c7f25e35d47de554d9a714cee8951985bf5543d6b05f1fbffcebf78a6"
+    },
+    {
+      "path": "challenge/assets/index-Cr1Qau7p.css",
+      "bytes": 46875,
+      "sha256": "5851b9e2ef72922a714637078deeec3e1259e0923351843d30b9d596ad5cf2e7"
+    },
+    {
+      "path": "challenge/assets/index-Dw8Xi8IP.js",
+      "bytes": 1181379,
+      "sha256": "d515811ebcfb913802a8461451e8241566ad2e53249a310c72f3bf532ea44a8c"
+    },
+    {
+      "path": "challenge/assets/RescueAppHost-CHAcJgSJ.js",
+      "bytes": 48667,
+      "sha256": "acfed23d5d53bdd54fda8ce9adb8185706d0f2b2afb0414459528c9cedee7392"
+    },
+    {
+      "path": "challenge/assets/RescueChallenge-CKD7kRpb.js",
+      "bytes": 27504,
+      "sha256": "40ee36fb2d25656d462f59a5cbf61fbcc6dfc61fc10a19384221c2b80991bee5"
+    }
+  ],
+  "capturedAt": "2026-10-21T05:02:06.222Z",
+  "source": "Authoritative current public bytes; deployment source verified by release.json"
+}

@@ -1,0 +1,24 @@
+import {chromium,expect} from '@playwright/test';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const base=new URL(process.argv[2]??'http://127.0.0.1:5174/');
+const executablePath=[process.env.PLAYWRIGHT_EXECUTABLE_PATH,'C:/Program Files/Microsoft/Edge/Application/msedge.exe','C:/Program Files/Google/Chrome/Application/chrome.exe'].find(p=>p&&existsSync(p));
+const browser=await chromium.launch({...(executablePath?{executablePath}:{}),args:['--enable-webgl','--enable-unsafe-swiftshader']});
+try{
+ const preserved=[];for(const name of ['docs/challenge-evidence/stable-public-manifest.json','docs/podium-evidence/challenge-public-manifest.json']){const m=JSON.parse(await readFile(name,'utf8'));for(const f of m.files){const r=await fetch(new URL(f.path,base));if(!r.ok)throw Error(`Missing preserved ${f.path}`);const b=Buffer.from(await r.arrayBuffer());if(b.length!==f.bytes||createHash('sha256').update(b).digest('hex')!==f.sha256)throw Error(`Changed preserved ${f.path}`);preserved.push(f);}}
+ const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[],mcpRequests=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.url().includes(':3101/mcp'))mcpRequests.push(r.url());});
+ await page.goto(new URL('?rescue',base).href);await page.getByRole('button',{name:'Confirm actual step',exact:true}).click();const dialog=page.getByRole('dialog');await dialog.getByRole('checkbox').check();await dialog.getByRole('button',{name:'Confirm change',exact:true}).click();await expect(dialog).not.toBeVisible();
+ const saved=await page.evaluate(()=>JSON.stringify(localStorage));
+ await page.goto(new URL('podium/?judge',base).href);await page.getByRole('button',{name:'Start guided rescue'}).click();await page.getByLabel('Judge challenge part').selectOption('C1');await page.getByRole('button',{name:'Preview missing part',exact:true}).click();await expect(page.getByTestId('challenge-blocked')).toHaveText('3, 5, 7, 8');
+ await page.getByLabel('I reviewed this challenge change').check();await page.getByRole('button',{name:'Apply to challenge record',exact:true}).click();await expect(page.locator('.challenge-final')).toContainText('Missing: C1');
+ await page.getByRole('button',{name:'Compare: keep missing vs recover'}).click();await expect(page.locator('.challenge-comparison article')).toHaveCount(2);await page.getByRole('button',{name:'Preview recovery in 3D'}).click();await expect(page.getByLabel('I reviewed this challenge change')).toBeEnabled();await page.getByLabel('I reviewed this challenge change').check();await page.getByRole('button',{name:'Apply to challenge record',exact:true}).click();await expect(page.locator('.challenge-final')).toContainText('Missing: None');await expect(page.locator('.challenge-final')).toContainText('2/8');
+ expect(await page.evaluate(()=>JSON.stringify(localStorage))).toEqual(saved);
+ const controls='button:visible,input:visible,select:visible,summary:visible,a:visible,[role=button]:visible';const guidedControls=await page.locator(controls).count();await page.getByRole('button',{name:'Open full workbench'}).click();const fullControls=await page.locator(controls).count();if(guidedControls>=fullControls)throw Error('Guide did not reduce rendered controls.');await page.getByRole('button',{name:'Enter Judge Mode'}).click();
+ await page.locator('.challenge-visual').scrollIntoViewIfNeeded();await mkdir('docs/podium-evidence',{recursive:true});const name=base.hostname==='127.0.0.1'?'packaged-preview':'public-live';await page.screenshot({path:`docs/podium-evidence/${name}.png`});
+ await page.goto(new URL('challenge/',base).href);await expect(page.getByRole('button',{name:'Launch blind challenge',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Enter Judge Mode'})).toHaveCount(0);
+ if(errors.length||mcpRequests.length)throw Error(`Page errors or unexpected public MCP transport: ${JSON.stringify({errors,mcpRequests})}`);
+ const release=await(await fetch(new URL('podium/release.json',base))).json();if(process.env.EXPECTED_SOURCE_COMMIT&&release.sourceCommit!==process.env.EXPECTED_SOURCE_COMMIT)throw Error('Unexpected deployed source commit.');
+ const result={renderedInteractiveControls:{guided:guidedControls,full:fullControls,scope:"Across the rendered page, not a human usability score"},release,passed:true,at:new Date().toISOString(),base:base.href,preserved,scenario:'C1 loss, independent comparison, approved recovery; final 2/8',savedProgressUnchanged:true,previousChallengeAvailable:true,pageErrors:errors,mcpRequests,mocked:false};await writeFile(`docs/podium-evidence/${name}.json`,JSON.stringify(result,null,2));console.log(JSON.stringify({passed:true,preservedFiles:preserved.length,savedProgressUnchanged:true,publicMcpCalls:mcpRequests.length}));
+}finally{await browser.close();}

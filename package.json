@@ -16,7 +16,9 @@
     "demo:record": "playwright test -c demo.config.ts",
     "demo:final": "playwright test -c demo.final.config.ts",
     "demo:rescue": "playwright test -c demo.rescue.config.ts",
-    "demo:challenge": "playwright test -c demo.challenge.config.ts"
+    "demo:challenge": "playwright test -c demo.challenge.config.ts",
+    "local": "node scripts/start-rescue.mjs",
+    "demo:podium": "playwright test -c demo.podium.config.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/ext-apps": "1.7.5",

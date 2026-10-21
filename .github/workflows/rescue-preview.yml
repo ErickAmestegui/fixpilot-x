@@ -1,7 +1,7 @@
 name: Publish free Rescue preview
 on:
   push:
-    branches: [rescue-intelligence, rescue-challenge]
+    branches: [rescue-intelligence, rescue-challenge, podium-push]
     paths: ['src/**', 'server/**', 'public/**', 'index.html', 'package*.json', 'vite*.ts', '.github/workflows/rescue-preview.yml']
   workflow_dispatch:
 permissions:
@@ -23,23 +23,24 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - if: github.ref_name == 'rescue-challenge'
+      - if: github.ref_name == 'rescue-challenge' || github.ref_name == 'podium-push'
         run: npx playwright install --with-deps chromium
-      - if: github.ref_name == 'rescue-challenge'
+      - if: github.ref_name == 'rescue-challenge' || github.ref_name == 'podium-push'
         name: Verify browser regressions and genuine MCP Apps
         run: |
           npm run dev -- --strictPort > /tmp/fixpilot-vite.log 2>&1 &
           node --input-type=module -e "for(let i=0;i<40;i++){try{if((await fetch('http://127.0.0.1:5173')).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,500))}process.exit(1)"
           npm run test:e2e
-          npm run test:challenge:matrix
-      - if: github.ref_name == 'rescue-challenge'
+          if [ "$GITHUB_REF_NAME" = rescue-challenge ]; then npm run test:challenge:matrix; fi
+      - if: github.ref_name == 'rescue-challenge' || github.ref_name == 'podium-push'
         name: Package stable root plus separate Challenge path
-        run: node scripts/package-challenge-preview.mjs
-      - if: github.ref_name == 'rescue-challenge'
+        run: |
+          if [ "$GITHUB_REF_NAME" = podium-push ]; then node scripts/package-podium-preview.mjs; else node scripts/package-challenge-preview.mjs; fi
+      - if: github.ref_name == 'rescue-challenge' || github.ref_name == 'podium-push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site-release
-      - if: github.ref_name != 'rescue-challenge'
+      - if: github.ref_name != 'rescue-challenge' && github.ref_name != 'podium-push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
