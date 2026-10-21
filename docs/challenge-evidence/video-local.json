@@ -1,0 +1,11 @@
+{
+  "file": "fixpilot-rescue-challenge.webm",
+  "bytes": 18255652,
+  "sha256": "4671a251f281681716ebd789fd2b2ec687426935fd8322faa210f6cae84a2042",
+  "durationSeconds": 92.6,
+  "resolution": "1600x1000",
+  "result": "Recording passed; local file complete",
+  "publicUpload": "Not completed: both direct and streaming GitHub asset uploads interrupted. No new public video URL asserted.",
+  "sourceRelease": "https://github.com/ErickAmestegui/fixpilot-x/releases/tag/rescue-challenge-2026-10-20",
+  "officialContestVideoUnchanged": "https://youtu.be/-VrmiK0tyqg"
+}

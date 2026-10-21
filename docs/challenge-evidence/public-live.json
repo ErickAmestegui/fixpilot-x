@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-21T00:01:24.125Z",
+  "result": "PASS",
+  "url": "https://erickamestegui.github.io/fixpilot-x/challenge/",
+  "deploymentSource": "c7b19c2f54988db79e96818811f546fe5d843f50",
+  "stableFiles": [
+    {
+      "path": "index.html",
+      "sha256": "ffdc9224ff0b2eeea30481f1076c85607c60304867917d096ab603a2b4f46f7e",
+      "unchanged": true
+    },
+    {
+      "path": "assets/index-CP5fXlIn.js",
+      "sha256": "84e6099df1706bccbd0062fd2cfdbeca0b59007fb214e51f5f0e11960ecfb5f4",
+      "unchanged": true
+    },
+    {
+      "path": "assets/index-Cr1Qau7p.css",
+      "sha256": "5851b9e2ef72922a714637078deeec3e1259e0923351843d30b9d596ad5cf2e7",
+      "unchanged": true
+    }
+  ],
+  "stableProgressPreserved": true,
+  "realPublicBrowserInputs": {
+    "startingMissing": [
+      "B7",
+      "F1"
+    ],
+    "recovered": [
+      "F1"
+    ],
+    "readyBefore": [
+      3
+    ],
+    "readyAfter": [
+      3,
+      6
+    ],
+    "finalMissing": [
+      "B7"
+    ]
+  },
+  "mcpNetworkCalls": 0,
+  "pageErrors": [],
+  "disclosure": "Public browser engine. Actual MCP and Apps require localhost."
+}

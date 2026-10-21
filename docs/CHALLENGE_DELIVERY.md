@@ -1,6 +1,6 @@
 # Rescue Challenge delivery — October 20, 2026
 
-**Local recommendation: SHIP, subject to successful publication verification.** The original deterministic engine has not been replaced. Qwen remains frozen and NO-SHIP on its separate branch. No Devpost form, Submit button or contestant declaration has been changed.
+**Recommendation: SHIP. Published and verified without signing in.** The original deterministic engine has not been replaced. Qwen remains frozen and NO-SHIP on its separate branch. No Devpost form, Submit button or contestant declaration has been changed.
 
 The new experience adds a verifiable advantage over Classic Rescue: a judge can choose an isolated starting record, enter different catalog shortages and recoveries, see live consequences and dependency paths, compare independent alternatives, explicitly approve a change and export/replay evidence. The working official-SDK MCP App is an additional local interface, not a native Alexa+ integration.
 
@@ -25,9 +25,19 @@ Source branch: `rescue-challenge`, based on `ea8be24c0c77525b8bed09f8641a4f93ebb
 
 The existing Pages workflow builds/tests this branch, then packages the SHA256-verified stable public HTML/JavaScript/CSS unchanged at the root and adds the new artifact under `/challenge/`. It deploys only after tests pass. The three existing public assets are pinned in [stable-public-manifest.json](challenge-evidence/stable-public-manifest.json); a mismatch refuses publication.
 
-Planned public Challenge: https://erickamestegui.github.io/fixpilot-x/challenge/ . Deployment commit, workflow result, public smoke verification and supplementary video link will be recorded after the actual publication. Until then, this is not a claim of a completed deployment.
+Public Challenge: **https://erickamestegui.github.io/fixpilot-x/challenge/** . Deployed runtime commit: [`c7b19c2`](https://github.com/ErickAmestegui/fixpilot-x/commit/c7b19c2f54988db79e96818811f546fe5d843f50). [Remote verification and publication](https://github.com/ErickAmestegui/fixpilot-x/actions/runs/39516848422) succeeded on attempt 2. The successful build, browser and matrix jobs were retained; only the initially blocked deploy job was rerun.
+
+Public verification at `2026-10-21T00:01:24Z` (October 20 in Bolivia) passed with a new combined input: B7 and F1 initially missing, then recovery of F1. Readiness changed from step 3 to steps 3 and 6; applying the reviewed recovery kept B7 missing. An existing saved root step remained recorded. No page errors and zero MCP network calls were observed in browser-only public mode. All three original stable asset hashes matched exactly. See [public-live.json](challenge-evidence/public-live.json).
+
+The environment initially rejected the new branch. Only the named `rescue-challenge` deployment policy was added; existing `main` and `rescue-intelligence` policy IDs and rules were retained. [Policy evidence](challenge-evidence/deployment-branch-policy.json). No branch protection was removed and no stable branch was merged or moved.
+
+Git HTTPS transfers were interrupted. The official Git data API published the exact verified tree `295a58c814b453ed046bb48f1f24712b569db48d`; it matches local checkpoint `b09e2f6`. [Publication proof](challenge-evidence/source-publication.json). Original complete local history, including `4ccab78` and `e5563e9`, is preserved on `rescue-challenge-local-checkpoint`. Large evidence is archived losslessly; the full original captures remain in the earlier checkpoint.
 
 The definitive existing contest video remains https://youtu.be/-VrmiK0tyqg and is not replaced. The new recording is supplementary. Its examples use scripted UI actions for reproducibility, while all consequences and MCP responses execute real code. No state or result mocking is used in that recording.
+
+The complete new local file is `fixpilot-rescue-challenge.webm`, 18,255,652 bytes, 92.60 seconds. GitHub release asset uploads were interrupted, so **no public URL for this new video is claimed**. The [source release](https://github.com/ErickAmestegui/fixpilot-x/releases/tag/rescue-challenge-2026-10-20) is public; it must not be presented as a successful video upload. The original local recording is retained. Future `npm run demo:challenge` recordings save inside `demo-challenge-results/` for portable execution.
+
+No product blocker remains in the verified scope. Limitations: actual MCP and the tested official-SDK Apps host require localhost, third-party host compatibility is not certified, and the supplementary video has not been uploaded publicly. This work does not certify physical safety or reopen the experimental LLM.
 
 ## Entrant action
 

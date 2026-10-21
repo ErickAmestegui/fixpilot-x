@@ -1,6 +1,6 @@
 # Exact optional Devpost changes — The Rescue Challenge
 
-Entrant review only. No form, personal declaration, category selection or Submit action is changed by this document. Use the new links only after the delivery report confirms publication. Keep the definitive contest YouTube video unchanged.
+Entrant review only. No form, personal declaration, category selection or Submit action is changed by this document. The public Challenge and source links below were verified. Keep the definitive contest YouTube video unchanged.
 
 ## About the project — append this paragraph
 
@@ -32,7 +32,7 @@ The Alexa+ experience is simulated. The dependency engine, original 3D models, i
 
 ## Demo video field
 
-Keep the existing definitive Rescue/MCP video: https://youtu.be/-VrmiK0tyqg . Do not claim it shows MCP Apps. A new 92.60-second supplementary Challenge recording was prepared with actual tool calls and a local Apps host. Add its verified release/download link as supplementary material if desired; do not invent a YouTube URL or silently replace the official video.
+Keep the existing definitive Rescue/MCP video: https://youtu.be/-VrmiK0tyqg . Do not claim it shows MCP Apps. A new 92.60-second supplementary Challenge recording was prepared with actual tool calls and a local Apps host, but its public upload did not complete. Do not paste a nonexistent video URL, use the source release as if it contained the video, or silently replace the official video. The new interactive public link can be added now; a new video link requires a separately verified successful upload.
 
 ## Validation / accomplishments
 

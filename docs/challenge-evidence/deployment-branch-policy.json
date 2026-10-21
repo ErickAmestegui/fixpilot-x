@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-20T23:58:35.644Z",
+  "reason": "The verified Challenge branch was rejected by the existing Pages deployment-branch allowlist.",
+  "before": [
+    {
+      "id": 63657316,
+      "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2MzY1NzMxNg==",
+      "name": "main",
+      "type": "branch"
+    },
+    {
+      "id": 63657812,
+      "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2MzY1NzgxMg==",
+      "name": "rescue-intelligence",
+      "type": "branch"
+    }
+  ],
+  "after": [
+    {
+      "id": 63657316,
+      "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2MzY1NzMxNg==",
+      "name": "main",
+      "type": "branch"
+    },
+    {
+      "id": 63774110,
+      "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2Mzc3NDExMA==",
+      "name": "rescue-challenge",
+      "type": "branch"
+    },
+    {
+      "id": 63657812,
+      "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2MzY1NzgxMg==",
+      "name": "rescue-intelligence",
+      "type": "branch"
+    }
+  ],
+  "existingPoliciesPreserved": true,
+  "rerun": "Failed deploy job only; successful build/browser/matrix jobs retained",
+  "workflow": "https://github.com/ErickAmestegui/fixpilot-x/actions/runs/39516848422"
+}

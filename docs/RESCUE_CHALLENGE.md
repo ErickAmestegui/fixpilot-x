@@ -63,7 +63,7 @@ npm run demo:challenge
 
 The matrix checks all part/tool-shortage subsets in both assemblies at three simulated progress profiles: 4,608 actual MCP preview calls. It does not enumerate every valid progress sequence or certify physical safety. The replay recalculates current state tokens and compares final inventory/progress; audit timestamps and IDs are regenerated. Recorded digital approvals are replayed only in a new synthetic session.
 
-The recording uses UI actions, actual MCP and official Apps handshakes. Captions describe the observed UI; they do not inject state or tool responses. Its selected examples are scripted for reproducibility, while outcomes are calculated live. It is not an independent user study or an unseen-language benchmark.
+The recording uses UI actions, actual MCP and official Apps handshakes. Captions describe the observed UI; they do not inject state or tool responses. Its selected examples are scripted for reproducibility, while outcomes are calculated live. It is not an independent user study or an unseen-language benchmark. Future recordings save to `demo-challenge-results/fixpilot-rescue-challenge.webm` inside the checkout.
 
 ## Evidence and limitations
 
@@ -79,6 +79,6 @@ Development failures are not hidden: a seed initially used a legacy installed-pa
 
 ## Publication boundary
 
-Only publish after passing the checks and showing an advantage over stable Rescue: isolated judge-selected starting records, immediate consequences, visible graph, export/replay and a genuinely interactive MCP App. The planned separate public route is `https://erickamestegui.github.io/fixpilot-x/challenge/`; publication status is recorded in the delivery report.
+Publication passed the checks and shows an advantage over stable Rescue: isolated judge-selected starting records, immediate consequences, visible graph, export/replay and a genuinely interactive MCP App. The verified separate public route is `https://erickamestegui.github.io/fixpilot-x/challenge/`; see the [delivery report](CHALLENGE_DELIVERY.md).
 
 The release packager verifies the SHA256 of the currently published stable HTML, JavaScript and CSS against [the captured manifest](challenge-evidence/stable-public-manifest.json), preserves those exact bytes at the root, and adds the new build under `/challenge/`. If stable bytes differ, publication fails. No merge into `main` or `rescue-intelligence` is required. Public mode uses the browser engine. Actual MCP transport and Apps need localhost; Alexa+ remains simulated.

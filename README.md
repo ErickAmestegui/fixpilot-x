@@ -2,7 +2,7 @@
 
 ## The Rescue Challenge branch
 
-This branch adds an isolated **Blind Rescue Challenge** and an official-SDK MCP App to stable Rescue Intelligence. Judges choose valid catalog shortages, recoveries and prior progress; the original engine computes every consequence. No LLM is used. [Run, verify and inspect the boundaries](docs/RESCUE_CHALLENGE.md) · [Entrant-reviewed Devpost additions](docs/CHALLENGE_DEVPOST_UPDATE.md). The stable public root, 22 tools, separate Scenario Lab contribution and frozen Qwen checkpoint are preserved.
+This branch adds an isolated **Blind Rescue Challenge** and an official-SDK MCP App to stable Rescue Intelligence. **[Open the verified public Challenge](https://erickamestegui.github.io/fixpilot-x/challenge/).** Judges choose valid catalog shortages, recoveries and prior progress; the original engine computes every consequence. No LLM is used. [Run, verify and inspect the boundaries](docs/RESCUE_CHALLENGE.md) · [SHIP report and limitations](docs/CHALLENGE_DELIVERY.md) · [Entrant-reviewed Devpost additions](docs/CHALLENGE_DEVPOST_UPDATE.md). The stable public root, 22 tools, separate Scenario Lab contribution and frozen Qwen checkpoint are preserved.
 
 **The manual that adapts to you.** A functional assembly copilot with an original interactive 3D table, a dependency planner, deterministic conversational commands, and an optional genuine MCP server.
 
