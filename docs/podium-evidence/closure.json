@@ -1,0 +1,35 @@
+{
+  "source": "321839ed4c72eb4a8cc8d1a47145d0e797daec5b",
+  "decision": "SHIP",
+  "publicAnonymousBrowser": true,
+  "cookiesAtStart": 0,
+  "guidedScenario": "B7 absence -> reviewed apply -> independent comparison -> recovery preview -> renewed approval -> final completed [1,2], missing []",
+  "presentationBudgetSeconds": 90,
+  "humanTimingValidated": false,
+  "timingNote": "The raw CLI recording includes inspection and command overhead. It is not a 90-second human usability measurement. The earlier paced technical demo is approximately 53 seconds.",
+  "publicEngine": "Original browser dispatcher, not MCP transport",
+  "localMcp": {
+    "tools": 22,
+    "realCalls": 10,
+    "approvalDeclinePreservedRecord": true,
+    "nonlocalOriginStatus": 403
+  },
+  "previousPublicFilesHashMatched": 10,
+  "pageExceptions": 0,
+  "nonblockingConsole": "Browser requested /favicon.ico and received 404; no functional effect; unchanged per no unrelated fixes instruction.",
+  "functionalChangesThisClosure": 0,
+  "videos": [
+    {
+      "file": "output/playwright/closure/public-judge-walkthrough.webm",
+      "bytes": 4156690,
+      "sha256": "efc23cc15daffa1596a718a802c28cc81837d189bdc67cd84f763452c8b4275f",
+      "duration": "00:03:19.40"
+    },
+    {
+      "file": "output/playwright/closure/local-mcp.webm",
+      "bytes": 4032752,
+      "sha256": "6f660103120fe1e38128f3538558f9ddb1986c13cc6603c4096f70f5999ccb45",
+      "duration": "00:00:19.48"
+    }
+  ]
+}

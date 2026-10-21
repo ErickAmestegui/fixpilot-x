@@ -20,3 +20,6 @@ docs/challenge-evidence/matrix-development-failed.json
 
 demo-podium-results/
 .clean-podium/
+
+.playwright-cli/
+output/playwright/

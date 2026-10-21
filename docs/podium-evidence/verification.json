@@ -60,7 +60,14 @@
   "llmOrPaidApiAdded": false,
   "humanParticipants": 0,
   "humanImpactValidation": "Pending; no fabricated results",
-  "publicDeployment": "Pending",
+  "publicDeployment": {
+    "status": "Verified live",
+    "source": "321839ed4c72eb4a8cc8d1a47145d0e797daec5b",
+    "url": "https://erickamestegui.github.io/fixpilot-x/podium/?judge",
+    "ciRun": 39549795770,
+    "anonymousBrowserPassed": true,
+    "preservedPublicFiles": 10
+  },
   "cleanHostFinal": {
     "completeRuns": 3,
     "passed": 3,
@@ -76,5 +83,12 @@
     "full": 57,
     "humanImpactScore": false
   },
-  "auditProductionVulnerabilities": 0
+  "auditProductionVulnerabilities": 0,
+  "closureLocalRelaunch": {
+    "passed": true,
+    "tools": 22,
+    "realCalls": 10,
+    "hostDeclinePreservedState": true,
+    "originRejected": 403
+  }
 }

@@ -1,6 +1,6 @@
 ## Podium Push (optional usability upgrade)
 
-This branch preserves the published Challenge and classic Rescue. Open `?judge` for the guided rescue. With Node.js 22+, double-click `Start-FixPilot.cmd` on Windows or run `npm run local` to install/build/start the local MCP App host; click **Connect MCP App**. No API key or model is required. First installation needs internet. Close with Ctrl+C. See [setup, boundaries and evidence](docs/PODIUM_PUSH.md) and the [beginner study protocol](docs/BEGINNER_VALIDATION_PROTOCOL.md). Human impact validation is pending.
+This branch preserves the published Challenge and classic Rescue. [Open the verified public Judge Mode](https://erickamestegui.github.io/fixpilot-x/podium/?judge). Open `?judge` for the guided rescue. With Node.js 22+, double-click `Start-FixPilot.cmd` on Windows or run `npm run local` to install/build/start the local MCP App host; click **Connect MCP App**. No API key or model is required. First installation needs internet. Close with Ctrl+C. See [setup, boundaries and evidence](docs/PODIUM_PUSH.md) and the [beginner study protocol](docs/BEGINNER_VALIDATION_PROTOCOL.md). Human impact validation is pending.
 
 # FixPilot X
 

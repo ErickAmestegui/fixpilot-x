@@ -1,0 +1,173 @@
+{
+  "passed": true,
+  "source": "Closure verification: existing root installation relaunched with npm run local -- --no-open. Cold-install evidence is retained separately in clean-install-gated-*.json.",
+  "node": "v24.16.0",
+  "platform": "win32",
+  "prerequisites": "Node/npm and existing QA browser",
+  "dependencyPackages": 218,
+  "ports": {
+    "mcp": "127.0.0.1:3101",
+    "host": "127.0.0.1:5175"
+  },
+  "protocol": "MCP initialize: 2025-11-25 · 22 tools · UI capability advertised\nresources/read: ui://fixpilot-x/rescue-card.html · text/html;profile=mcp-app\nui/initialize + ui/notifications/initialized: official App ↔ AppBridge handshake complete\nrestore_progress · 101 ms · real MCP · returned\npreview_scenario · 67 ms · real MCP · returned\npreview_scenario · 145 ms · real MCP · returned\npreview_scenario · 12 ms · real MCP · returned\nHost refused apply_scenario: no explicit host approval\napply_scenario · 41 ms · real MCP · returned\npreview_scenario · 15 ms · real MCP · returned\ncompare_scenarios · 32 ms · real MCP · returned\npreview_scenario · 28 ms · real MCP · returned\napply_scenario · 42 ms · real MCP · returned\npreview_scenario · 30 ms · real MCP · returned",
+  "requests": [
+    {
+      "name": "restore_progress",
+      "arguments": {
+        "serialized": "{\"version\":1,\"assemblyId\":\"table\",\"completed\":[1,2],\"missing\":[],\"missingTools\":[],\"selectedPart\":\"D1\",\"selectedStep\":2,\"revision\":2,\"history\":[{\"id\":\"action-1\",\"at\":\"2026-10-21T08:49:25.499Z\",\"tool\":\"complete_step\",\"message\":\"Paso 1 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":1},{\"id\":\"action-2\",\"at\":\"2026-10-21T08:49:25.500Z\",\"tool\":\"complete_step\",\"message\":\"Paso 2 registrado como completado por vos. La app no verifica el montaje físico.\",\"kind\":\"success\",\"revision\":2}]}"
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "apply_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [
+            "B7"
+          ],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2],[],[],\"D1\",2,1,[[\"action-1\",\"2026-10-21T08:49:25.540Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1]]]",
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "compare_scenarios",
+      "arguments": {
+        "scenarios": [
+          {
+            "id": "A",
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          },
+          {
+            "id": "B",
+            "changes": {
+              "missingParts": [],
+              "recoveredParts": [
+                "B7"
+              ],
+              "unavailableTools": [],
+              "recoveredTools": [],
+              "undoSteps": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "B7"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    },
+    {
+      "name": "apply_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [
+            "B7"
+          ],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        },
+        "baseToken": "[1,\"table\",[1,2],[\"B7\"],[],\"D1\",2,2,[[\"action-1\",\"2026-10-21T08:49:25.540Z\",\"restore_progress\",\"Progreso validado e importado. Plan recalculado.\",\"success\",1],[\"rescue-2\",\"2026-10-21T08:49:33.035Z\",\"apply_scenario\",\"Scenario applied after explicit approval. Missing parts: B7; unavailable tools: none; digital confirmations invalidated: none. Physical work was not verified or undone.\",\"success\",2]]]",
+        "confirmed": true
+      }
+    },
+    {
+      "name": "preview_scenario",
+      "arguments": {
+        "changes": {
+          "missingParts": [],
+          "recoveredParts": [],
+          "unavailableTools": [],
+          "recoveredTools": [],
+          "undoSteps": []
+        }
+      }
+    }
+  ],
+  "rejectedOriginStatus": 403,
+  "pageErrors": [],
+  "hostDeclinePreservedState": true,
+  "recoveryReports": 2,
+  "physicalWorkVerified": false,
+  "mocked": false,
+  "sourceHashes": {
+    "scripts/start-rescue.mjs": "6d1d9a56befb57de9a13f611331da0a8facf43d0d5f510389f0b421ca6bee16e",
+    "src/RescueChallenge.tsx": "d9ad78876a33acf9036444fa60e8e4e865817b2c4186c9de5b939c440631f787",
+    "package-lock.json": "6133297381d8bf35e6b87a60acc6ed14ad637ddc27b714dcadf7da44aa4e8d93"
+  },
+  "cleanInstallRepeated": false,
+  "at": "2026-10-21T08:54:12.275Z"
+}

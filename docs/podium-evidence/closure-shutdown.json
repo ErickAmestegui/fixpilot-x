@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-21T08:55:42.332Z",
+  "signal": "Ctrl+C",
+  "ports": {
+    "3101": "closed",
+    "5175": "closed"
+  },
+  "otherProcessesStopped": false
+}
